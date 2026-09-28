@@ -44,47 +44,5 @@ const ogImage = new URL(site.ogImage, Astro.site).href;
       <slot />
     </main>
     <Footer page={page} />
-    <script is:inline>
-      // Листание по страницам (только компьютер): один жест колеса/тачпада = одна страница.
-      // Пока идёт перелистывание и докатывается инерция тачпада, новые события игнорируются —
-      // поэтому страницы не проскакивают.
-      (() => {
-        const mq = matchMedia('(min-width: 1001px)');
-        let locked = false, lastWheel = 0, startedAt = 0;
-        const targets = () => {
-          const max = document.documentElement.scrollHeight - innerHeight;
-          const t = [0, ...[...document.querySelectorAll('[data-snap]')].map((el) => Math.round(el.getBoundingClientRect().top + scrollY)), max];
-          return [...new Set(t.map((y) => Math.min(Math.max(y, 0), max)))].sort((a, b) => a - b);
-        };
-        const go = (dir) => {
-          const y = scrollY, list = targets();
-          const next = dir > 0 ? list.find((t) => t > y + 4) : [...list].reverse().find((t) => t < y - 4);
-          if (next === undefined) return false;
-          locked = true; startedAt = performance.now();
-          const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-          scrollTo({ top: next, behavior: reduce ? 'auto' : 'smooth' });
-          const release = () => {
-            const now = performance.now();
-            if (now - startedAt > 700 && now - lastWheel > 220) locked = false; else setTimeout(release, 60);
-          };
-          setTimeout(release, 60);
-          return true;
-        };
-        addEventListener('wheel', (e) => {
-          if (!mq.matches || e.ctrlKey || Math.abs(e.deltaY) < Math.abs(e.deltaX)) return;
-          e.preventDefault();
-          lastWheel = performance.now();
-          if (locked || Math.abs(e.deltaY) < 2) return;
-          go(Math.sign(e.deltaY));
-        }, { passive: false });
-        addEventListener('keydown', (e) => {
-          if (!mq.matches || e.target.closest?.('input,textarea,select,[contenteditable]')) return;
-          const dir = { ArrowDown: 1, PageDown: 1, ' ': e.shiftKey ? -1 : 1, ArrowUp: -1, PageUp: -1 }[e.key];
-          if (!dir) return;
-          e.preventDefault();
-          if (!locked) go(dir);
-        });
-      })();
-    </script>
   </body>
 </html>

@@ -1,6 +1,7 @@
 ---
-import AlmanacLayout from '../layouts/AlmanacLayout.astro';
-import DocCover from '../components/almanac/DocCover.astro';
+import BioLayout from '../layouts/BioLayout.astro';
+import DocCard from '../components/bio/DocCard.astro';
+import Terrace from '../components/bio/Terrace.astro';
 import home from '../content/home.json';
 import docs from '../content/documents.json';
 import site from '../content/site.json';
@@ -8,39 +9,37 @@ const { hero, initiative, research, participants } = home;
 const last = hero.titleLines.length - 1;
 // «… — это …»: вторую часть заголовка выделяем курсивом
 const [initA, initB] = initiative.title.split(' — ');
+// «Более 100 участников»: число выделяем тёплым цветом
+const [countA, countNum, countB] = participants.count.split(/(\d+)/);
 ---
-<AlmanacLayout page="home">
+<BioLayout page="home">
   <section class="hero">
-    <div class="contours" aria-hidden="true"></div>
+    <div class="strata" aria-hidden="true"></div>
     <div class="wrap">
-      <div class="hero__meta mono"><span>{site.name}</span><span>{site.project}</span></div>
-      <h1 class="display">
-        {hero.titleLines.map((l, i) => <>{i > 0 && <br />}{i === last ? <em>{l}</em> : l}</>)}
-      </h1>
-      <div class="hero__grid">
-        <div class="hero__text">
-          <div class="sec-mark mono"><span>§ 01</span><span class="dot"></span><span class="line"></span></div>
-          <h2 class="h2" style="margin-top:28px;">{hero.subtitleLines.map((l) => <span>{l}</span>)}</h2>
-          <div class="hero__paras">
-            <p class="lead dropcap">{hero.paragraphs[0]}</p>
+      <div class="eyebrow">{site.name} · {site.project}</div>
+      <h1>{hero.titleLines.map((l, i) => <>{i > 0 && <br />}{i === last ? <em class="acc">{l}</em> : l}</>)}</h1>
+      <div class="hero__stage">
+        <div class="hero__photo" role="img" aria-label="Пейзаж: холмы, река и ветрогенераторы"></div>
+        <div class="slab">
+          <h2>{hero.subtitleLines.map((l) => <span>{l}</span>)}</h2>
+          <div class="slab__paras">
+            <p class="lead">{hero.paragraphs[0]}</p>
             <p>{hero.paragraphs[1]}</p>
           </div>
         </div>
-        <figure class="plate">
-          <span class="plate__c" aria-hidden="true"></span>
-          <div class="plate__img" role="img" aria-label="Пейзаж: холмы, река и ветрогенераторы"></div>
-          <figcaption class="mono"><span>Рис. 01</span><span>{site.project}</span></figcaption>
-        </figure>
       </div>
     </div>
   </section>
 
-  <section class="sec sec--tint">
-    <div class="contours" aria-hidden="true"></div>
+  <div style="height:90px;"></div>
+  <Terrace fill="#ffffff" />
+  <section class="sec sec--white" style="padding-top:60px;">
     <div class="wrap">
-      <div class="sec-mark mono"><span>§ 02</span><span class="dot"></span><span class="line"></span></div>
       <div class="split">
-        <h2 class="h2">{initB ? <>{initA} — <em>{initB}</em></> : initiative.title}</h2>
+        <div>
+          <h2 class="h2">{initB ? <>{initA} — <em class="acc">{initB}</em></> : initiative.title}</h2>
+          <div class="woodcap" aria-hidden="true"><div class="woodcap__view"></div><div class="woodcap__plant"></div><div class="woodcap__wood"></div></div>
+        </div>
         <div class="split__text">
           <p class="lead">{initiative.paragraphs[0]}</p>
           {initiative.paragraphs.slice(1).map((p) => <p>{p}</p>)}
@@ -48,37 +47,41 @@ const [initA, initB] = initiative.title.split(' — ');
       </div>
     </div>
   </section>
+  <Terrace fill="#f5f7f2" from="#ffffff" flip />
 
-  <section class="sec" id="docs">
+  <section class="sec" id="docs" style="padding-top:60px;">
     <div class="wrap">
-      <div class="sec-mark mono"><span>§ 03</span><span class="dot"></span><span class="line"></span></div>
-      <div class="docs-head">
+      <div class="docs-head" style="margin-top:0;">
         <div>
           <h2 class="h2">{research.title}</h2>
           <p class="lead">{research.lead}</p>
         </div>
-        <a href={research.allLink.href} class="btn btn--line">{research.allLink.label.replace(/\s*>\s*$/, '')} <span class="arr">→</span></a>
+        <a href={research.allLink.href} class="btn btn--ghost">{research.allLink.label.replace(/\s*>\s*$/, '')} <span class="arr">→</span></a>
       </div>
       <div class="docs">
-        {docs.items.map((d, i) => <DocCover doc={d} index={i} href={`/reviews#${d.id}`} />)}
+        {docs.items.map((d, i) => <DocCard doc={d} index={i} href={`/reviews#${d.id}`} />)}
       </div>
     </div>
   </section>
 
+  <Terrace fill="#0d1812" from="#f5f7f2" />
   <section class="join" id="join">
     <div class="join__bg" aria-hidden="true"></div>
-    <div class="contours" aria-hidden="true"></div>
+    <div class="join__glow" aria-hidden="true"></div>
+    <div class="strata" aria-hidden="true"></div>
     <div class="wrap">
       <div class="join__in">
-        <div>
-          <div class="sec-mark mono"><span>§ 04</span><span class="dot"></span><span>{participants.label}</span></div>
-          <div class="join__count">{participants.count}</div>
-        </div>
-        <div>
-          <p class="join__text">{participants.text}</p>
-          <a href={participants.button.href} class="btn btn--light">{participants.button.label} <span class="arr">→</span></a>
+        <div class="join__cap">
+          <div>
+            <div class="eyebrow">{participants.label}</div>
+            <div class="join__count">{countNum ? <>{countA}<em class="acc">{countNum}</em>{countB}</> : participants.count}</div>
+          </div>
+          <div>
+            <p class="join__text">{participants.text}</p>
+            <a href={participants.button.href} class="btn btn--amber">{participants.button.label} <span class="arr">→</span></a>
+          </div>
         </div>
       </div>
     </div>
   </section>
-</AlmanacLayout>
+</BioLayout>

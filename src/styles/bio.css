@@ -1,0 +1,171 @@
+/* Стиль «Био-модерн»: природоподобная архитектура — плавные террасы, зелень, дерево, тёплое свечение */
+@tailwind components;
+@tailwind utilities;
+
+:root{
+  --bg:#f5f7f2;
+  --surface:#ffffff;
+  --ink:#14201a;
+  --ink-2:#34423a;
+  --muted:#6b776f;
+  --line:#dde4da;
+  --leaf:#4c8a3a;
+  --leaf-2:#7fb35f;
+  --leaf-deep:#1e3d2b;
+  --mint:#8fd8bf;
+  --wood:#a8744a;
+  --wood-2:#d9b692;
+  --amber:#f3b760;
+  --night:#0d1812;
+  --sans:Onest,'Helvetica Neue',Arial,sans-serif;
+  --serif:'Literata',Georgia,serif;
+  --gutter:40px;
+  --ease:cubic-bezier(.33,.72,.4,1);
+}
+
+*{box-sizing:border-box;}
+html{scroll-padding-top:100px;}
+html,body{margin:0;padding:0;}
+body{background:var(--bg);color:var(--ink-2);font-family:var(--sans);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:clip;}
+a{color:inherit;text-decoration:none;}
+p{margin:0;}
+h1,h2,h3{margin:0;font-weight:300;color:var(--ink);}
+img{max-width:100%;display:block;}
+em.acc{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--leaf);letter-spacing:-0.01em;}
+
+.wrap{max-width:1320px;margin:0 auto;padding:0 var(--gutter);position:relative;}
+.eyebrow{font-size:13px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:14px;}
+.eyebrow::before{content:"";width:36px;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--leaf),var(--mint));flex-shrink:0;}
+.h2{font-size:clamp(30px,3.4vw,48px);line-height:1.1;letter-spacing:-0.03em;}
+.lead{font-size:19px;line-height:1.6;color:var(--ink-2);}
+
+/* Слоистые линии-террасы (цвет через background-color) */
+.strata{position:absolute;pointer-events:none;-webkit-mask:url(/images/strata.svg) center/cover no-repeat;mask:url(/images/strata.svg) center/cover no-repeat;}
+
+/* Кнопки-капсулы */
+.btn{display:inline-flex;align-items:center;gap:10px;font-size:15px;font-weight:500;padding:14px 24px;border-radius:999px;white-space:nowrap;transition:background .4s var(--ease),color .4s var(--ease),box-shadow .4s var(--ease),transform .4s var(--ease);}
+.btn .arr{transition:transform .4s var(--ease);}
+.btn:hover .arr{transform:translateX(4px);}
+.btn--leaf{background:var(--leaf-deep);color:#fff;}
+.btn--leaf:hover{background:var(--leaf);box-shadow:0 10px 30px -8px rgba(76,138,58,0.6);transform:translateY(-1px);}
+.btn--ghost{background:var(--surface);color:var(--ink);box-shadow:inset 0 0 0 1px var(--line);}
+.btn--ghost:hover{box-shadow:inset 0 0 0 1px var(--leaf-2),0 10px 24px -12px rgba(30,61,43,0.35);}
+.btn--amber{background:var(--amber);color:var(--night);box-shadow:0 0 0 rgba(243,183,96,0);}
+.btn--amber:hover{box-shadow:0 0 40px rgba(243,183,96,0.55);transform:translateY(-1px);}
+
+/* Шапка — парящая капсула */
+.hdr{position:sticky;top:14px;z-index:50;padding:14px 0 0;margin-top:-14px;}
+.hdr__pill{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:8px 8px 8px 22px;border-radius:999px;background:rgba(255,255,255,0.82);backdrop-filter:blur(14px) saturate(1.4);-webkit-backdrop-filter:blur(14px) saturate(1.4);box-shadow:0 1px 0 rgba(255,255,255,0.8) inset,0 12px 36px -18px rgba(20,32,26,0.35),0 0 0 1px rgba(221,228,218,0.8);}
+.hdr__logo img{height:28px;width:auto;opacity:0.9;}
+.hdr__nav{display:flex;gap:6px;}
+.hdr__nav a{white-space:nowrap;font-size:15px;color:var(--muted);padding:9px 16px;border-radius:999px;transition:background .3s,color .3s;}
+.hdr__nav a:hover{color:var(--ink);background:rgba(76,138,58,0.08);}
+.hdr__nav a[aria-current="page"]{color:var(--leaf-deep);background:rgba(76,138,58,0.12);}
+
+/* Hero */
+.hero{position:relative;padding:72px 0 0;overflow:hidden;}
+.hero > .strata{top:0;right:-10%;width:70%;height:520px;background-color:rgba(76,138,58,0.13);}
+.hero h1{margin-top:28px;font-size:clamp(54px,8.6vw,132px);line-height:0.94;letter-spacing:-0.05em;}
+.hero h1 em.acc{letter-spacing:-0.03em;}
+.hero__stage{position:relative;margin-top:56px;}
+/* Фото в органичном проёме: асимметричные скругления, как атриум */
+.hero__photo{height:clamp(360px,44vw,600px);border-radius:48px 48px 48px 48px / 48px 48px 48px 48px;border-top-right-radius:220px 160px;background:url(/images/hero.jpg) center 62%/cover;box-shadow:0 40px 80px -40px rgba(20,32,26,0.45);}
+/* Белая «плита-терраса» с зелёной посадкой по кромке */
+.slab{position:relative;margin:-190px 0 0 48px;max-width:640px;background:var(--surface);border-radius:40px 40px 40px 40px;border-top-right-radius:120px 90px;padding:48px 48px 44px;box-shadow:0 30px 60px -30px rgba(20,32,26,0.35);}
+.slab::before{content:"";position:absolute;left:36px;right:120px;top:-7px;height:14px;border-radius:999px;background:linear-gradient(90deg,var(--leaf-deep),var(--leaf) 40%,var(--leaf-2));box-shadow:0 0 0 4px var(--surface);}
+.slab::after{content:"";position:absolute;left:48px;right:48px;bottom:0;height:2px;border-radius:2px;background:linear-gradient(90deg,transparent,var(--mint),transparent);opacity:0.8;}
+.slab h2{font-size:clamp(24px,2.3vw,32px);line-height:1.2;letter-spacing:-0.02em;}
+.slab h2 span{display:block;}
+.slab__paras{margin-top:24px;display:flex;flex-direction:column;gap:16px;}
+
+/* Разделитель-терраса между разделами */
+.terrace{display:block;width:100%;height:110px;margin-bottom:-1px;}
+
+/* Секции */
+.sec{padding:110px 0;position:relative;}
+.sec--white{background:var(--surface);}
+.split{margin-top:44px;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:72px;align-items:start;}
+.split__text{display:flex;flex-direction:column;gap:24px;}
+/* Окно-капсула: фрагмент пейзажа над деревянной террасой с зелёной посадкой */
+.woodcap{margin-top:44px;position:relative;border-radius:40px;border-top-right-radius:160px 120px;overflow:hidden;box-shadow:0 30px 60px -34px rgba(20,32,26,0.5);}
+.woodcap__view{height:190px;background:url(/images/hero.jpg) 80% 55%/cover;}
+.woodcap__plant{height:14px;background:linear-gradient(90deg,var(--leaf-deep),var(--leaf) 45%,var(--leaf-2));}
+.woodcap__wood{height:44px;background:repeating-linear-gradient(90deg,#b07b4f 0 6px,#8f5f3a 6px 7px,#d2aa80 7px 13px,#a26d44 13px 14px);box-shadow:inset 0 8px 14px -8px rgba(0,0,0,0.35);}
+.woodcap::after{content:"";position:absolute;left:24px;right:24px;top:190px;height:1px;background:var(--mint);opacity:0.8;}
+
+/* Документы */
+.docs-head{margin-top:44px;display:flex;justify-content:space-between;align-items:flex-end;gap:24px 48px;flex-wrap:wrap;}
+.docs-head p{max-width:560px;margin-top:18px;}
+.docs{margin-top:48px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;}
+.card{display:block;background:var(--surface);border-radius:32px;padding:12px 12px 26px;box-shadow:0 0 0 1px var(--line),0 24px 50px -36px rgba(20,32,26,0.4);transition:transform .6s var(--ease),box-shadow .6s var(--ease);}
+.card:hover{transform:translateY(-6px);box-shadow:0 0 0 1px var(--leaf-2),0 36px 60px -30px rgba(30,61,43,0.45);}
+.card__win{position:relative;height:210px;border-radius:24px;border-top-right-radius:90px 70px;overflow:hidden;background:radial-gradient(120% 90% at 85% 110%,rgba(243,183,96,0.55),transparent 55%),linear-gradient(170deg,#e3eee6 0%,#bcd7b3 55%,#7fb35f 100%);}
+.card__win .strata{inset:-10%;background-color:rgba(255,255,255,0.9);}
+.card__num{position:absolute;left:16px;top:16px;font-size:12px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--leaf-deep);background:rgba(255,255,255,0.85);padding:7px 12px;border-radius:999px;}
+.card__body{padding:22px 14px 0;}
+.card__series{font-size:12px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);}
+.card__title{margin-top:10px;font-size:22px;line-height:1.25;letter-spacing:-0.015em;font-weight:400;}
+.card__more{margin-top:18px;display:flex;align-items:center;gap:8px;color:var(--leaf);font-size:15px;font-weight:500;}
+.doc-desc{margin-top:18px;padding:0 6px;}
+.doc-desc .label{font-size:12px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--leaf);}
+.doc-desc p{margin-top:8px;font-size:15px;line-height:1.6;color:var(--muted);}
+
+/* Участники — вечерний вид: тёмная зелень и тёплое свечение окон */
+.join{position:relative;background:var(--night);color:#e6efe8;overflow:hidden;}
+.join__bg{position:absolute;inset:0;background:url(/images/hero.jpg) center 60%/cover;opacity:0.22;filter:saturate(0.7);}
+.join__glow{position:absolute;inset:0;background:radial-gradient(40% 50% at 78% 70%,rgba(243,183,96,0.28),transparent 70%),radial-gradient(35% 45% at 15% 20%,rgba(143,216,191,0.12),transparent 70%);}
+.join .strata{inset:0;background-color:rgba(143,216,191,0.12);}
+.join__in{position:relative;padding:110px 0 130px;}
+.join__cap{border-radius:56px;border-top-right-radius:220px 160px;padding:64px;background:linear-gradient(135deg,rgba(255,255,255,0.08),rgba(255,255,255,0.02));box-shadow:inset 0 0 0 1px rgba(143,216,191,0.28),0 0 80px -20px rgba(243,183,96,0.25);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:56px;align-items:end;}
+.join .eyebrow{color:rgba(230,239,232,0.7);}
+.join__count{margin-top:28px;font-size:clamp(48px,6.6vw,96px);line-height:0.98;letter-spacing:-0.045em;font-weight:300;color:#fff;}
+.join__count em.acc{color:var(--amber);}
+.join__text{font-size:19px;line-height:1.6;color:rgba(230,239,232,0.8);}
+.join__text + .btn{margin-top:30px;}
+
+/* Подвал */
+.ftr{background:var(--night);color:rgba(230,239,232,0.7);}
+.ftr__grid{padding:64px 0 36px;display:grid;grid-template-columns:minmax(0,6fr) minmax(0,3fr) minmax(0,3fr);gap:48px;border-top:1px solid rgba(143,216,191,0.15);}
+.ftr .eyebrow{color:rgba(230,239,232,0.55);}
+.ftr__name{font-size:24px;line-height:1.3;letter-spacing:-0.02em;color:#fff;margin-top:16px;font-weight:300;}
+.ftr nav{display:flex;flex-direction:column;gap:12px;font-size:15px;}
+.ftr nav a{width:fit-content;color:rgba(230,239,232,0.82);border-bottom:1px solid transparent;transition:color .3s,border-color .3s;}
+.ftr nav a:hover{color:#fff;border-bottom-color:var(--mint);}
+.ftr__bottom{padding:22px 0 36px;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:rgba(230,239,232,0.4);}
+
+/* Адаптив */
+@media (max-width:1000px){
+  :root{--gutter:28px;}
+  .split,.join__cap{grid-template-columns:1fr;gap:36px;}
+  .docs{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .ftr__grid{grid-template-columns:1fr 1fr;}
+  .ftr__grid > :first-child{grid-column:1/-1;}
+  .slab{margin:-140px 24px 0;max-width:none;}
+}
+@media (max-width:640px){
+  :root{--gutter:16px;}
+  body{font-size:16px;}
+  .hdr__pill{padding:6px 6px 6px 14px;gap:8px;}
+  .hdr__logo img{height:19px;}
+  .hdr__nav{gap:0;}
+  .hdr__nav a{font-size:13px;padding:8px 7px;}
+  .hdr .btn{display:none;}
+  .hero{padding-top:40px;}
+  .hero h1{margin-top:20px;}
+  .hero__stage{margin-top:36px;}
+  .hero__photo{height:300px;border-radius:32px;border-top-right-radius:120px 90px;}
+  .slab{margin:-80px 10px 0;padding:34px 22px 30px;border-radius:28px;border-top-right-radius:70px 56px;}
+  .slab::before{left:24px;right:70px;}
+  .lead{font-size:17px;}
+  .terrace{height:60px;}
+  .sec{padding:72px 0;}
+  .split,.docs-head{margin-top:32px;}
+  .woodcap{margin-top:28px;border-top-right-radius:90px 70px;}
+  .woodcap__view{height:150px;}
+  .woodcap::after{top:150px;}
+  .docs{grid-template-columns:1fr;gap:36px;}
+  .join__in{padding:72px 0 88px;}
+  .join__cap{padding:36px 22px;border-radius:32px;border-top-right-radius:110px 80px;}
+  .ftr__grid{grid-template-columns:1fr;gap:28px;padding-top:52px;}
+  .ftr nav a{padding:4px 0;}
+}

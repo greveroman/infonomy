@@ -1,9 +1,9 @@
 ---
-// Новый шаблон в стиле «Альманах». Пока используется только на главной;
+// Новый шаблон в стиле «Био-модерн». Пока используется только на главной;
 // после согласования стиля на него переводятся остальные страницы.
-import '../styles/almanac.css';
-import Header from '../components/almanac/Header.astro';
-import Footer from '../components/almanac/Footer.astro';
+import '../styles/bio.css';
+import Header from '../components/bio/Header.astro';
+import Footer from '../components/bio/Footer.astro';
 import site from '../content/site.json';
 
 interface Props { page: keyof typeof site.seo }
@@ -36,10 +36,9 @@ const ogImage = new URL(site.ogImage, Astro.site).href;
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,300..600;1,7..72,300..600&family=IBM+Plex+Mono:wght@400;500&family=Onest:wght@300..700&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@300..700&family=Literata:ital,opsz,wght@1,7..72,400&display=swap" />
   </head>
   <body>
-    <div class="grid-lines" aria-hidden="true"><div><div></div></div></div>
     <Header current={Astro.url.pathname} />
     <main>
       <slot />

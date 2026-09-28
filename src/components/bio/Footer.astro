@@ -9,7 +9,7 @@ const columns = f.links[Astro.props.page];
   <div class="wrap">
     <div class="ftr__grid">
       <div>
-        <div class="mono" style="color:var(--lichen);">{f.label}</div>
+        <div class="eyebrow">{f.label}</div>
         <div class="ftr__name">{f.name}<br />{f.tagline}</div>
       </div>
       {columns.map((col) => (
@@ -18,6 +18,6 @@ const columns = f.links[Astro.props.page];
         </nav>
       ))}
     </div>
-    <div class="ftr__bottom mono">{f.copyright}</div>
+    <div class="ftr__bottom">{f.copyright}</div>
   </div>
 </footer>

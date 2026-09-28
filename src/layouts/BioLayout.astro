@@ -44,5 +44,38 @@ const ogImage = new URL(site.ogImage, Astro.site).href;
       <slot />
     </main>
     <Footer page={page} />
+    <script is:inline>
+      // Прокрутка «по слайдам»: когда листаешь к следующему блоку и останавливаешься рядом с его началом,
+      // страница мягко доводит его до верха (под шапку вместе с волной-террасой). Назад не тянет — застрять нельзя.
+      (() => {
+        const mq = matchMedia('(min-width: 1001px)');
+        const OFFSET = 210; // шапка (100) + волна над блоком (110)
+        let lastY = scrollY, dir = 0, timer = 0, auto = false;
+        const settle = () => {
+          if (!mq.matches) return;
+          const zone = innerHeight * 0.4;
+          let best = null;
+          for (const el of document.querySelectorAll('[data-snap]')) {
+            const t = Math.round(el.getBoundingClientRect().top + scrollY - OFFSET);
+            const d = t - scrollY;
+            if ((dir > 0 && d > 2 && d <= zone) || (dir < 0 && d < -2 && d >= -zone))
+              if (!best || Math.abs(d) < Math.abs(best - scrollY)) best = t;
+          }
+          if (best === null) return;
+          auto = true;
+          const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+          scrollTo({ top: best, behavior: reduce ? 'auto' : 'smooth' });
+          setTimeout(() => { auto = false; lastY = scrollY; }, 700);
+        };
+        addEventListener('scroll', () => {
+          if (auto) return;
+          const y = scrollY;
+          if (y !== lastY) dir = Math.sign(y - lastY);
+          lastY = y;
+          clearTimeout(timer);
+          timer = setTimeout(settle, 160);
+        }, { passive: true });
+      })();
+    </script>
   </body>
 </html>

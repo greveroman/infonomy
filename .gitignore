@@ -216,3 +216,8 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Astro / Node
+node_modules/
+.astro/
+.DS_Store

@@ -46,8 +46,8 @@ em.acc{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--le
 .btn{display:inline-flex;align-items:center;gap:10px;font-size:15px;font-weight:500;padding:14px 24px;border-radius:999px;white-space:nowrap;transition:background .4s var(--ease),color .4s var(--ease),box-shadow .4s var(--ease),transform .4s var(--ease);}
 .btn .arr{transition:transform .4s var(--ease);}
 .btn:hover .arr{transform:translateX(4px);}
-.btn--leaf{background:var(--leaf-deep);color:#fff;}
-.btn--leaf:hover{background:var(--leaf);box-shadow:0 10px 30px -8px rgba(76,138,58,0.6);transform:translateY(-1px);}
+.btn--leaf{background:linear-gradient(180deg,#2f5a3f 0%,var(--leaf-deep) 60%,#17301f 100%);color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,0.22),inset 0 -2px 4px rgba(0,0,0,0.25),0 6px 14px -6px rgba(20,32,26,0.55);}
+.btn--leaf:hover{background:linear-gradient(180deg,#5d9b49 0%,var(--leaf) 60%,#3c7430 100%);box-shadow:inset 0 1px 0 rgba(255,255,255,0.28),inset 0 -2px 4px rgba(0,0,0,0.2),0 12px 28px -8px rgba(76,138,58,0.65);transform:translateY(-1px);}
 .btn--ghost{background:var(--surface);color:var(--ink);box-shadow:inset 0 0 0 1px var(--line);}
 .btn--ghost:hover{box-shadow:inset 0 0 0 1px var(--leaf-2),0 10px 24px -12px rgba(30,61,43,0.35);}
 .btn--amber{background:var(--amber);color:var(--night);box-shadow:0 0 0 rgba(243,183,96,0);}
@@ -55,12 +55,46 @@ em.acc{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--le
 
 /* Шапка — парящая капсула */
 .hdr{position:sticky;top:14px;z-index:50;padding:14px 0 0;margin-top:-14px;}
-.hdr__pill{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:8px 8px 8px 22px;border-radius:999px;background:rgba(255,255,255,0.82);backdrop-filter:blur(14px) saturate(1.4);-webkit-backdrop-filter:blur(14px) saturate(1.4);box-shadow:0 1px 0 rgba(255,255,255,0.8) inset,0 12px 36px -18px rgba(20,32,26,0.35),0 0 0 1px rgba(221,228,218,0.8);}
-.hdr__logo img{height:28px;width:auto;opacity:0.9;}
-.hdr__nav{display:flex;gap:6px;}
-.hdr__nav a{white-space:nowrap;font-size:15px;color:var(--muted);padding:9px 16px;border-radius:999px;transition:background .3s,color .3s;}
-.hdr__nav a:hover{color:var(--ink);background:rgba(76,138,58,0.08);}
-.hdr__nav a[aria-current="page"]{color:var(--leaf-deep);background:rgba(76,138,58,0.12);}
+.hdr__pill{position:relative;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:8px 8px 8px 22px;border-radius:999px;
+  /* объём: светлый верх, чуть затенённый низ */
+  background:linear-gradient(180deg,rgba(255,255,255,0.97) 0%,rgba(250,252,248,0.94) 55%,rgba(234,240,231,0.94) 100%);
+  backdrop-filter:blur(14px) saturate(1.4);-webkit-backdrop-filter:blur(14px) saturate(1.4);
+  box-shadow:
+    inset 0 2px 1px rgba(255,255,255,1),          /* блик по верхней кромке */
+    inset 0 -3px 6px rgba(30,61,43,0.08),         /* затенение нижней кромки */
+    0 0 0 1px rgba(210,219,206,0.9),              /* контур */
+    0 2px 4px rgba(20,32,26,0.06),                /* контактная тень */
+    0 14px 24px -8px rgba(20,32,26,0.22),         /* основная тень */
+    0 34px 50px -20px rgba(30,61,43,0.30);}       /* мягкая падающая тень */
+/* Тень на «землю» под капсулой — усиливает ощущение, что она парит */
+.hdr__pill::after{content:"";position:absolute;left:8%;right:8%;bottom:-22px;height:18px;border-radius:50%;background:radial-gradient(closest-side,rgba(20,32,26,0.22),transparent);filter:blur(6px);z-index:-1;pointer-events:none;}
+.hdr__logo{display:flex;align-items:center;gap:12px;flex-shrink:0;}
+/* Символ из логотипа (левые 166 из 564 px картинки), без текстовой части */
+.hdr__mark{height:30px;width:calc(30px * 166 / 96);background:url(/images/logo.png) left center/auto 100% no-repeat;opacity:0.85;transition:opacity .3s;}
+.hdr__word{font-size:17px;font-weight:500;letter-spacing:0.16em;color:var(--ink);white-space:nowrap;}
+.hdr__word b{font-weight:700;color:var(--leaf-deep);}
+.hdr__logo:hover .hdr__mark{opacity:1;}
+
+/* Футуристичная кромка: по контуру капсулы медленно бежит светящаяся линия */
+@property --hdr-a{syntax:'<angle>';inherits:false;initial-value:0deg;}
+.hdr__pill::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1.5px;pointer-events:none;
+  background:conic-gradient(from var(--hdr-a),rgba(143,216,191,0) 0deg,rgba(143,216,191,0) 200deg,rgba(143,216,191,0.95) 250deg,rgba(127,179,95,0.9) 285deg,rgba(143,216,191,0) 330deg);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;
+  animation:hdr-orbit 9s linear infinite;}
+@keyframes hdr-orbit{to{--hdr-a:360deg;}}
+
+.hdr__nav{position:relative;display:flex;gap:4px;padding:4px;border-radius:999px;background:linear-gradient(180deg,rgba(234,240,231,0.7),rgba(245,247,242,0.5));box-shadow:inset 0 1px 3px rgba(30,61,43,0.10),inset 0 -1px 0 rgba(255,255,255,0.9);}
+.hdr__nav a{position:relative;white-space:nowrap;font-size:15px;color:var(--muted);padding:8px 18px;border-radius:999px;transition:color .35s var(--ease),background .35s var(--ease),box-shadow .35s var(--ease);}
+.hdr__nav a:hover{color:var(--leaf-deep);background:rgba(255,255,255,0.7);box-shadow:0 0 18px -4px rgba(143,216,191,0.9);}
+/* Активный пункт — световая капсула с точкой-индикатором */
+.hdr__nav a[aria-current="page"]{color:var(--leaf-deep);background:linear-gradient(180deg,#fff,#f1f6ee);box-shadow:inset 0 1px 0 #fff,0 0 0 1px rgba(143,216,191,0.7),0 4px 10px -4px rgba(30,61,43,0.25),0 0 22px -6px rgba(143,216,191,0.95);}
+.hdr__nav a[aria-current="page"]::after{content:"";position:absolute;left:50%;bottom:3px;width:4px;height:4px;margin-left:-2px;border-radius:50%;background:var(--leaf);box-shadow:0 0 6px 1px rgba(127,179,95,0.9);}
+
+/* Блик, пробегающий по кнопке при наведении */
+.hdr .btn--leaf{position:relative;overflow:hidden;}
+.hdr .btn--leaf::after{content:"";position:absolute;top:0;bottom:0;left:-60%;width:40%;background:linear-gradient(100deg,transparent,rgba(255,255,255,0.35),transparent);transform:skewX(-20deg);transition:left .7s var(--ease);}
+.hdr .btn--leaf:hover::after{left:120%;}
+@media (prefers-reduced-motion:reduce){.hdr__pill::before{animation:none;}}
 
 /* Hero */
 .hero{position:relative;padding:72px 0 0;overflow:hidden;}
@@ -146,9 +180,11 @@ em.acc{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--le
   :root{--gutter:16px;}
   body{font-size:16px;}
   .hdr__pill{padding:6px 6px 6px 14px;gap:8px;}
-  .hdr__logo img{height:19px;}
-  .hdr__nav{gap:0;}
-  .hdr__nav a{font-size:13px;padding:8px 7px;}
+  .hdr__logo{gap:8px;}
+  .hdr__mark{height:20px;width:calc(20px * 166 / 96);}
+  .hdr__word{font-size:13px;letter-spacing:0.1em;}
+  .hdr__nav{gap:0;padding:3px;}
+  .hdr__nav a{font-size:13px;padding:7px 7px;}
   .hdr .btn{display:none;}
   .hero{padding-top:64px;}
   .hero__stage{margin-top:36px;}

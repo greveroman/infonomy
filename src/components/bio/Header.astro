@@ -7,7 +7,10 @@ const current = Astro.props.current.replace(/(\.html|\/)$/, '') || '/';
 <header class="hdr">
   <div class="wrap">
     <div class="hdr__pill">
-      <a href="/" class="hdr__logo"><img src="/images/logo.png" alt={site.name} width="564" height="96" /></a>
+      <a href="/" class="hdr__logo" aria-label={site.name}>
+        <span class="hdr__mark" aria-hidden="true"></span>
+        <span class="hdr__word"><b>КБ</b> ВЕКТОР</span>
+      </a>
       <nav class="hdr__nav" aria-label="Основное меню">
         {site.nav.map((item) => (
           <a href={item.href} aria-current={item.href === current ? 'page' : undefined}>{item.label}</a>

@@ -45,35 +45,45 @@ const ogImage = new URL(site.ogImage, Astro.site).href;
     </main>
     <Footer page={page} />
     <script is:inline>
-      // Прокрутка по страницам: когда листаешь и останавливаешься, страница мягко доводит до начала следующей
-      // (в сторону движения). Назад не тянет — застрять нельзя.
+      // Листание по страницам (только компьютер): один жест колеса/тачпада = одна страница.
+      // Пока идёт перелистывание и докатывается инерция тачпада, новые события игнорируются —
+      // поэтому страницы не проскакивают.
       (() => {
         const mq = matchMedia('(min-width: 1001px)');
-        const OFFSET = 0; // страницы начинаются ровно с верха окна
-        let lastY = scrollY, dir = 0, timer = 0, auto = false;
-        const settle = () => {
-          if (!mq.matches) return;
-          const zone = innerHeight * 0.95;
-          let best = null;
-          for (const t of [0, ...[...document.querySelectorAll('[data-snap]')].map((el) => Math.round(el.getBoundingClientRect().top + scrollY - OFFSET))]) {
-            const d = t - scrollY;
-            if ((dir > 0 && d > 2 && d <= zone) || (dir < 0 && d < -2 && d >= -zone))
-              if (!best || Math.abs(d) < Math.abs(best - scrollY)) best = t;
-          }
-          if (best === null) return;
-          auto = true;
-          const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-          scrollTo({ top: best, behavior: reduce ? 'auto' : 'smooth' });
-          setTimeout(() => { auto = false; lastY = scrollY; }, 700);
+        let locked = false, lastWheel = 0, startedAt = 0;
+        const targets = () => {
+          const max = document.documentElement.scrollHeight - innerHeight;
+          const t = [0, ...[...document.querySelectorAll('[data-snap]')].map((el) => Math.round(el.getBoundingClientRect().top + scrollY)), max];
+          return [...new Set(t.map((y) => Math.min(Math.max(y, 0), max)))].sort((a, b) => a - b);
         };
-        addEventListener('scroll', () => {
-          if (auto) return;
-          const y = scrollY;
-          if (y !== lastY) dir = Math.sign(y - lastY);
-          lastY = y;
-          clearTimeout(timer);
-          timer = setTimeout(settle, 160);
-        }, { passive: true });
+        const go = (dir) => {
+          const y = scrollY, list = targets();
+          const next = dir > 0 ? list.find((t) => t > y + 4) : [...list].reverse().find((t) => t < y - 4);
+          if (next === undefined) return false;
+          locked = true; startedAt = performance.now();
+          const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+          scrollTo({ top: next, behavior: reduce ? 'auto' : 'smooth' });
+          const release = () => {
+            const now = performance.now();
+            if (now - startedAt > 700 && now - lastWheel > 220) locked = false; else setTimeout(release, 60);
+          };
+          setTimeout(release, 60);
+          return true;
+        };
+        addEventListener('wheel', (e) => {
+          if (!mq.matches || e.ctrlKey || Math.abs(e.deltaY) < Math.abs(e.deltaX)) return;
+          e.preventDefault();
+          lastWheel = performance.now();
+          if (locked || Math.abs(e.deltaY) < 2) return;
+          go(Math.sign(e.deltaY));
+        }, { passive: false });
+        addEventListener('keydown', (e) => {
+          if (!mq.matches || e.target.closest?.('input,textarea,select,[contenteditable]')) return;
+          const dir = { ArrowDown: 1, PageDown: 1, ' ': e.shiftKey ? -1 : 1, ArrowUp: -1, PageUp: -1 }[e.key];
+          if (!dir) return;
+          e.preventDefault();
+          if (!locked) go(dir);
+        });
       })();
     </script>
   </body>

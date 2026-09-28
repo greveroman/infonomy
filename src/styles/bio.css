@@ -234,7 +234,10 @@ em.acc{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--le
   .slide__terrace{margin-top:0;flex-shrink:0;}
   .hero.slide{height:calc(100vh - 74px);padding:5.5vh 0 0;}
   .hero.slide > .wrap{justify-content:flex-start;}
-  .sec.slide{padding:120px 0 0;}
+  .sec.slide{padding:0;}
+  /* сверху каждой страницы — полоса под меню и волна-переход, как было на принятой 2-й */
+  .slide__top{padding-top:100px;flex-shrink:0;}
+  .slide__top .terrace{display:block;}
   /* 4-я страница: под меню светлая полоса, волна, компактный блок участников, подвал — вместе ровно окно */
   #docs.slide{padding-bottom:0;}
   .join.slide{height:auto;min-height:calc(100vh - 282px);}

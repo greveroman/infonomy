@@ -231,13 +231,14 @@ em.acc{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--le
   .slide__terrace{margin-top:0;flex-shrink:0;}
   .hero.slide{height:calc(100vh - 74px);padding:5.5vh 0 0;}
   .hero.slide > .wrap{justify-content:flex-start;}
-  /* на стыке страниц одна волна — внизу предыдущей; сверху только отступ под меню */
-  .sec.slide{padding:100px 0 0;}
+  /* страница = окно: сверху под меню видна волна (стык с предыдущей), внизу — следующая волна.
+     Поэтому от волны до волны ровно окно минус 210 px (100 — меню, 110 — сама волна). */
+  .sec.slide{padding:0;height:calc(100vh - 210px);}
   /* 4-я страница: под меню светлая полоса, волна, компактный блок участников, подвал — вместе ровно окно */
   #docs.slide{padding-bottom:0;}
-  .join.slide{height:auto;min-height:calc(100vh - 282px);}
+  .join.slide{height:auto;min-height:calc(100vh - 210px - 282px);}
   .join.slide .join__body{flex:1;display:flex;flex-direction:column;justify-content:center;}
-  .join.slide .join__in{padding:calc(100px + 6vh) 0 9vh;}
+  .join.slide .join__in{padding:6vh 0;}
 
   .hero h1{font-size:clamp(48px,min(8.6vw,11.5vh),132px);}
   .hero__stage{margin-top:3.5vh;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);}

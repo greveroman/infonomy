@@ -71,8 +71,8 @@ em.acc{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--le
 .hdr__pill::after{content:"";position:absolute;left:8%;right:8%;bottom:-22px;height:18px;border-radius:50%;background:radial-gradient(closest-side,rgba(20,32,26,0.22),transparent);filter:blur(6px);z-index:-1;pointer-events:none;}
 .hdr__logo{display:flex;align-items:center;gap:12px;flex-shrink:0;}
 /* Символ из логотипа (левые 166 из 564 px картинки), без текстовой части */
-.hdr__mark{height:30px;width:calc(30px * 166 / 96);background:url(/images/logo.png) left center/auto 100% no-repeat;opacity:0.85;transition:opacity .3s;}
-.hdr__word{font-size:17px;font-weight:500;letter-spacing:0.16em;color:var(--ink);white-space:nowrap;}
+.hdr__mark{height:34px;width:calc(34px * 166 / 96);background:url(/images/logo.png) left center/auto 100% no-repeat;opacity:0.85;transition:opacity .3s;}
+.hdr__word{font-size:20px;font-weight:500;letter-spacing:0.16em;color:var(--ink);white-space:nowrap;}
 .hdr__word b{font-weight:700;color:var(--leaf-deep);}
 .hdr__logo:hover .hdr__mark{opacity:1;}
 
@@ -85,14 +85,14 @@ em.acc{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--le
 @keyframes hdr-orbit{to{--hdr-a:360deg;}}
 
 .hdr__nav{position:relative;display:flex;gap:4px;padding:4px;border-radius:999px;background:linear-gradient(180deg,rgba(234,240,231,0.7),rgba(245,247,242,0.5));box-shadow:inset 0 1px 3px rgba(30,61,43,0.10),inset 0 -1px 0 rgba(255,255,255,0.9);}
-.hdr__nav a{position:relative;white-space:nowrap;font-size:15px;color:var(--muted);padding:8px 18px;border-radius:999px;transition:color .35s var(--ease),background .35s var(--ease),box-shadow .35s var(--ease);}
+.hdr__nav a{position:relative;white-space:nowrap;font-size:18px;color:var(--muted);padding:10px 22px;border-radius:999px;transition:color .35s var(--ease),background .35s var(--ease),box-shadow .35s var(--ease);}
 .hdr__nav a:hover{color:var(--leaf-deep);background:rgba(255,255,255,0.7);box-shadow:0 0 18px -4px rgba(143,216,191,0.9);}
 /* Активный пункт — световая капсула с точкой-индикатором */
 .hdr__nav a[aria-current="page"]{color:var(--leaf-deep);background:linear-gradient(180deg,#fff,#f1f6ee);box-shadow:inset 0 1px 0 #fff,0 0 0 1px rgba(143,216,191,0.7),0 4px 10px -4px rgba(30,61,43,0.25),0 0 22px -6px rgba(143,216,191,0.95);}
 .hdr__nav a[aria-current="page"]::after{content:"";position:absolute;left:50%;bottom:3px;width:4px;height:4px;margin-left:-2px;border-radius:50%;background:var(--leaf);box-shadow:0 0 6px 1px rgba(127,179,95,0.9);}
 
 /* Блик, пробегающий по кнопке при наведении */
-.hdr .btn--leaf{position:relative;overflow:hidden;}
+.hdr .btn--leaf{position:relative;overflow:hidden;font-size:17px;padding:15px 28px;}
 .hdr .btn--leaf::after{content:"";position:absolute;top:0;bottom:0;left:-60%;width:40%;background:linear-gradient(100deg,transparent,rgba(255,255,255,0.35),transparent);transform:skewX(-20deg);transition:left .7s var(--ease);}
 .hdr .btn--leaf:hover::after{left:120%;}
 @media (prefers-reduced-motion:reduce){.hdr__pill::before{animation:none;}}

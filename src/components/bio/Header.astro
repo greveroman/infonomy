@@ -5,7 +5,7 @@ interface Props { current: string }
 const current = Astro.props.current.replace(/(\.html|\/)$/, '') || '/';
 ---
 <header class="hdr">
-  <div class="wrap">
+  <div class="wrap hdr__wrap">
     <div class="hdr__pill">
       <a href="/" class="hdr__logo" aria-label={site.name}>
         <span class="hdr__mark" aria-hidden="true"></span>

@@ -151,9 +151,6 @@ em.acc{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--le
 
 /* Участники — вечерний вид: тёмная зелень и тёплое свечение окон */
 .join{position:relative;color:#e6efe8;}
-/* волна-переход сверху страницы участников, на светлом фоне */
-.join__top{background:var(--bg);}
-.join__top .terrace{display:block;}
 .join__body{position:relative;background:var(--night);overflow:hidden;}
 .join__bg{position:absolute;inset:0;background:url(/images/hero.jpg) center 60%/cover;opacity:0.22;filter:saturate(0.7);}
 .join__glow{position:absolute;inset:0;background:radial-gradient(40% 50% at 78% 70%,rgba(243,183,96,0.28),transparent 70%),radial-gradient(35% 45% at 15% 20%,rgba(143,216,191,0.12),transparent 70%);}
@@ -234,16 +231,13 @@ em.acc{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--le
   .slide__terrace{margin-top:0;flex-shrink:0;}
   .hero.slide{height:calc(100vh - 74px);padding:5.5vh 0 0;}
   .hero.slide > .wrap{justify-content:flex-start;}
-  .sec.slide{padding:0;}
-  /* сверху каждой страницы — полоса под меню и волна-переход, как было на принятой 2-й */
-  .slide__top{padding-top:100px;flex-shrink:0;}
-  .slide__top .terrace{display:block;}
+  /* на стыке страниц одна волна — внизу предыдущей; сверху только отступ под меню */
+  .sec.slide{padding:100px 0 0;}
   /* 4-я страница: под меню светлая полоса, волна, компактный блок участников, подвал — вместе ровно окно */
   #docs.slide{padding-bottom:0;}
   .join.slide{height:auto;min-height:calc(100vh - 282px);}
-  .join.slide .join__top{padding-top:100px;flex-shrink:0;}
   .join.slide .join__body{flex:1;display:flex;flex-direction:column;justify-content:center;}
-  .join.slide .join__in{padding:9vh 0;}
+  .join.slide .join__in{padding:calc(100px + 6vh) 0 9vh;}
 
   .hero h1{font-size:clamp(48px,min(8.6vw,11.5vh),132px);}
   .hero__stage{margin-top:3.5vh;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);}

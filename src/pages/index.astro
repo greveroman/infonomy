@@ -31,7 +31,6 @@ const [countA, countNum, countB] = participants.count.split(/(\d+)/);
   </section>
 
   <section class="sec sec--white slide" data-snap>
-    <div class="slide__top" style="background:#f5f7f2;"><Terrace fill="#ffffff" /></div>
     <div class="wrap">
       <div class="split">
         <div>
@@ -48,7 +47,6 @@ const [countA, countNum, countB] = participants.count.split(/(\d+)/);
   </section>
 
   <section class="sec slide" id="docs" data-snap>
-    <div class="slide__top" style="background:#ffffff;"><Terrace fill="#f5f7f2" flip /></div>
     <div class="wrap">
       <div class="docs-head">
         <div>
@@ -61,11 +59,10 @@ const [countA, countNum, countB] = participants.count.split(/(\d+)/);
         {docs.items.map((d, i) => <DocCard doc={d} index={i} href={`/reviews#${d.id}`} />)}
       </div>
     </div>
-    <div class="slide__terrace"><Terrace fill="#f5f7f2" /></div>
+    <div class="slide__terrace"><Terrace fill="#0d1812" /></div>
   </section>
 
   <section class="join slide" id="join" data-snap>
-    <div class="join__top"><Terrace fill="#0d1812" /></div>
     <div class="join__body">
       <div class="join__bg" aria-hidden="true"></div>
       <div class="join__glow" aria-hidden="true"></div>

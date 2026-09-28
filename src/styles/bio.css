@@ -232,7 +232,8 @@ em.acc{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--le
   .slide__terrace{margin-top:0;flex-shrink:0;}
   /* линии рельефа должны заходить вверх под меню — по вертикали первый слайд не обрезаем */
   .hero.slide{overflow-x:clip;overflow-y:visible;height:calc(100vh - 74px);padding:5.5vh 0 0;}
-  .hero.slide > .wrap{justify-content:flex-start;}
+  /* заголовок и карточка — по центру свободного места между меню и волной */
+  .hero.slide > .wrap{justify-content:center;}
   /* страница = окно: сверху под меню видна волна (стык с предыдущей), внизу — следующая волна.
      Поэтому от волны до волны ровно окно минус 210 px (100 — меню, 110 — сама волна). */
   .sec.slide{padding:0;height:calc(100vh - 210px);}

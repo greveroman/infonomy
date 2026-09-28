@@ -45,18 +45,17 @@ const ogImage = new URL(site.ogImage, Astro.site).href;
     </main>
     <Footer page={page} />
     <script is:inline>
-      // Прокрутка «по слайдам»: когда листаешь к следующему блоку и останавливаешься рядом с его началом,
-      // страница мягко доводит его до верха (под шапку вместе с волной-террасой). Назад не тянет — застрять нельзя.
+      // Прокрутка по страницам: когда листаешь и останавливаешься, страница мягко доводит до начала следующей
+      // (в сторону движения). Назад не тянет — застрять нельзя.
       (() => {
         const mq = matchMedia('(min-width: 1001px)');
-        const OFFSET = 210; // шапка (100) + волна над блоком (110)
+        const OFFSET = 0; // страницы начинаются ровно с верха окна
         let lastY = scrollY, dir = 0, timer = 0, auto = false;
         const settle = () => {
           if (!mq.matches) return;
-          const zone = innerHeight * 0.4;
+          const zone = innerHeight * 0.95;
           let best = null;
-          for (const el of document.querySelectorAll('[data-snap]')) {
-            const t = Math.round(el.getBoundingClientRect().top + scrollY - OFFSET);
+          for (const t of [0, ...[...document.querySelectorAll('[data-snap]')].map((el) => Math.round(el.getBoundingClientRect().top + scrollY - OFFSET))]) {
             const d = t - scrollY;
             if ((dir > 0 && d > 2 && d <= zone) || (dir < 0 && d < -2 && d >= -zone))
               if (!best || Math.abs(d) < Math.abs(best - scrollY)) best = t;

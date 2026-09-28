@@ -12,7 +12,7 @@ const [initA, initB] = initiative.title.split(' — ');
 const [countA, countNum, countB] = participants.count.split(/(\d+)/);
 ---
 <BioLayout page="home">
-  <section class="hero">
+  <section class="hero slide">
     <div class="strata" aria-hidden="true"></div>
     <div class="wrap">
       <h1>{hero.titleLines.map((l, i) => <>{i > 0 && <br />}{i === last ? <em class="acc">{l}</em> : l}</>)}</h1>
@@ -27,10 +27,10 @@ const [countA, countNum, countB] = participants.count.split(/(\d+)/);
         </div>
       </div>
     </div>
-    <div class="hero__terrace"><Terrace fill="#ffffff" /></div>
+    <div class="slide__terrace"><Terrace fill="#ffffff" /></div>
   </section>
 
-  <section class="sec sec--white" style="padding-top:60px;" data-snap>
+  <section class="sec sec--white slide" data-snap>
     <div class="wrap">
       <div class="split">
         <div>
@@ -43,12 +43,12 @@ const [countA, countNum, countB] = participants.count.split(/(\d+)/);
         </div>
       </div>
     </div>
+    <div class="slide__terrace"><Terrace fill="#f5f7f2" flip /></div>
   </section>
-  <Terrace fill="#f5f7f2" from="#ffffff" flip />
 
-  <section class="sec" id="docs" style="padding-top:60px;" data-snap>
+  <section class="sec slide" id="docs" data-snap>
     <div class="wrap">
-      <div class="docs-head" style="margin-top:0;">
+      <div class="docs-head">
         <div>
           <h2 class="h2">{research.title}</h2>
           <p class="lead">{research.lead}</p>
@@ -59,23 +59,26 @@ const [countA, countNum, countB] = participants.count.split(/(\d+)/);
         {docs.items.map((d, i) => <DocCard doc={d} index={i} href={`/reviews#${d.id}`} />)}
       </div>
     </div>
+    <div class="slide__terrace"><Terrace fill="#f5f7f2" /></div>
   </section>
 
-  <Terrace fill="#0d1812" from="#f5f7f2" />
-  <section class="join" id="join" data-snap>
-    <div class="join__bg" aria-hidden="true"></div>
-    <div class="join__glow" aria-hidden="true"></div>
-    <div class="strata" aria-hidden="true"></div>
-    <div class="wrap">
-      <div class="join__in">
-        <div class="join__cap">
-          <div>
-            <div class="eyebrow">{participants.label}</div>
-            <div class="join__count">{countNum ? <>{countA}<em class="acc">{countNum}</em>{countB}</> : participants.count}</div>
-          </div>
-          <div>
-            <p class="join__text">{participants.text}</p>
-            <a href={participants.button.href} class="btn btn--amber">{participants.button.label} <span class="arr">→</span></a>
+  <section class="join slide" id="join" data-snap>
+    <div class="join__top"><Terrace fill="#0d1812" /></div>
+    <div class="join__body">
+      <div class="join__bg" aria-hidden="true"></div>
+      <div class="join__glow" aria-hidden="true"></div>
+      <div class="strata" aria-hidden="true"></div>
+      <div class="wrap">
+        <div class="join__in">
+          <div class="join__cap">
+            <div>
+              <div class="eyebrow">{participants.label}</div>
+              <div class="join__count">{countNum ? <>{countA}<em class="acc">{countNum}</em>{countB}</> : participants.count}</div>
+            </div>
+            <div>
+              <p class="join__text">{participants.text}</p>
+              <a href={participants.button.href} class="btn btn--amber">{participants.button.label} <span class="arr">→</span></a>
+            </div>
           </div>
         </div>
       </div>

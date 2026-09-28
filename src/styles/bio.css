@@ -98,11 +98,11 @@ em.acc{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--le
 @media (prefers-reduced-motion:reduce){.hdr__pill::before{animation:none;}}
 
 /* Hero */
-.hero{position:relative;padding:72px 0 200px;overflow-x:clip;}
+.hero{position:relative;padding:72px 0 0;overflow-x:clip;}
 .hero > .wrap{position:relative;z-index:1;}
-/* Волна-терраса внутри первого экрана: линии рельефа уходят под неё без обреза */
-.hero__terrace{position:absolute;left:0;right:0;bottom:0;z-index:1;}
-.hero__terrace .terrace{display:block;}
+/* Волна-терраса — внизу каждой страницы, переход к цвету следующей */
+.slide__terrace{position:relative;z-index:1;margin-top:90px;}
+.slide__terrace .terrace{display:block;}
 .hero > .strata{top:-120px;left:0;right:0;bottom:0;background-color:rgba(76,138,58,0.34);-webkit-mask:url(/images/strata-wide.svg) center top/max(3200px,100%) auto no-repeat;mask:url(/images/strata-wide.svg) center top/max(3200px,100%) auto no-repeat;}
 .hero h1{margin-top:0;font-size:clamp(54px,8.6vw,132px);line-height:0.94;letter-spacing:-0.05em;}
 .hero h1 em.acc{letter-spacing:-0.03em;}
@@ -121,7 +121,7 @@ em.acc{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--le
 .terrace{display:block;width:100%;height:110px;margin-bottom:-1px;}
 
 /* Секции */
-.sec{padding:110px 0;position:relative;}
+.sec{padding:110px 0 0;position:relative;}
 .sec--white{background:var(--surface);}
 .split{margin-top:44px;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:72px;align-items:start;}
 .split__text{display:flex;flex-direction:column;gap:24px;}
@@ -133,7 +133,7 @@ em.acc{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--le
 .woodcap::after{content:"";position:absolute;left:24px;right:24px;top:190px;height:1px;background:var(--mint);opacity:0.8;}
 
 /* Документы */
-.docs-head{margin-top:44px;display:flex;justify-content:space-between;align-items:flex-end;gap:24px 48px;flex-wrap:wrap;}
+.docs-head{margin-top:0;display:flex;justify-content:space-between;align-items:flex-end;gap:24px 48px;flex-wrap:wrap;}
 .docs-head p{max-width:560px;margin-top:18px;}
 .docs{margin-top:48px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;}
 .card{display:block;background:var(--surface);border-radius:32px;padding:12px 12px 26px;box-shadow:0 0 0 1px var(--line),0 24px 50px -36px rgba(20,32,26,0.4);transition:transform .6s var(--ease),box-shadow .6s var(--ease);}
@@ -150,7 +150,11 @@ em.acc{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--le
 .doc-desc p{margin-top:8px;font-size:15px;line-height:1.6;color:var(--muted);}
 
 /* Участники — вечерний вид: тёмная зелень и тёплое свечение окон */
-.join{position:relative;background:var(--night);color:#e6efe8;overflow:hidden;}
+.join{position:relative;color:#e6efe8;}
+/* волна-переход сверху страницы участников, на светлом фоне */
+.join__top{background:var(--bg);}
+.join__top .terrace{display:block;}
+.join__body{position:relative;background:var(--night);overflow:hidden;}
 .join__bg{position:absolute;inset:0;background:url(/images/hero.jpg) center 60%/cover;opacity:0.22;filter:saturate(0.7);}
 .join__glow{position:absolute;inset:0;background:radial-gradient(40% 50% at 78% 70%,rgba(243,183,96,0.28),transparent 70%),radial-gradient(35% 45% at 15% 20%,rgba(143,216,191,0.12),transparent 70%);}
 .join .strata{inset:0;background-color:rgba(143,216,191,0.12);}
@@ -223,23 +227,21 @@ em.acc{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--le
 }
 
 /* Первый экран целиком помещается в окно: плита с текстом рядом с фото, размеры зависят от высоты окна */
+/* Компьютер: главная — это 4 страницы ровно в размер окна (как слайды). Шапка в потоке занимает 74 px. */
 @media (min-width:1001px){
-  /* снизу запас: на втором слайде под меню не должно оставаться текста первого блока */
-  .hero{padding-top:5.5vh;padding-bottom:300px;}
-  /* каждый следующий блок — отдельный слайд: запас снизу, чтобы под меню не оставалось текста */
-  .sec{padding-bottom:180px;}
-  /* слайд с документами компактнее, чтобы внизу была видна волна к следующему блоку */
-  #docs{padding-top:24px !important;padding-bottom:110px;}
-  #docs .docs-head p{max-width:900px;margin-top:12px;}
-  #docs .docs{margin-top:28px;}
-  #docs .card__win{height:128px;}
-  #docs .card__body{padding-top:16px;}
-  #docs .card__title{font-size:20px;}
-  #docs .card__more{margin-top:12px;}
-  #docs .doc-desc{margin-top:14px;}
-  #docs .doc-desc p{font-size:14px;line-height:1.5;}
-  /* последний слайд (участники + подвал) должен доводиться до верха: подвал добирает высоту до окна */
-  .ftr{min-height:max(0px,calc(100vh - 210px - 614px));}
+  .slide{height:100vh;display:flex;flex-direction:column;overflow:hidden;box-sizing:border-box;}
+  .slide > .wrap{flex:1;display:flex;flex-direction:column;justify-content:center;width:100%;min-height:0;}
+  .slide__terrace{margin-top:0;flex-shrink:0;}
+  .hero.slide{height:calc(100vh - 74px);padding:5.5vh 0 0;}
+  .hero.slide > .wrap{justify-content:flex-start;}
+  .sec.slide{padding:120px 0 0;}
+  /* 4-я страница: под меню светлая полоса, волна, компактный блок участников, подвал — вместе ровно окно */
+  #docs.slide{padding-bottom:0;}
+  .join.slide{height:auto;min-height:calc(100vh - 282px);}
+  .join.slide .join__top{padding-top:100px;flex-shrink:0;}
+  .join.slide .join__body{flex:1;display:flex;flex-direction:column;justify-content:center;}
+  .join.slide .join__in{padding:9vh 0;}
+
   .hero h1{font-size:clamp(48px,min(8.6vw,11.5vh),132px);}
   .hero__stage{margin-top:3.5vh;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);}
   .hero__photo{grid-column:1 / 3;grid-row:1;height:auto;min-height:0;margin-left:38%;}
@@ -248,4 +250,16 @@ em.acc{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--le
   .slab__paras{margin-top:clamp(12px,2vh,24px);gap:clamp(8px,1.4vh,16px);}
   .slab .lead{font-size:clamp(14px,1.85vh,18px);line-height:1.55;}
   .slab__paras p:not(.lead){font-size:clamp(13px,1.65vh,16px);line-height:1.55;}
+
+  /* страница с документами: размеры зависят от высоты окна, чтобы всё помещалось */
+  #docs .docs-head p{max-width:900px;margin-top:1.2vh;}
+  #docs .h2{font-size:clamp(28px,4vh,48px);}
+  #docs .docs{margin-top:2.6vh;}
+  #docs .card__win{height:clamp(80px,12vh,150px);}
+  #docs .card__body{padding-top:14px;}
+  #docs .card__title{font-size:clamp(17px,2vh,21px);}
+  #docs .card__more{margin-top:10px;}
+  #docs .doc-desc{margin-top:12px;}
+  #docs .doc-desc p{font-size:clamp(12.5px,1.35vh,14.5px);line-height:1.5;}
+  .split .woodcap__view{height:clamp(110px,17vh,190px);}
 }

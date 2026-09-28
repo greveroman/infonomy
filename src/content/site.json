@@ -11,12 +11,16 @@
       "href": "/"
     },
     {
-      "label": "обзоры",
-      "href": "/reviews"
-    },
-    {
       "label": "о проекте",
       "href": "/about"
+    },
+    {
+      "label": "эксперты",
+      "href": "/#join"
+    },
+    {
+      "label": "обзоры",
+      "href": "/reviews"
     }
   ],
   "footer": {
@@ -154,5 +158,6 @@
     "label": "присоединиться",
     "href": "/join"
   },
-  "ogImage": "/images/hero.jpg"
+  "ogImage": "/images/hero.jpg",
+  "_comment_nav": "Пункт «эксперты» временно ведёт на блок участников на главной (/#join), пока нет отдельной страницы."
 }

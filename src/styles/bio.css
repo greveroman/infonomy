@@ -226,7 +226,8 @@ em.acc{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--le
 /* Первый экран целиком помещается в окно: плита с текстом рядом с фото, размеры зависят от высоты окна */
 /* Компьютер: главная — это 4 страницы ровно в размер окна (как слайды). Шапка в потоке занимает 74 px. */
 @media (min-width:1001px){
-  .slide{height:100vh;display:flex;flex-direction:column;overflow:hidden;box-sizing:border-box;}
+  /* overflow:clip (а не hidden): иначе блок становится отдельной областью прокрутки и слайды не «прилипают» */
+  .slide{height:100vh;display:flex;flex-direction:column;overflow:clip;box-sizing:border-box;}
   .slide > .wrap{flex:1;display:flex;flex-direction:column;justify-content:center;width:100%;min-height:0;}
   .slide__terrace{margin-top:0;flex-shrink:0;}
   .hero.slide{height:calc(100vh - 74px);padding:5.5vh 0 0;}
@@ -234,9 +235,19 @@ em.acc{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--le
   /* страница = окно: сверху под меню видна волна (стык с предыдущей), внизу — следующая волна.
      Поэтому от волны до волны ровно окно минус 210 px (100 — меню, 110 — сама волна). */
   .sec.slide{padding:0;height:calc(100vh - 210px);}
+  /* Презентация: экран = слайд. Прокрутка всегда останавливается ровно на слайде (встроенный scroll-snap браузера). */
+  html{scroll-snap-type:y mandatory;}
+  /* якорь = верх волны; отступ под меню (100 px) даёт scroll-padding-top у html */
+  .snap{position:absolute;left:0;top:0;width:1px;height:1px;scroll-snap-align:start;scroll-snap-stop:always;pointer-events:none;}
+  .ftr{scroll-snap-align:end;}
   /* 4-я страница: под меню светлая полоса, волна, компактный блок участников, подвал — вместе ровно окно */
   #docs.slide{padding-bottom:0;}
-  .join.slide{height:auto;min-height:calc(100vh - 210px - 282px);}
+  /* 3-й слайд: место под волну внизу; сама волна лежит поверх фото 4-го слайда — фото доходит до её края */
+  #docs.slide{padding-bottom:110px;}
+  .join.slide{height:auto;min-height:calc(100vh - 100px - 282px);margin-top:-110px;overflow:visible;}
+  .join__wave{position:absolute;left:0;right:0;top:0;z-index:2;}
+  .join__wave .terrace{display:block;}
+  .join.slide .join__body{padding-top:110px;}
   .join.slide .join__body{flex:1;display:flex;flex-direction:column;justify-content:center;}
   .join.slide .join__in{padding:6vh 0;}
 

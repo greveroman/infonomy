@@ -12,7 +12,7 @@ const [initA, initB] = initiative.title.split(' — ');
 const [countA, countNum, countB] = participants.count.split(/(\d+)/);
 ---
 <BioLayout page="home">
-  <section class="hero slide">
+  <section class="hero slide"><span class="snap snap--top" aria-hidden="true"></span>
     <div class="strata" aria-hidden="true"></div>
     <div class="wrap">
       <h1>{hero.titleLines.map((l, i) => <>{i > 0 && <br />}{i === last ? <em class="acc">{l}</em> : l}</>)}</h1>
@@ -27,7 +27,7 @@ const [countA, countNum, countB] = participants.count.split(/(\d+)/);
         </div>
       </div>
     </div>
-    <div class="slide__terrace"><Terrace fill="#ffffff" /></div>
+    <div class="slide__terrace"><span class="snap" aria-hidden="true"></span><Terrace fill="#ffffff" /></div>
   </section>
 
   <section class="sec sec--white slide" data-snap>
@@ -43,7 +43,7 @@ const [countA, countNum, countB] = participants.count.split(/(\d+)/);
         </div>
       </div>
     </div>
-    <div class="slide__terrace"><Terrace fill="#f5f7f2" flip /></div>
+    <div class="slide__terrace"><span class="snap" aria-hidden="true"></span><Terrace fill="#f5f7f2" flip /></div>
   </section>
 
   <section class="sec slide" id="docs" data-snap>
@@ -59,10 +59,10 @@ const [countA, countNum, countB] = participants.count.split(/(\d+)/);
         {docs.items.map((d, i) => <DocCard doc={d} index={i} href={`/reviews#${d.id}`} />)}
       </div>
     </div>
-    <div class="slide__terrace"><Terrace fill="#0d1812" /></div>
   </section>
 
   <section class="join slide" id="join" data-snap>
+    <div class="join__wave"><span class="snap" aria-hidden="true"></span><Terrace fill="#f5f7f2" above /></div>
     <div class="join__body">
       <div class="join__bg" aria-hidden="true"></div>
       <div class="join__glow" aria-hidden="true"></div>

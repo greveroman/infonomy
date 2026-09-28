@@ -1,7 +1,8 @@
 ---
 // Разделитель разделов в виде плавной террасы: кромка следующего раздела + зелёная посадка + тонкая светящаяся линия
-interface Props { fill: string; from?: string; flip?: boolean }
-const { fill, from = 'transparent', flip = false } = Astro.props;
+// above: закрасить область НАД кромкой (под ней остаётся прозрачно — видно фото следующего блока)
+interface Props { fill: string; from?: string; flip?: boolean; above?: boolean }
+const { fill, from = 'transparent', flip = false, above = false } = Astro.props;
 const edge = flip
   ? 'M0 70 C 240 30, 420 20, 640 48 S 1080 110, 1440 44'
   : 'M0 40 C 260 100, 560 104, 820 64 S 1240 12, 1440 56';
@@ -15,7 +16,7 @@ const id = `g${Math.random().toString(36).slice(2, 8)}`;
       <stop offset="1" stop-color="#7fb35f" />
     </linearGradient>
   </defs>
-  <path d={`${edge} L1440 110 L0 110 Z`} fill={fill} />
+  <path d={above ? `${edge} L1440 0 L0 0 Z` : `${edge} L1440 110 L0 110 Z`} fill={fill} />
   <path d={edge} fill="none" stroke={`url(#${id})`} stroke-width="9" stroke-linecap="round" vector-effect="non-scaling-stroke" />
   <path d={edge} fill="none" stroke="#8fd8bf" stroke-width="1.5" vector-effect="non-scaling-stroke" transform="translate(0 12)" opacity="0.7" />
 </svg>

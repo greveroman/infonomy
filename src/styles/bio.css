@@ -102,7 +102,7 @@ em.acc{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--le
 /* Волна-терраса внутри первого экрана: линии рельефа уходят под неё без обреза */
 .hero__terrace{position:absolute;left:0;right:0;bottom:0;z-index:1;}
 .hero__terrace .terrace{display:block;}
-.hero > .strata{inset:0;background-color:rgba(76,138,58,0.34);-webkit-mask:url(/images/strata-wide.svg) center top/max(3200px,100%) auto no-repeat;mask:url(/images/strata-wide.svg) center top/max(3200px,100%) auto no-repeat;}
+.hero > .strata{top:-120px;left:0;right:0;bottom:0;background-color:rgba(76,138,58,0.34);-webkit-mask:url(/images/strata-wide.svg) center top/max(3200px,100%) auto no-repeat;mask:url(/images/strata-wide.svg) center top/max(3200px,100%) auto no-repeat;}
 .hero h1{margin-top:0;font-size:clamp(54px,8.6vw,132px);line-height:0.94;letter-spacing:-0.05em;}
 .hero h1 em.acc{letter-spacing:-0.03em;}
 .hero__stage{position:relative;margin-top:56px;}

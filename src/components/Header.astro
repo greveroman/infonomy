@@ -1,0 +1,35 @@
+---
+import site from '../content/site.json';
+
+interface Props { current: string }
+const current = Astro.props.current.replace(/(\.html|\/)$/, '') || '/';
+const tr = (p: string) => `${p} .4s cubic-bezier(.16,.84,.3,1)`;
+const navBase = 'white-space:nowrap;padding-bottom:3px;';
+const navActive = `color:#121821;${navBase}border-bottom:1.5px solid #1e2530;transition:${tr('opacity')};`;
+const navIdle = `color:#767d86;${navBase}border-bottom:1px solid transparent;transition:${tr('color')},${tr('border-color')};`;
+const ease = (p: string) => `${p} .55s cubic-bezier(.33,.72,.4,1)`;
+---
+<header style="height:74px;border-bottom:1px solid #e2e6ea;background:rgba(255,255,255,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);position:fixed;top:0;left:0;right:0;z-index:60;">
+  <div style="max-width:1480px;margin:0 auto;height:100%;padding:0 94px;display:flex;align-items:center;justify-content:space-between;gap:32px;">
+    <a href="/" class="hv-logo" style={`display:flex;align-items:center;flex-shrink:0;transition:${tr('opacity')};`}>
+      <img src="/images/logo.png" alt={site.name} width="564" height="96" style="height:31.6px;width:auto;display:block;opacity:0.8;" />
+    </a>
+    <nav aria-label="Основное меню" style="display:flex;align-items:center;gap:28px;min-width:0;flex-shrink:1;font-family:Manrope,'Helvetica Neue',Arial,sans-serif;font-size:17px;line-height:1;">
+      {site.nav.map((item) => {
+        const active = item.href === current;
+        return (
+          <a href={item.href} class={active ? 'hv-nav-active' : 'hv-nav'} style={active ? navActive : navIdle} aria-current={active ? 'page' : undefined}>
+            {item.label}
+          </a>
+        );
+      })}
+    </nav>
+    <a
+      href={site.joinButton.href}
+      class="hv-btn"
+      aria-current={current === site.joinButton.href ? 'page' : undefined}
+      style={`background:#1e2530;border-radius:8px;padding:13px 26px;font-family:Manrope,'Helvetica Neue',Arial,sans-serif;font-size:15px;font-weight:500;line-height:1.2;color:#fff;white-space:nowrap;box-shadow:0 2px 0 rgba(18,24,33,0);transition:${ease('background')},${ease('box-shadow')},${ease('transform')};`}
+    >{site.joinButton.label}</a>
+  </div>
+</header>
+<div style="height:74px;flex-shrink:0;"></div>

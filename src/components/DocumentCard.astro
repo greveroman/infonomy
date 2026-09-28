@@ -1,0 +1,51 @@
+---
+import docs from '../content/documents.json';
+
+interface Props {
+  doc: (typeof docs.items)[number];
+  index: number;
+  /** Куда ведёт карточка. Если не задано — ссылка на сам документ (doc.url). */
+  href?: string;
+}
+const { doc, index, href } = Astro.props;
+const link = href ?? doc.url ?? null;
+
+// Декоративные «строки» на превью листа, как на исходном сайте
+const patterns = [
+  { head: [64, 46], body: [100, 96, 99, 90, 97, 74, 100, 88] },
+  { head: [58, 38], body: [98, 100, 93, 99, 86, 96, 70, 100] },
+  { head: [70, 52], body: [100, 92, 98, 95, 100, 81, 94, 66] },
+];
+const p = patterns[index % patterns.length];
+const Tag = link ? 'a' : 'div';
+const cardStyle = "display:block;box-shadow:inset 0 0 0 1px #e2e6ea,0 18px 40px rgba(28,28,26,0.05);border-radius:16px;overflow:hidden;background:#fff;transition:transform .7s cubic-bezier(.33,.72,.4,1),box-shadow .7s cubic-bezier(.33,.72,.4,1);";
+---
+<div id={doc.id}>
+  <Tag href={link ?? undefined} class={link ? 'hv-card' : undefined} style={cardStyle}>
+    <div style="position:relative;background:#f8fafc;padding:26px 30px 0;" aria-hidden="true">
+      <div data-m="sheet" style="position:relative;height:236px;overflow:hidden;background:#fff;border-radius:3px 3px 0 0;box-shadow:inset 0 0 0 1px rgba(18,24,33,0.09),0 -2px 10px rgba(18,24,33,0.04);padding:24px 26px 0;">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div style="width:26px;height:3px;background:#1e2530;"></div>
+          <img src="/images/logo.png" alt="" width="564" height="96" style="height:13px;width:auto;display:block;opacity:0.45;" />
+        </div>
+        <div style="margin-top:22px;display:flex;flex-direction:column;gap:9px;">
+          {p.head.map((w) => <div style={`height:10px;width:${w}%;background:#d4dae1;border-radius:2px;`}></div>)}
+        </div>
+        <div style="margin-top:24px;display:flex;flex-direction:column;gap:8px;">
+          {p.body.map((w) => <div style={`height:5px;width:${w}%;background:#e9edf1;border-radius:2px;`}></div>)}
+        </div>
+        <div style="position:absolute;left:0;right:0;bottom:0;height:64px;background:linear-gradient(to bottom,rgba(255,255,255,0),#fff 78%);"></div>
+      </div>
+    </div>
+    <h3 style="margin:0;padding:18px 20px 22px;font-family:Manrope,'Helvetica Neue',Arial,sans-serif;font-weight:700;font-size:17px;line-height:1.35;color:#121821;min-height:82px;">
+      {doc.title}
+    </h3>
+  </Tag>
+  <div style="font-family:Manrope,'Helvetica Neue',Arial,sans-serif;font-size:13px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;line-height:1.3;color:#8b929b;margin-top:16px;padding-left:2px;">
+    {docs.descriptionLabel}
+  </div>
+  <p style="font-size:14px;line-height:1.6;color:#646b74;margin-top:8px;padding-left:2px;">{doc.description}</p>
+  {!href && !doc.url && (
+    <p style="font-size:13px;line-height:1.5;color:#b42318;margin-top:10px;padding-left:2px;">{docs.linkPlaceholder}</p>
+  )}
+</div>

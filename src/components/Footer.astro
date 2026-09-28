@@ -1,0 +1,27 @@
+---
+import site from '../content/site.json';
+
+interface Props { page: keyof typeof site.footer.links }
+const f = site.footer;
+const columns = f.links[Astro.props.page];
+const linkStyle = "color:rgba(255,255,255,0.82);border-bottom:1px solid transparent;padding-bottom:2px;transition:color .4s cubic-bezier(.16,.84,.3,1),border-color .4s cubic-bezier(.16,.84,.3,1);";
+const colStyle = "display:flex;flex-direction:column;align-items:flex-start;gap:14px;font-family:Manrope,'Helvetica Neue',Arial,sans-serif;font-size:15px;";
+---
+<footer style="background:#1e2530;color:rgba(255,255,255,0.72);">
+  <div data-m="wrap" style="max-width:1480px;margin:0 auto;padding:80px 92px 48px;display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr) minmax(0,1fr);gap:48px;">
+    <div>
+      <div style="font-family:Manrope,'Helvetica Neue',Arial,sans-serif;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.5);">{f.label}</div>
+      <div style="font-size:20px;line-height:1.4;letter-spacing:-0.02em;color:#fff;margin-top:18px;max-width:340px;">
+        {f.name}<br />{f.tagline}
+      </div>
+    </div>
+    {columns.map((col) => (
+      <nav aria-label="Навигация в подвале" style={colStyle}>
+        {col.map((l) => <a href={l.href} class="hv-foot" style={linkStyle}>{l.label}</a>)}
+      </nav>
+    ))}
+  </div>
+  <div data-m="foot2" style="max-width:1480px;margin:0 auto;padding:0 92px 48px;font-family:Manrope,'Helvetica Neue',Arial,sans-serif;font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:rgba(255,255,255,0.4);">
+    {f.copyright}
+  </div>
+</footer>

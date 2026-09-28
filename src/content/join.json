@@ -1,0 +1,94 @@
+{
+  "label": "Заявка",
+  "title": "Подать заявку на участие в разработке Концепции",
+  "successMessage": "После получения Вашей заявки мы свяжемся с Вами в течение нескольких дней",
+  "errorMessage": "[НУЖЕН ТЕКСТ: сообщение об ошибке отправки заявки]",
+  "submit": "Отправить заявку →",
+  "_comment": "required: true — поле обязательное (проверяется в браузере и в public/send.php). name — техническое имя, его не менять без правки send.php. row — поля с одинаковым row стоят в одной строке (как на исходном сайте).",
+  "fields": [
+    {
+      "name": "name",
+      "label": "Фамилия и имя",
+      "type": "text",
+      "placeholder": "Иванов Иван",
+      "required": true,
+      "autocomplete": "name",
+      "row": 1
+    },
+    {
+      "name": "city",
+      "label": "Город / регион",
+      "type": "text",
+      "placeholder": "Москва",
+      "required": true,
+      "autocomplete": "address-level2",
+      "row": 1
+    },
+    {
+      "name": "area",
+      "label": "В какой области ваша экспертиза?",
+      "type": "select",
+      "required": true,
+      "options": [
+        "Образование",
+        "Экономика",
+        "Градостроение",
+        "Взаимодействие с природной средой",
+        "Общественные институты и управление",
+        "Другое"
+      ],
+      "row": 2
+    },
+    {
+      "name": "phone",
+      "label": "Ваш телефон",
+      "type": "tel",
+      "placeholder": "+7 000 000-00-00",
+      "required": false,
+      "autocomplete": "tel",
+      "row": 3
+    },
+    {
+      "name": "email",
+      "label": "Ваша почта",
+      "type": "email",
+      "placeholder": "example@mail.ru",
+      "required": true,
+      "autocomplete": "email",
+      "row": 3
+    },
+    {
+      "name": "messenger",
+      "label": "Telegram / MAX",
+      "hint": "Ваш ник в мессенджере Телеграм или Макс @name",
+      "type": "text",
+      "placeholder": "@name",
+      "required": false,
+      "row": 4
+    },
+    {
+      "name": "experience",
+      "label": "Ваши компетенции и опыт",
+      "type": "textarea",
+      "placeholder": "Расскажите кратко о вашей профессиональной экспертизе и релевантном опыте.",
+      "required": true,
+      "row": 5
+    },
+    {
+      "name": "motivation",
+      "label": "Ваша мотивация участвовать",
+      "type": "textarea",
+      "placeholder": "Что вы видите в этой работе для себя и своего региона?",
+      "required": false,
+      "row": 6
+    },
+    {
+      "name": "comment",
+      "label": "Поле для дополнительных комментариев",
+      "type": "textarea",
+      "placeholder": "Ссылки на проекты, публикации, сайт — по желанию.",
+      "required": false,
+      "row": 7
+    }
+  ]
+}

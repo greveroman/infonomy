@@ -1,0 +1,87 @@
+/* Базовые стили и адаптив — перенесены с исходного сайта vector-construct-buro.ru */
+@tailwind components;
+@tailwind utilities;
+
+*{box-sizing:border-box;}
+#apply input::placeholder,#apply textarea::placeholder{color:#7b828c;opacity:1;}
+html,body{margin:0;padding:0;}
+html{scroll-padding-top:98px;}
+body{font-family:Onest,'Helvetica Neue',Arial,sans-serif;color:#3a4149;background:#f2f4f6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:clip;}
+a{color:#3a4149;text-decoration:none;}
+a:hover{color:#000;}
+strong{font-weight:700;}
+p{margin:0;}
+img,svg{max-width:100%;}
+button{font:inherit;cursor:pointer;}
+
+/* Фоновое фото */
+[data-bg="hero"]{background-image:url(/images/hero.jpg);}
+
+/* Hover/focus-эффекты (в оригинале задавались скриптом через data-hover) */
+.hv-logo:hover{opacity:0.62 !important;}
+.hv-nav:hover{color:#121821 !important;border-bottom-color:#1e2530 !important;}
+.hv-nav-active:hover{opacity:0.6 !important;}
+.hv-btn:hover{background:#151d2a !important;color:#fff !important;box-shadow:0 8px 20px rgba(14,21,32,0.2) !important;transform:translateY(-2px) !important;}
+.hv-btn-light:hover{background:#f4f6f8 !important;color:#121821 !important;box-shadow:0 10px 26px rgba(0,0,0,0.22) !important;transform:translateY(-2px) !important;}
+.hv-pill:hover{background:#1e2530 !important;color:#fff !important;box-shadow:inset 0 0 0 1px #1e2530,0 8px 18px rgba(14,21,32,0.18) !important;transform:translateY(-2px) !important;}
+.hv-card:hover{transform:translateY(-6px) !important;box-shadow:inset 0 0 0 1px #cfd7e0,0 30px 60px rgba(18,24,33,0.16) !important;}
+.hv-foot:hover{color:#fff !important;border-bottom-color:rgba(255,255,255,0.55) !important;}
+.hv-acc:hover{background:#f7f9fc !important;}
+.fld:focus{border-bottom-color:#1e2530 !important;background:#eef1f5 !important;}
+.fld[aria-invalid="true"]{border-bottom-color:#b42318 !important;}
+
+/* Сетка карточек документов: не больше трёх колонок, ширина карточки как на исходном сайте */
+.doc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,max(300px,calc((100% - 50px) / 3))),1fr));gap:25px;}
+
+/* Аккордеоны */
+details > summary{list-style:none;}
+details > summary::-webkit-details-marker{display:none;}
+details[open] > summary [data-chev]{transform:rotate(180deg) !important;}
+
+@media (max-width:900px){
+  header{height:64px !important;}
+  header > div{padding:0 18px !important;gap:10px !important;}
+  header + div{height:64px !important;}
+  header nav{gap:14px !important;font-size:14px !important;}
+  header nav a{padding-top:15px !important;padding-bottom:15px !important;}
+  header img{height:28px !important;}
+  header > div > a:first-child{padding:13px 0 !important;}
+  header > div > a:last-child{padding:16px 18px !important;font-size:13px !important;}
+  section:not([data-m="wrap"]){padding-left:0 !important;padding-right:0 !important;}
+  section[data-m="wrap"], section > [data-m="wrap"], footer > [data-m="wrap"]{padding:52px 18px !important;}
+  [data-m="foot2"]{padding:0 18px 40px !important;}
+  footer > div{padding-left:18px !important;padding-right:18px !important;}
+  footer > div[style*="grid"]{grid-template-columns:1fr !important;gap:24px !important;}
+  footer a{padding-top:12px !important;padding-bottom:12px !important;}
+  h1{font-size:52px !important;line-height:0.98 !important;letter-spacing:-0.035em !important;}
+  [data-m="split"]{grid-template-columns:1fr !important;gap:18px !important;}
+  [data-m="hero"]{flex-direction:column !important;min-height:0 !important;}
+  [data-m="herotext"]{flex:1 1 auto !important;min-width:0 !important;padding:26px 20px 210px !important;}
+  [data-m="scrim"]{background:linear-gradient(to bottom,rgba(255,255,255,0.97) 0%,rgba(255,255,255,0.95) 46%,rgba(255,255,255,0.6) 70%,rgba(255,255,255,0.1) 92%,rgba(255,255,255,0) 100%) !important;}
+  [data-m="circles"]{overflow-x:auto !important;-webkit-overflow-scrolling:touch !important;justify-content:flex-start !important;gap:16px !important;padding:30px 24px 72px !important;margin:12px -18px 0 !important;width:calc(100% + 36px) !important;}
+  [data-m="circle"]{flex:0 0 196px !important;}
+  [data-m="sheet"]{height:200px !important;}
+  [data-m="numcard"]{padding:26px 20px 28px 82px !important;}
+  [data-m="numcard"] > div:first-child{left:20px !important;top:26px !important;width:44px !important;height:44px !important;}
+  [data-m="two"]{grid-template-columns:1fr !important;gap:22px !important;}
+  [data-m="hero"] h2{font-size:22px !important;line-height:1.32 !important;}
+  [data-m="hero"] h2 span{white-space:normal !important;}
+  [data-m="paper"]{max-width:100% !important;aspect-ratio:auto !important;padding:26px 20px !important;}
+  [data-m="formleft"]{padding:32px 22px !important;}
+  #apply h1{font-size:clamp(28px,2.6vw,38px) !important;line-height:1.15 !important;letter-spacing:-0.04em !important;}
+  [data-m="formright"]{padding:28px 20px !important;}
+  [data-m="pad"]{padding:28px 20px !important;}
+  h3[style*="sticky"]{position:static !important;}
+  a[style*="uppercase"]{display:inline-flex !important;align-items:center !important;min-height:46px !important;}
+}
+@media (max-width:560px){
+  h1{font-size:46px !important;}
+  #library h1{overflow-wrap:break-word;hyphens:auto;}
+  #apply h1{font-size:28px !important;}
+  header nav{gap:11px !important;font-size:13px !important;}
+  header > div{gap:8px !important;}
+  header > div > a:last-child{display:none !important;}
+  header img{height:26px !important;}
+  header nav{flex-shrink:0 !important;justify-content:flex-end !important;flex:1 !important;}
+  section[data-m="wrap"], section > [data-m="wrap"], footer > [data-m="wrap"]{padding:40px 18px !important;}
+}

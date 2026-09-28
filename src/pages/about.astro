@@ -1,0 +1,192 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import StageCard from '../components/StageCard.astro';
+import Accordion from '../components/Accordion.astro';
+import about from '../content/about.json';
+const { hero, manifesto, methodology, collaboration, tasks, summary, stage1, stage2, participation } = about;
+const [step1, step2, step3] = stage2.steps;
+
+const h2 = 'font-weight:400;font-size:clamp(28px,2.6vw,38px);line-height:1.15;letter-spacing:-0.04em;color:#121821;margin:0;';
+const h3 = 'position:sticky;top:98px;font-weight:600;font-size:clamp(22px,2vw,28px);line-height:1.25;letter-spacing:-0.03em;color:#121821;margin:0;';
+const label = "font-family:Manrope,'Helvetica Neue',Arial,sans-serif;font-size:12px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#5a6474;";
+const note = 'border-radius:12px;background:#f3f5f8;box-shadow:inset 0 0 0 1px #e2e6ea;padding:24px 26px;display:flex;flex-direction:column;gap:10px;';
+const ease = (p: string) => `${p} .55s cubic-bezier(.33,.72,.4,1)`;
+---
+<BaseLayout page="about">
+  <!-- Вступление на фоне фото -->
+  <section style="position:relative;background:#0c1118;overflow:hidden;">
+    <div data-bg="hero" style="position:absolute;inset:0;background-size:cover;background-position:center 60%;filter:saturate(0.55);"></div>
+    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(9,13,19,0.72) 0%,rgba(9,13,19,0.88) 100%);"></div>
+    <div data-m="wrap" style="position:relative;max-width:1480px;margin:0 auto;padding:132px 92px;">
+      <h1 style="font-weight:350;font-size:clamp(38px,5vw,74px);line-height:1.02;letter-spacing:-0.04em;color:#fff;margin:0;max-width:17em;text-wrap:balance;">{hero.title}</h1>
+      <p style="font-size:clamp(18px,1.5vw,22px);line-height:1.6;color:rgba(255,255,255,0.78);margin-top:34px;max-width:800px;text-wrap:pretty;">{hero.lead}</p>
+    </div>
+  </section>
+
+  <!-- Манифест -->
+  <section data-m="wrap" id="manifest" style="max-width:1480px;margin:0 auto;padding:92px;">
+    <div data-m="pad" style="position:relative;overflow:hidden;border-radius:20px;background:#fff;box-shadow:inset 0 0 0 1px #e2e6ea,0 10px 30px rgba(18,24,33,0.05);padding:clamp(44px,7vw,104px);">
+      <div style="position:relative;z-index:1;max-width:840px;margin:0 auto;display:flex;flex-direction:column;gap:26px;font-size:18px;line-height:1.7;color:#454c56;text-wrap:pretty;">
+        <div style={label}>{manifesto.label}</div>
+        {manifesto.blocks.map((b) =>
+          b.type === 'quote'
+            ? <p style="font-size:clamp(22px,2vw,28px);line-height:1.4;letter-spacing:-0.02em;color:#121821;">{b.text}</p>
+            : <p>{b.text}</p>
+        )}
+      </div>
+    </div>
+  </section>
+
+  <!-- Методология -->
+  <section id="methodology" style="background:transparent;">
+    <div data-m="wrap" style="max-width:1480px;margin:0 auto;padding:80px 92px 92px;">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:43px 56px;align-items:start;">
+        <h2 style={h2}>{methodology.title}</h2>
+        <p style="font-size:16px;line-height:1.65;color:#454c56;">{methodology.intro}</p>
+      </div>
+      <div data-m="circles" style="margin-top:76px;position:relative;display:flex;flex-wrap:nowrap;gap:clamp(10px,1.6vw,26px);justify-content:space-between;align-items:center;">
+        {methodology.stages.map((s) => (
+          <div data-m="circle" style="position:relative;z-index:1;flex:1 1 0;min-width:0;aspect-ratio:1;border-radius:50%;background:#fff;box-shadow:inset 0 0 0 1px #e2e6ea,0 20px 44px rgba(28,28,26,0.06);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:0 clamp(12px,2.4vw,38px);">
+            <div style="font-family:Manrope,'Helvetica Neue',Arial,sans-serif;font-size:clamp(11px,1.1vw,16px);font-weight:700;letter-spacing:0.16em;color:rgba(30,37,48,0.45);">{s.num}</div>
+            <div style="font-size:clamp(14px,1.85vw,27px);line-height:1.25;letter-spacing:-0.03em;text-align:center;color:#121821;text-wrap:balance;">{s.name}</div>
+          </div>
+        ))}
+      </div>
+      <div style="margin-top:80px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:32px;">
+        {methodology.stages.map((s) => <StageCard num={s.num} title={s.title} text={s.text} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- Метод ромашки, задачи и краткое содержание -->
+  <section data-m="wrap" id="romashka" style="max-width:1480px;margin:0 auto;padding:109px 92px 92px;">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:60px 100px;justify-content:space-between;align-items:stretch;">
+      <div>
+        <div style={`${label}line-height:1;`}>{collaboration.label}</div>
+        <h2 style={`${h2}margin:19px 0 0;`}>{collaboration.title}</h2>
+        <div style="margin-top:60px;display:flex;flex-direction:column;gap:19px;font-size:16px;line-height:1.65;color:#454c56;">
+          <p>{collaboration.text}</p>
+          <p>{tasks.title}</p>
+          <p>{tasks.text}</p>
+        </div>
+      </div>
+      <div data-m="paper" style="position:relative;width:100%;max-width:440px;justify-self:start;align-self:stretch;min-height:100%;background:#fff;border-radius:6px;box-shadow:0 1px 1px rgba(18,24,33,0.05),0 12px 24px rgba(18,24,33,0.07),0 38px 62px rgba(18,24,33,0.07),inset 0 0 0 1px #e6eaef;padding:clamp(24px,2.6vw,34px) clamp(20px,2.2vw,30px);display:flex;flex-direction:column;">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div style="width:24px;height:2px;background:#1e2530;"></div>
+          <img src="/images/logo.png" alt="" width="564" height="96" style="height:12px;width:auto;display:block;opacity:0.42;" />
+        </div>
+        <div style="margin-top:24px;font-weight:700;font-size:17px;line-height:1.35;letter-spacing:-0.01em;color:#121821;">{summary.title}</div>
+        <div style="margin-top:30px;display:flex;flex-direction:column;">
+          {summary.items.map((it, i) => (
+            <div style={`display:flex;gap:16px;padding:15px 8px;margin:0 -8px;border-top:1px solid #e9edf2;${i === summary.items.length - 1 ? 'border-bottom:1px solid #e9edf2;' : ''}border-radius:4px;`}>
+              <span style="flex-shrink:0;font-family:Manrope,'Helvetica Neue',Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:0.14em;color:#9aa1ab;padding-top:4px;">{it.num}</span>
+              <span style="font-size:14px;line-height:1.55;color:#3f4650;">{it.text}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Этапы работ -->
+  <section id="stages" style="background:transparent;">
+    <div data-m="wrap" style="max-width:1480px;margin:0 auto;padding:92px;">
+      <h2 style={h2}>{about.stagesTitle}</h2>
+      <div data-m="split" style="margin-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:40px 60px;align-items:start;">
+        <h3 style={h3}>{stage1.title}</h3>
+        <div style="display:flex;flex-direction:column;gap:14px;">
+          <Accordion title={stage1.event} subtitle={stage1.date}>
+            {stage1.paragraphs.map((p) => <p>{p}</p>)}
+          </Accordion>
+          <Accordion title={stage1.start.title}>
+            {stage1.start.paragraphs.map((p) => <p>{p}</p>)}
+          </Accordion>
+          <Accordion title={stage1.algorithm.title}>
+            {stage1.algorithm.steps.map((s) => (
+              <div style="display:flex;gap:14px;align-items:flex-start;">
+                <div style="flex-shrink:0;width:28px;height:28px;border-radius:50%;background:#1e2530;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;color:#fff;">{s.num}</div>
+                <div style="flex:1;border-radius:12px;background:#f3f5f8;padding:14px 16px;font-size:15px;line-height:1.6;color:#4a515a;">{s.text}</div>
+              </div>
+            ))}
+          </Accordion>
+          <Accordion title={stage1.task.title}>
+            <p>{stage1.task.text}</p>
+          </Accordion>
+          <div style={note}>
+            <div style="font-weight:700;font-size:17px;line-height:1.35;color:#1e2530;">{stage1.important.label}</div>
+            <p style="font-size:15px;line-height:1.6;color:#4a515a;">{stage1.important.text}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-m="wrap" id="stage-2" style="max-width:1480px;margin:0 auto;padding:92px;">
+    <div data-m="split" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:40px 60px;justify-content:space-between;align-items:start;">
+      <h3 style={h3}>{stage2.titleLines[0]}<br />{stage2.titleLines[1]}</h3>
+      <div style="display:flex;flex-direction:column;gap:14px;">
+        <Accordion title={step1.label} subtitle={step1.title} gap={12}>
+          <p>{step1.text}</p>
+        </Accordion>
+        <Accordion title={step2.label} subtitle={step2.title} gap={12}>
+          <p>{step2.text}</p>
+          {step2.list!.map((x) => <div style="display:flex;gap:10px;"><span style="flex-shrink:0;color:#9aa1ab;">—</span><span>{x}</span></div>)}
+        </Accordion>
+        <Accordion title={step3.label} subtitle={step3.title} gap={12}>
+          {step3.list!.map((x) => <div style="display:flex;gap:10px;"><span style="flex-shrink:0;color:#9aa1ab;">—</span><span>{x}</span></div>)}
+          <p style="margin-top:6px;">{stage2.after.text}</p>
+          {stage2.after.list.map((x) => <div style="display:flex;gap:10px;"><span style="flex-shrink:0;color:#9aa1ab;">—</span><span>{x}</span></div>)}
+        </Accordion>
+        <div style={note}>
+          <div style="font-weight:700;font-size:17px;line-height:1.35;color:#1e2530;">{stage2.important.label}</div>
+          <p style="font-size:15px;line-height:1.6;color:#4a515a;">{stage2.important.text}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Открытое участие -->
+  <section id="participation" style="background:transparent;">
+    <div data-m="wrap" style="max-width:1480px;margin:0 auto;padding:66px 92px 27px;">
+      <div data-m="pad" style="background:#fff;border-radius:20px;box-shadow:inset 0 0 0 1px #e6eaef,0 10px 28px rgba(18,24,33,0.04);padding:clamp(32px,4vw,56px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:60px;align-items:start;">
+        <div>
+          <div style="display:inline-block;background:transparent;box-shadow:inset 0 0 0 1px #dfe4ea;border-radius:999px;padding:9px 18px;font-family:Manrope,'Helvetica Neue',Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#5a6474;">{participation.label}</div>
+          <h2 style={`${h2}margin:26px 0 0;`}>{participation.titleLines[0]}<br />{participation.titleLines[1]}</h2>
+          <div style="display:inline-flex;align-items:center;gap:10px;background:#f3f5f8;border-radius:999px;padding:10px 20px;margin-top:26px;font-family:Manrope,'Helvetica Neue',Arial,sans-serif;font-size:14px;font-weight:500;color:#4a515a;">
+            <span style="width:7px;height:7px;border-radius:50%;background:#5a6474;display:block;"></span>
+            {participation.started.title}
+          </div>
+          <p style="font-size:17px;line-height:1.65;color:#4a515a;margin-top:32px;max-width:560px;">{participation.started.text}</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:24px;">
+          <div style="background:#232d3d;border-radius:18px;padding:32px;">
+            <div style="font-family:Manrope,'Helvetica Neue',Arial,sans-serif;font-size:16px;font-weight:500;letter-spacing:0.12em;line-height:1.45;text-transform:uppercase;color:rgba(255,255,255,0.92);">
+              {participation.whoTitleLines[0]}<br />{participation.whoTitleLines[1]}
+            </div>
+            <p style="font-size:15px;line-height:1.5;color:rgba(255,255,255,0.55);margin-top:16px;">{participation.whoNote}</p>
+            <div style="height:1px;background:rgba(255,255,255,0.25);margin:24px 0;"></div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:24px;">
+              {participation.categories.map((c) => (
+                <div style="display:flex;gap:12px;align-items:flex-start;">
+                  <span style="flex-shrink:0;width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,0.14);display:flex;align-items:center;justify-content:center;" aria-hidden="true">
+                    <svg viewBox="0 0 20 20" width="12" height="12"><path d="M4 10.5 L8 14.5 L16 6" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                  </span>
+                  <div>
+                    <div style="font-size:17px;line-height:1.25;color:#fff;">{c.title}</div>
+                    <div style="font-size:13px;line-height:1.35;color:rgba(255,255,255,0.6);margin-top:6px;">{c.text}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div style="background:#f3f5f8;border:1px solid #e6eaef;border-radius:16px;padding:24px;font-size:15px;line-height:1.65;color:#4a515a;">
+            <strong style="font-weight:700;">{participation.closingStrong}</strong> {participation.closingRest}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:center;padding:0 92px 66px;">
+      <a href={participation.button.href} class="hv-btn" style={`background:#1e2530;border-radius:8px;padding:13px 26px;font-family:Manrope,'Helvetica Neue',Arial,sans-serif;font-size:15px;font-weight:500;line-height:1.2;color:#fff;transition:${ease('background')},${ease('box-shadow')},${ease('transform')};`}>{participation.button.label}</a>
+    </div>
+  </section>
+</BaseLayout>

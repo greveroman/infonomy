@@ -1,64 +1,84 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import DocumentCard from '../components/DocumentCard.astro';
+import AlmanacLayout from '../layouts/AlmanacLayout.astro';
+import DocCover from '../components/almanac/DocCover.astro';
 import home from '../content/home.json';
 import docs from '../content/documents.json';
+import site from '../content/site.json';
 const { hero, initiative, research, participants } = home;
-const h2 = 'font-weight:400;font-size:clamp(28px,2.6vw,38px);line-height:1.15;letter-spacing:-0.04em;color:#121821;margin:0;';
-const ease = (p: string) => `${p} .55s cubic-bezier(.33,.72,.4,1)`;
+const last = hero.titleLines.length - 1;
+// «… — это …»: вторую часть заголовка выделяем курсивом
+const [initA, initB] = initiative.title.split(' — ');
 ---
-<BaseLayout page="home">
-  <section data-m="wrap" style="max-width:1480px;margin:0 auto;padding:64px 92px 92px;">
-    <h1 style="font-weight:350;font-size:clamp(48px,6.4vw,94px);line-height:0.86;letter-spacing:-0.05em;color:#303030;margin:0;max-width:720px;">
-      {hero.titleLines.map((l, i) => <>{i > 0 && <br />}{l}</>)}
-    </h1>
-    <div data-m="hero" style="margin-top:90px;position:relative;border-radius:20px;overflow:hidden;background:#fff;box-shadow:inset 0 0 0 1px #e2e6ea,0 10px 30px rgba(18,24,33,0.05);display:flex;align-items:stretch;min-height:379px;">
-      <div data-bg="hero" style="position:absolute;inset:0;background-size:cover;background-position:center;filter:saturate(0.62);"></div>
-      <div data-m="scrim" style="position:absolute;inset:0;background:linear-gradient(100deg,#fff 0%,rgba(255,255,255,0.99) 36%,rgba(255,255,255,0.78) 52%,rgba(255,255,255,0.3) 68%,rgba(255,255,255,0.04) 84%,rgba(255,255,255,0) 100%);pointer-events:none;"></div>
-      <div data-m="herotext" style="position:relative;flex:0 1 min(580px,max(52%,430px));min-width:340px;padding:clamp(30px,2.8vw,40px) clamp(24px,2.4vw,34px);display:flex;flex-direction:column;justify-content:flex-start;">
-        <h2 style="font-weight:400;font-size:clamp(21px,1.9vw,29px);line-height:1.3;letter-spacing:-0.03em;color:#121821;margin:0;">
-          {hero.subtitleLines.map((l, i) => <>{i > 0 && <br />}<span style="white-space:nowrap;">{l}</span></>)}
-        </h2>
-        <div style="display:flex;flex-direction:column;gap:15px;margin-top:26px;">
-          <p style="font-size:16px;line-height:1.6;color:#333a43;max-width:545px;">{hero.paragraphs[0]}</p>
-          <p style="font-size:16px;line-height:1.65;color:#333a43;max-width:525px;">{hero.paragraphs[1]}</p>
+<AlmanacLayout page="home">
+  <section class="hero">
+    <div class="contours" aria-hidden="true"></div>
+    <div class="wrap">
+      <div class="hero__meta mono"><span>{site.name}</span><span>{site.project}</span></div>
+      <h1 class="display">
+        {hero.titleLines.map((l, i) => <>{i > 0 && <br />}{i === last ? <em>{l}</em> : l}</>)}
+      </h1>
+      <div class="hero__grid">
+        <div class="hero__text">
+          <div class="sec-mark mono"><span>§ 01</span><span class="dot"></span><span class="line"></span></div>
+          <h2 class="h2" style="margin-top:28px;">{hero.subtitleLines.map((l) => <span>{l}</span>)}</h2>
+          <div class="hero__paras">
+            <p class="lead dropcap">{hero.paragraphs[0]}</p>
+            <p>{hero.paragraphs[1]}</p>
+          </div>
+        </div>
+        <figure class="plate">
+          <span class="plate__c" aria-hidden="true"></span>
+          <div class="plate__img" role="img" aria-label="Пейзаж: холмы, река и ветрогенераторы"></div>
+          <figcaption class="mono"><span>Рис. 01</span><span>{site.project}</span></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec--tint">
+    <div class="contours" aria-hidden="true"></div>
+    <div class="wrap">
+      <div class="sec-mark mono"><span>§ 02</span><span class="dot"></span><span class="line"></span></div>
+      <div class="split">
+        <h2 class="h2">{initB ? <>{initA} — <em>{initB}</em></> : initiative.title}</h2>
+        <div class="split__text">
+          <p class="lead">{initiative.paragraphs[0]}</p>
+          {initiative.paragraphs.slice(1).map((p) => <p>{p}</p>)}
         </div>
       </div>
     </div>
   </section>
 
-  <section>
-    <div data-m="wrap" style="max-width:1480px;margin:0 auto;padding:92px;">
-      <h2 style={`${h2}max-width:730px;`}>{initiative.title}</h2>
-      <div data-m="two" style="margin-top:60px;display:grid;grid-template-columns:minmax(0,400px) minmax(0,600px);gap:96px;">
-        {initiative.paragraphs.map((p) => <p style="font-size:16px;line-height:1.65;color:#3f4650;">{p}</p>)}
-      </div>
-    </div>
-  </section>
-
-  <section id="docs">
-    <div data-m="wrap" style="max-width:1480px;margin:0 auto;padding:52.6px 92px 92px;">
-      <div style="display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;gap:20px 32px;">
-        <div style="min-width:0;max-width:760px;">
-          <h2 style={h2}>{research.title}</h2>
-          <p style="font-size:18px;line-height:1.6;color:#454c56;margin-top:18px;max-width:640px;text-wrap:pretty;">{research.lead}</p>
+  <section class="sec" id="docs">
+    <div class="wrap">
+      <div class="sec-mark mono"><span>§ 03</span><span class="dot"></span><span class="line"></span></div>
+      <div class="docs-head">
+        <div>
+          <h2 class="h2">{research.title}</h2>
+          <p class="lead">{research.lead}</p>
         </div>
-        <a href={research.allLink.href} class="hv-pill" style={`background:#f3f5f8;box-shadow:inset 0 0 0 1px #e2e6ea;border-radius:8px;padding:11px 18px;font-family:Manrope,'Helvetica Neue',Arial,sans-serif;font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#1e2530;white-space:nowrap;transition:${ease('background')},${ease('color')},${ease('box-shadow')},${ease('transform')};`}>{research.allLink.label}</a>
+        <a href={research.allLink.href} class="btn btn--line">{research.allLink.label.replace(/\s*>\s*$/, '')} <span class="arr">→</span></a>
       </div>
-      <div class="doc-grid" style="margin-top:40px;">
-        {docs.items.map((d, i) => <DocumentCard doc={d} index={i} href={`/reviews#${d.id}`} />)}
+      <div class="docs">
+        {docs.items.map((d, i) => <DocCover doc={d} index={i} href={`/reviews#${d.id}`} />)}
       </div>
     </div>
   </section>
 
-  <section id="join" style="position:relative;background:#0c1118;">
-    <div data-bg="hero" style="position:absolute;inset:0;background-size:cover;background-position:center 58%;filter:saturate(0.5);"></div>
-    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(9,13,19,0.74) 0%,rgba(9,13,19,0.86) 100%);"></div>
-    <div data-m="wrap" style="position:relative;max-width:1480px;margin:0 auto;padding:120px 92px;display:flex;flex-direction:column;align-items:center;text-align:center;">
-      <div style="font-family:Manrope,'Helvetica Neue',Arial,sans-serif;font-size:12px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.6);">{participants.label}</div>
-      <div style="font-weight:350;font-size:clamp(40px,5.2vw,76px);line-height:1.02;letter-spacing:-0.04em;color:#fff;margin-top:26px;">{participants.count}</div>
-      <p style="font-size:20px;line-height:1.5;letter-spacing:-0.02em;color:rgba(255,255,255,0.74);max-width:620px;margin-top:22px;">{participants.text}</p>
-      <a href={participants.button.href} class="hv-btn-light" style={`margin-top:40px;background:#fff;border-radius:8px;padding:16px 34px;font-family:Manrope,'Helvetica Neue',Arial,sans-serif;font-size:16px;font-weight:500;color:#121821;box-shadow:0 0 0 rgba(255,255,255,0);transition:${ease('background')},${ease('box-shadow')},${ease('transform')};`}>{participants.button.label}</a>
+  <section class="join" id="join">
+    <div class="join__bg" aria-hidden="true"></div>
+    <div class="contours" aria-hidden="true"></div>
+    <div class="wrap">
+      <div class="join__in">
+        <div>
+          <div class="sec-mark mono"><span>§ 04</span><span class="dot"></span><span>{participants.label}</span></div>
+          <div class="join__count">{participants.count}</div>
+        </div>
+        <div>
+          <p class="join__text">{participants.text}</p>
+          <a href={participants.button.href} class="btn btn--light">{participants.button.label} <span class="arr">→</span></a>
+        </div>
+      </div>
     </div>
   </section>
-</BaseLayout>
+</AlmanacLayout>

@@ -1,0 +1,49 @@
+---
+// Новый шаблон в стиле «Альманах». Пока используется только на главной;
+// после согласования стиля на него переводятся остальные страницы.
+import '../styles/almanac.css';
+import Header from '../components/almanac/Header.astro';
+import Footer from '../components/almanac/Footer.astro';
+import site from '../content/site.json';
+
+interface Props { page: keyof typeof site.seo }
+const { page } = Astro.props;
+const { title, description } = site.seo[page];
+const canonical = new URL(Astro.url.pathname.replace(/(index)?\.html$/, ''), Astro.site).href;
+const ogImage = new URL(site.ogImage, Astro.site).href;
+---
+<!doctype html>
+<html lang={site.lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:locale" content={site.locale} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="675" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,300..600;1,7..72,300..600&family=IBM+Plex+Mono:wght@400;500&family=Onest:wght@300..700&display=swap" />
+  </head>
+  <body>
+    <div class="grid-lines" aria-hidden="true"><div><div></div></div></div>
+    <Header current={Astro.url.pathname} />
+    <main>
+      <slot />
+    </main>
+    <Footer page={page} />
+  </body>
+</html>

@@ -1,0 +1,19 @@
+---
+import site from '../../content/site.json';
+
+interface Props { current: string }
+const current = Astro.props.current.replace(/(\.html|\/)$/, '') || '/';
+---
+<header class="hdr">
+  <div class="wrap hdr__in">
+    <a href="/" class="hdr__logo"><img src="/images/logo.png" alt={site.name} width="564" height="96" /></a>
+    <nav class="hdr__nav" aria-label="Основное меню">
+      {site.nav.map((item) => (
+        <a href={item.href} aria-current={item.href === current ? 'page' : undefined}>{item.label}</a>
+      ))}
+    </nav>
+    <a href={site.joinButton.href} class="btn btn--moss" aria-current={current === site.joinButton.href ? 'page' : undefined}>
+      {site.joinButton.label}
+    </a>
+  </div>
+</header>

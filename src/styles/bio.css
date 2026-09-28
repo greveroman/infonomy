@@ -97,7 +97,7 @@ em.acc{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--le
 @media (prefers-reduced-motion:reduce){.hdr__pill::before{animation:none;}}
 
 /* Hero */
-.hero{position:relative;padding:72px 0 0;overflow:hidden;}
+.hero{position:relative;padding:72px 0 0;overflow-x:clip;}
 .hero > .strata{top:0;right:-10%;width:70%;height:520px;background-color:rgba(76,138,58,0.13);}
 .hero h1{margin-top:0;font-size:clamp(54px,8.6vw,132px);line-height:0.94;letter-spacing:-0.05em;}
 .hero h1 em.acc{letter-spacing:-0.03em;}

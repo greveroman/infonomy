@@ -98,7 +98,7 @@ em.acc{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--le
 
 /* Hero */
 .hero{position:relative;padding:72px 0 0;overflow-x:clip;}
-.hero > .strata{top:0;right:-10%;width:70%;height:520px;background-color:rgba(76,138,58,0.13);}
+.hero > .strata{top:0;right:-6%;width:78%;height:620px;background:linear-gradient(90deg,rgba(76,138,58,0) 0%,rgba(76,138,58,0.38) 30%,rgba(76,138,58,0.45) 100%);-webkit-mask-image:url(/images/strata.svg),linear-gradient(180deg,#000 60%,transparent);-webkit-mask-composite:source-in;mask-image:url(/images/strata.svg),linear-gradient(180deg,#000 60%,transparent);mask-composite:intersect;-webkit-mask-size:cover,100% 100%;mask-size:cover,100% 100%;}
 .hero h1{margin-top:0;font-size:clamp(54px,8.6vw,132px);line-height:0.94;letter-spacing:-0.05em;}
 .hero h1 em.acc{letter-spacing:-0.03em;}
 .hero__stage{position:relative;margin-top:56px;}

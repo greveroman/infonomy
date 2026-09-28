@@ -4,7 +4,6 @@ import DocCard from '../components/bio/DocCard.astro';
 import Terrace from '../components/bio/Terrace.astro';
 import home from '../content/home.json';
 import docs from '../content/documents.json';
-import site from '../content/site.json';
 const { hero, initiative, research, participants } = home;
 const last = hero.titleLines.length - 1;
 // «… — это …»: вторую часть заголовка выделяем курсивом
@@ -16,7 +15,6 @@ const [countA, countNum, countB] = participants.count.split(/(\d+)/);
   <section class="hero">
     <div class="strata" aria-hidden="true"></div>
     <div class="wrap">
-      <div class="eyebrow">{site.name} · {site.project}</div>
       <h1>{hero.titleLines.map((l, i) => <>{i > 0 && <br />}{i === last ? <em class="acc">{l}</em> : l}</>)}</h1>
       <div class="hero__stage">
         <div class="hero__photo" role="img" aria-label="Пейзаж: холмы, река и ветрогенераторы"></div>

@@ -255,7 +255,8 @@ em.acc{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--le
   .hero h1{font-size:clamp(48px,min(8.6vw,10.5vh),132px);}
   /* Блок первого слайда — одна цельная карточка: фото на всю ширину, слева уходит в белый, текст на белом.
      Большой скруглённый угол справа сверху сохранён. */
-  .hero__stage{margin:3vh 0 2.5vh;flex:1 0 auto;position:relative;display:flex;align-items:center;
+  /* карточка по высоте текста — не растягивается на весь свободный слайд */
+  .hero__stage{margin:3vh 0 2.5vh;flex:0 0 auto;position:relative;display:flex;align-items:center;
     border-radius:40px;border-top-right-radius:220px 160px;overflow:hidden;background:var(--surface);
     box-shadow:0 0 0 1px rgba(221,228,218,0.7),0 40px 80px -40px rgba(20,32,26,0.45);}
   .hero__photo{position:absolute;inset:0;height:auto;min-height:0;margin:0;border-radius:0;box-shadow:none;background-position:right 62%;}

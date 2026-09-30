@@ -8,14 +8,14 @@ const columns = f.links[Astro.props.page];
 <footer class="ftr">
   <div class="wrap hdr__wrap">
     <div class="ftr__grid">
-      <a href="/" class="ftr__brand" aria-label={site.name}>
-        <span class="ftr__mark" aria-hidden="true"></span>
-        <span class="ftr__lines">
+      <div class="ftr__brand">
+        <a href="/" class="ftr__logo" aria-label={site.name}>
+          <span class="ftr__mark" aria-hidden="true"></span>
           <span class="ftr__word">КБ ВЕКТОР</span>
-          <span class="ftr__tagline">конструкторское бюро</span>
-          <span class="ftr__tagline">{f.tagline.toLowerCase()}</span>
-        </span>
-      </a>
+        </a>
+        <div class="ftr__tagline">конструкторское бюро</div>
+        <div class="ftr__tagline">{f.tagline.toLowerCase()}</div>
+      </div>
       {columns.map((col) => (
         <nav aria-label="Навигация в подвале">
           {col.map((l) => <a href={l.href}>{l.label}</a>)}
@@ -31,12 +31,13 @@ const columns = f.links[Astro.props.page];
   if (ftr) new ResizeObserver(() => document.documentElement.style.setProperty('--ftr-h', `${ftr.offsetHeight}px`)).observe(ftr);
 </script>
 <script>
-  // Подписи — той же ширины, что «КБ ВЕКТОР»
+  // Подписи — той же ширины, что строка «логотип + КБ ВЕКТОР»
   const fitTagline = () => {
+    const logo = document.querySelector<HTMLElement>('.ftr__logo');
     const word = document.querySelector<HTMLElement>('.ftr__word');
-    if (!word) return;
+    if (!logo || !word) return;
     // сравниваем по видимому краю букв: разрядка добавляет хвост после последнего символа
-    const target = word.getBoundingClientRect().width - parseFloat(getComputedStyle(word).letterSpacing);
+    const target = logo.getBoundingClientRect().width - parseFloat(getComputedStyle(word).letterSpacing);
     document.querySelectorAll<HTMLElement>('.ftr__tagline').forEach((tag) => {
       tag.style.letterSpacing = '0px';
       const n = (tag.textContent ?? '').length;

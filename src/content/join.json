@@ -26,7 +26,7 @@
     },
     {
       "name": "area",
-      "label": "В какой области ваша экспертиза?",
+      "label": "Ваша экспертиза",
       "type": "select",
       "required": true,
       "options": [

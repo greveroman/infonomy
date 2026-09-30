@@ -24,3 +24,8 @@ const columns = f.links[Astro.props.page];
     <div class="ftr__bottom"><span class="ftr__rights">{f.rights}</span></div>
   </div>
 </footer>
+<script>
+  // Реальная высота подвала — для одноэкранных страниц (слайд + подвал = ровно одно окно)
+  const ftr = document.querySelector<HTMLElement>('.ftr');
+  if (ftr) new ResizeObserver(() => document.documentElement.style.setProperty('--ftr-h', `${ftr.offsetHeight}px`)).observe(ftr);
+</script>

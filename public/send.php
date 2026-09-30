@@ -15,7 +15,6 @@ $FIELDS = [
   'area'       => ['Экспертиза', true],
   'phone'      => ['Телефон', false],
   'email'      => ['Почта', true],
-  'messenger'  => ['Telegram / MAX', false],
   'experience' => ['Компетенции и опыт', true],
   'motivation' => ['Мотивация к участию', false],
   'comment'    => ['Комментарии', false],

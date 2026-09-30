@@ -56,7 +56,7 @@ const [countA, countNum, countB] = participants.count.split(/(\d+)/);
         <a href={research.allLink.href} class="btn btn--ghost">{research.allLink.label.replace(/\s*>\s*$/, '')} <span class="arr">→</span></a>
       </div>
       <div class="docs">
-        {docs.items.map((d, i) => <DocCard doc={d} index={i} href={`/reviews#${d.id}`} />)}
+        {docs.items.filter((d) => !d.placeholder).map((d, i) => <DocCard doc={d} index={i} href={`/reviews#${d.id}`} />)}
       </div>
     </div>
   </section>

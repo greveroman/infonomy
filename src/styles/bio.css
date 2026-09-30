@@ -270,7 +270,7 @@ textarea.jf__field{line-height:1.55;resize:vertical;min-height:88px;}
 /* ===== Страница «Обзоры» ===== */
 .sec--white .card{background:var(--bg);}
 /* документы — ряд по 3 карточки, листается по одной */
-.rv-track{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 2 * 32px) / 3);gap:32px;overflow:hidden;padding:20px 0 40px;margin:-20px 0 -40px;}
+.rv-track{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 3 * 24px) / 4);gap:24px;overflow:hidden;padding:20px 6px 40px;margin:-20px -6px -40px;}
 @media (max-width:1000px){.rv-track{grid-auto-columns:calc((100% - 32px) / 2);}}
 /* все карточки одного размера; под каждой — «скачать» */
 .rv-item,.rv-item > div{display:flex;flex-direction:column;height:100%;}
@@ -543,10 +543,12 @@ a.doc-dl:hover{background:var(--leaf-deep);color:#fff;}
   /* «Обзоры»: заголовок помельче (он длинный), документы — последний слайд перед подвалом */
   .rv-hero h1{font-size:clamp(36px,min(4.6vw,7vh),84px);line-height:1.02;letter-spacing:-0.04em;}
   /* 2 слайда: второй = документы + подвал, ровно одно окно (100 — полоса под меню, 110 — волна, --ftr-h — подвал) */
-  .rv-docs.slide{padding-bottom:0 !important;height:calc(100vh - 100px - 110px - var(--ftr-h));}
-  .rv-docs.slide > .wrap{justify-content:center;padding-bottom:0;}
+  .rv-docs.slide{padding-bottom:0 !important;height:auto;min-height:calc(100vh - 100px - 110px - var(--ftr-h));}
+  .rv-docs.slide > .wrap{justify-content:center;padding-bottom:0;padding-top:20px;}
   .rv-docs .rv-track{margin-top:calc(2.4vh - 20px);}
-  .rv-docs .card__win{height:clamp(56px,calc(24vh - 90px),190px);}
+  #docs.rv-docs .card__win{height:clamp(56px,calc(18vh - 90px),150px);}
+  .rv-docs .ex-head{min-height:52px;align-items:center;}
+  #docs.rv-docs .card__title{font-size:16px;}
   .rv-docs .card__body{padding-top:10px;}
   .rv-docs .card{padding-bottom:18px;}
 }

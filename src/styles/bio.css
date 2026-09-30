@@ -102,7 +102,7 @@ em.acc{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--le
 .hero{position:relative;padding:72px 0 0;overflow-x:clip;}
 .hero > .wrap{position:relative;z-index:1;}
 /* Волна-терраса — внизу каждой страницы, переход к цвету следующей */
-.slide__terrace{position:relative;z-index:1;margin-top:90px;}
+.slide__terrace{position:relative;z-index:1;margin-top:90px;pointer-events:none;}
 .slide__terrace .terrace{display:block;}
 .hero > .strata{top:-120px;left:0;right:0;bottom:0;background-color:rgba(76,138,58,0.34);-webkit-mask:url(/images/strata-wide.svg) center top/max(3200px,100%) auto no-repeat;mask:url(/images/strata-wide.svg) center top/max(3200px,100%) auto no-repeat;}
 .hero h1{margin-top:0;font-size:clamp(54px,8.6vw,132px);line-height:0.94;letter-spacing:-0.05em;}
@@ -119,7 +119,7 @@ em.acc{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--le
 .slab__paras{margin-top:24px;display:flex;flex-direction:column;gap:16px;}
 
 /* Разделитель-терраса между разделами */
-.terrace{display:block;width:100%;height:110px;margin-bottom:-1px;}
+.terrace{display:block;width:100%;height:110px;margin-bottom:-1px;pointer-events:none;}
 
 /* Секции */
 .sec{padding:110px 0 0;position:relative;}
@@ -205,6 +205,31 @@ textarea.jf__field{line-height:1.55;resize:vertical;min-height:88px;}
 .jf__error{font-size:15px;line-height:1.5;color:#b42318;}
 .jf__success{border-radius:20px;background:rgba(76,138,58,0.08);box-shadow:inset 0 0 0 1px rgba(76,138,58,0.3);padding:24px 26px;font-weight:600;font-size:17px;line-height:1.5;color:var(--leaf-deep);outline:none;}
 @media (max-width:1000px){.jn__grid{grid-template-columns:1fr;gap:32px;}.jn__intro{position:static;}}
+/* компьютер: форма в 3 колонки, страница — один экран вместе с подвалом, без прокрутки */
+@media (min-width:1001px){
+  html[data-page="join"] .hero.jn{height:calc(100vh - 74px - var(--ftr-h,282px));display:flex;flex-direction:column;padding:2vh 0 0;overflow-x:clip;}
+  .hero.jn > .wrap{flex:1;display:flex;flex-direction:column;justify-content:center;min-height:0;}
+  .hero.jn .slide__terrace{margin-top:0;flex-shrink:0;}
+  .jn__grid{grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:48px;align-items:center;}
+  .jn__intro{position:static;}
+  .hero.jn h1{font-size:clamp(28px,min(3vw,5vh),52px) !important;}
+  .jn__lead{font-size:clamp(14px,1.8vh,18px);}
+  .jn__card{padding:clamp(18px,2.6vh,36px) clamp(22px,2.4vw,40px);border-top-right-radius:90px 70px;}
+  /* раскладка: имя · город · область / телефон · почта / опыт · мотивация · комментарий / кнопка */
+  .jn .jf{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:clamp(8px,1.6vh,18px) 18px;align-items:end;}
+  .jn .jf__cell{grid-column:span 2;}
+  .jn .jf__cell[data-f="phone"],.jn .jf__cell[data-f="email"]{grid-column:span 3;}
+  .jn .jf__label{line-height:1.35;}
+  .jn .jf__row{display:contents;}
+  .jn .jf__cell{gap:5px;}
+  .jn .jf__label{font-size:11px;}
+  .jn .jf__hint{display:none;}
+  .jn .jf__field{padding:clamp(7px,1.1vh,12px) 14px;font-size:15px;border-radius:14px;}
+  .jn textarea.jf__field{min-height:0;height:clamp(56px,11vh,120px);resize:none;}
+  .jn .jf__submit,.jn .jf__error{grid-column:1 / -1;}
+  .jn .jf__submit{justify-self:start;}
+  .jn .jf__submit{padding:clamp(10px,1.4vh,15px) 28px;}
+}
 
 /* ===== Страница «Команда» ===== */
 /* 4 человека в один ряд — большие круги на линии, как этапы методологии; имя под кругом */

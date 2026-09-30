@@ -32,7 +32,7 @@
       "options": [
         "Образование",
         "Экономика",
-        "Градостроение",
+        "Градостроительство",
         "Взаимодействие с природной средой",
         "Общественные институты и управление",
         "Другое"
@@ -56,15 +56,6 @@
       "required": true,
       "autocomplete": "email",
       "row": 3
-    },
-    {
-      "name": "messenger",
-      "label": "Telegram / MAX",
-      "hint": "Ваш ник в мессенджере Телеграм или Макс @name",
-      "type": "text",
-      "placeholder": "@name",
-      "required": false,
-      "row": 4
     },
     {
       "name": "experience",

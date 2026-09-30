@@ -9,7 +9,7 @@ const id = (f: Field) => `f-${f.name}`;
 <form id="join-form" class="jf" action="/send.php" method="post" novalidate data-error={join.errorMessage}>
   {rows.map((row) => {
     const cells = row.map((f) => (
-      <div class="jf__cell">
+      <div class="jf__cell" data-f={f.name}>
         <label for={id(f)} class="jf__label">{f.label}{f.required && <span aria-hidden="true"> *</span>}</label>
         {f.hint && <div id={`h-${f.name}`} class="jf__hint">{f.hint}</div>}
         {f.type === 'select' ? (

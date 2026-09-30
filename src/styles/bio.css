@@ -240,8 +240,12 @@ em.acc{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--le
 .ab-tab[aria-selected=true]::before{background:linear-gradient(180deg,var(--leaf-deep),var(--leaf-2));}
 .ab-tab:focus-visible{outline:2px solid var(--leaf);outline-offset:2px;}
 .ab-tabs__list .ab-note{margin-top:auto;}
+/* «Важно» на слайдах этапов — янтарная подсветка, как у кнопки «присоединиться» */
+.ab-tabs__list .ab-note{background:var(--amber);color:var(--night);box-shadow:0 0 36px -6px rgba(243,183,96,0.65);}
+.ab-tabs__list .ab-note b{color:var(--night);}
 /* кнопки одной высоты — по самой высокой */
-.ab-tabs__btns{display:grid;grid-auto-rows:1fr;gap:10px;}
+.ab-tabs__btns{display:grid;grid-auto-rows:1fr;grid-template-columns:minmax(0,1fr);gap:10px;}
+.ab-tabs__list,.ab-tab{min-width:0;}
 .ab-tabs__panel{position:relative;align-self:stretch;align-content:start;border-radius:28px;border-top-right-radius:90px 70px;background:var(--surface);box-shadow:0 0 0 1px var(--line),0 40px 70px -40px rgba(20,32,26,0.45);padding:clamp(18px,2.6vh,30px) clamp(60px,5vw,90px) clamp(18px,2.6vh,30px) clamp(22px,2.2vw,36px);}
 .sec--white .ab-tabs__panel{background:var(--bg);}
 .ab-panel{display:flex;flex-direction:column;gap:12px;font-size:15px;line-height:1.65;color:var(--ink-2);animation:ab-fade .45s var(--ease);}
@@ -418,6 +422,6 @@ em.acc{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--le
   #stages.slide > .wrap,#stage-2.slide > .wrap{justify-content:flex-start;padding-top:4vh;}
   .ab-panel{font-size:clamp(13.5px,1.6vh,15.5px);gap:1.2vh;}
   .ab-tabs__list{--tab-pad:clamp(10px,1.5vh,16px);}
-  .ab-tab{padding:var(--tab-pad) 20px var(--tab-pad) 24px;}
-  .ab-tab span{font-size:clamp(12px,1.3vh,13.5px);}
+  .ab-tab{padding:var(--tab-pad) 14px var(--tab-pad) 24px;}
+  .ab-tab span{font-size:clamp(11.5px,1.2vh,12.5px);letter-spacing:-0.005em;}
 }

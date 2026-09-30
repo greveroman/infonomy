@@ -8,9 +8,12 @@ const columns = f.links[Astro.props.page];
 <footer class="ftr">
   <div class="wrap">
     <div class="ftr__grid">
-      <div>
-        <div class="ftr__name" data-justify><span>{f.name}</span><span>{f.tagline}</span></div>
-        <span class="ftr__mark" aria-hidden="true"></span>
+      <div class="ftr__brand">
+        <a href="/" class="ftr__logo" aria-label={site.name}>
+          <span class="ftr__mark" aria-hidden="true"></span>
+          <span class="ftr__word">КБ ВЕКТОР</span>
+        </a>
+        <div class="ftr__tagline">{f.tagline}</div>
       </div>
       {columns.map((col) => (
         <nav aria-label="Навигация в подвале">
@@ -21,24 +24,3 @@ const columns = f.links[Astro.props.page];
     <div class="ftr__bottom"><span class="ftr__rights">{f.rights}</span></div>
   </div>
 </footer>
-<script>
-  // Две строки названия — одной длины: короткой строке добавляется межбуквенный интервал.
-  const fitName = () => {
-    document.querySelectorAll<HTMLElement>('[data-justify]').forEach((box) => {
-      const lines = [...box.children] as HTMLElement[];
-      lines.forEach((l) => (l.style.letterSpacing = '0px'));
-      const max = Math.max(...lines.map((l) => l.getBoundingClientRect().width));
-      lines.forEach((l) => {
-        const n = (l.textContent ?? '').length;
-        // интервал добавляется после каждого символа; подгоняем за несколько шагов
-        for (let k = 0; k < 4; k++) {
-          const d = max - l.getBoundingClientRect().width;
-          if (Math.abs(d) < 0.3) break;
-          l.style.letterSpacing = `${parseFloat(l.style.letterSpacing) + d / n}px`;
-        }
-      });
-    });
-  };
-  document.fonts.ready.then(fitName);
-  addEventListener('resize', fitName);
-</script>

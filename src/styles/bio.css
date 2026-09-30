@@ -174,9 +174,10 @@ em.acc{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--le
 .ftr nav a:hover{color:#fff;border-bottom-color:var(--mint);}
 .ftr__bottom{display:flex;flex-wrap:wrap;justify-content:center;text-align:center;gap:8px 32px;padding:22px 0 36px;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:rgba(230,239,232,0.4);}
 
-.ftr__name[data-justify]{display:inline-flex;flex-direction:column;}
-.ftr__name[data-justify] span{width:max-content;white-space:nowrap;}
-.ftr__mark{display:block;margin-top:16px;height:34px;width:calc(34px * 166 / 96);background:url(/images/logo.png) left center/auto 100% no-repeat;filter:brightness(0) invert(1);opacity:.9;}
+.ftr__logo{display:flex;align-items:center;gap:12px;width:fit-content;}
+.ftr__mark{height:34px;width:calc(34px * 166 / 96);background:url(/images/logo.png) left center/auto 100% no-repeat;filter:brightness(0) invert(1);opacity:.9;}
+.ftr__word{font-size:20px;font-weight:500;letter-spacing:0.16em;color:#fff;white-space:nowrap;}
+.ftr__tagline{margin-top:12px;font-size:13px;letter-spacing:0.08em;color:rgba(230,239,232,0.55);}
 .ftr__rights{text-transform:none;letter-spacing:0.02em;}
 
 /* ===== Страница «Присоединиться» (форма заявки) ===== */

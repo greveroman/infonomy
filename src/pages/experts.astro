@@ -1,0 +1,50 @@
+---
+// Страница «Эксперты»: как «Команда», но ряд кругов листается слева направо (стрелки, колесо, тачпад).
+import BioLayout from '../layouts/BioLayout.astro';
+import Terrace from '../components/bio/Terrace.astro';
+import experts from '../content/experts.json';
+const arrow = (d: string) => `<svg viewBox="0 0 20 20" width="18" height="18"><path d="${d}" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+---
+<BioLayout page="experts">
+  <section class="hero slide tm-hero ex-hero">
+    <div class="strata" aria-hidden="true"></div>
+    <div class="wrap">
+      <div class="ex-head">
+        <h1>{experts.title} <em class="acc">{experts.titleAccent}</em></h1>
+        <div class="ex-nav">
+          <button class="ex-btn" data-dir="-1" aria-label="Назад" set:html={arrow('M12.5 4 L6.5 10 L12.5 16')} />
+          <button class="ex-btn" data-dir="1" aria-label="Вперёд" set:html={arrow('M7.5 4 L13.5 10 L7.5 16')} />
+        </div>
+      </div>
+      <ul class="tm-grid ex-track" tabindex="0" aria-label="Эксперты">
+        {experts.members.map((m) => (
+          <li class="tm-person">
+            <div class="tm-photo">{m.photo && <img src={m.photo} alt={m.name} loading="lazy" />}</div>
+            <div class="tm-name">{m.name}</div>
+          </li>
+        ))}
+      </ul>
+    </div>
+    <div class="slide__terrace"><Terrace fill="#0d1812" /></div>
+  </section>
+  <script>
+    const track = document.querySelector<HTMLElement>('.ex-track')!;
+    const btns = document.querySelectorAll<HTMLButtonElement>('.ex-btn');
+    const step = () => (track.querySelector<HTMLElement>('.tm-person')?.offsetWidth ?? 300) + parseFloat(getComputedStyle(track).columnGap || '0');
+    const update = () => {
+      const max = track.scrollWidth - track.clientWidth - 2;
+      btns[0].disabled = track.scrollLeft <= 2;
+      btns[1].disabled = track.scrollLeft >= max;
+    };
+    btns.forEach((b) => b.addEventListener('click', () => track.scrollBy({ left: Number(b.dataset.dir) * step(), behavior: 'smooth' })));
+    track.addEventListener('scroll', update, { passive: true });
+    // вертикальное колесо мыши над рядом листает его вбок
+    track.addEventListener('wheel', (e) => {
+      if (Math.abs(e.deltaY) <= Math.abs(e.deltaX)) return;
+      const max = track.scrollWidth - track.clientWidth;
+      if ((e.deltaY < 0 && track.scrollLeft <= 0) || (e.deltaY > 0 && track.scrollLeft >= max)) return;
+      e.preventDefault(); track.scrollBy({ left: e.deltaY });
+    }, { passive: false });
+    addEventListener('resize', update); update();
+  </script>
+</BioLayout>

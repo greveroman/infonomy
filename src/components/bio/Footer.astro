@@ -15,6 +15,7 @@ const columns = f.links[Astro.props.page];
         </a>
         <div class="ftr__tagline">конструкторское бюро</div>
         <div class="ftr__tagline">{f.tagline.toLowerCase()}</div>
+        <div class="ftr__rights">{f.rights}</div>
       </div>
       {columns.map((col) => (
         <nav aria-label="Навигация в подвале">
@@ -22,7 +23,6 @@ const columns = f.links[Astro.props.page];
         </nav>
       ))}
     </div>
-    <div class="ftr__bottom"><span class="ftr__rights">{f.rights}</span></div>
   </div>
 </footer>
 <script>

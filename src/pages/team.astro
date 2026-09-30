@@ -1,18 +1,27 @@
 ---
-// Страница «Команда» — пока заготовка в общем стиле; содержание будет добавлено.
+// Страница «Команда»: круги с фото и подписью «Имя Фамилия». Данные — src/content/team.json
 import BioLayout from '../layouts/BioLayout.astro';
 import Terrace from '../components/bio/Terrace.astro';
+import team from '../content/team.json';
 ---
 <BioLayout page="team">
-  <section class="hero slide ab-hero rv-hero">
+  <section class="hero slide tm-hero">
     <span class="snap snap--top" aria-hidden="true"></span>
     <div class="strata" aria-hidden="true"></div>
     <div class="wrap">
-      <h1>Команда <em class="acc">проекта</em></h1>
-      <div class="hero__stage">
-        <div class="hero__photo" role="img" aria-label="Пейзаж: холмы, река и ветрогенераторы"></div>
-        <div class="slab"><p class="ab-hero__lead" style="color:#b42318;">[НУЖЕН ТЕКСТ: описание команды и участников]</p></div>
-      </div>
+      <h1>{team.title} <em class="acc">{team.titleAccent}</em></h1>
+      <ul class="tm-grid">
+        {team.members.map((m) => (
+          <li class="tm-person">
+            <div class="tm-photo">
+              {m.photo
+                ? <img src={m.photo} alt={m.name} loading="lazy" />
+                : <svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="38" r="17" /><path d="M16 92c3-19 17-30 34-30s31 11 34 30z" /></svg>}
+            </div>
+            <div class="tm-name">{m.name}</div>
+          </li>
+        ))}
+      </ul>
     </div>
     <div class="slide__terrace"><Terrace fill="#0d1812" /></div>
   </section>

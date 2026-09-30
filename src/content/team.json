@@ -1,0 +1,15 @@
+{
+  "_comment": "Участники команды. photo — путь к фото в public/images/team (например /images/team/ivanov.jpg), квадратное, от 400×400. Пока photo = null, показывается заглушка-силуэт.",
+  "title": "Команда",
+  "titleAccent": "проекта",
+  "members": [
+    { "name": "Имя Фамилия", "photo": null },
+    { "name": "Имя Фамилия", "photo": null },
+    { "name": "Имя Фамилия", "photo": null },
+    { "name": "Имя Фамилия", "photo": null },
+    { "name": "Имя Фамилия", "photo": null },
+    { "name": "Имя Фамилия", "photo": null },
+    { "name": "Имя Фамилия", "photo": null },
+    { "name": "Имя Фамилия", "photo": null }
+  ]
+}

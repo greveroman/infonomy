@@ -21,4 +21,32 @@ const i = join.title.lastIndexOf(' ');
     </div>
     <div class="slide__terrace"><Terrace fill="#0d1812" /></div>
   </section>
+  <script>
+    // Растягивание полей не сдвигает страницу: раскладка фиксируется сверху,
+    // а поля можно тянуть вниз только в пределах свободного места до волны.
+    const wrap = document.querySelector<HTMLElement>('.hero.jn > .wrap')!;
+    const card = document.querySelector<HTMLElement>('.jn__card')!;
+    const wave = document.querySelector<HTMLElement>('.jn .slide__terrace')!;
+    const grid = document.querySelector<HTMLElement>('.jn__grid')!;
+    const intro = document.querySelector<HTMLElement>('.jn__intro')!;
+    const areas = [...document.querySelectorAll<HTMLTextAreaElement>('.jn textarea')];
+    const desktop = matchMedia('(min-width: 1001px)');
+    const fit = () => {
+      wrap.style.justifyContent = ''; wrap.style.paddingTop = '';
+      grid.style.alignItems = ''; intro.style.marginTop = '';
+      areas.forEach((a) => { a.style.height = ''; a.style.maxHeight = ''; });
+      if (!desktop.matches) return;
+      const offset = wrap.firstElementChild!.getBoundingClientRect().top - wrap.getBoundingClientRect().top;
+      wrap.style.justifyContent = 'flex-start';
+      wrap.style.paddingTop = `${Math.max(0, offset)}px`;
+      // левая колонка тоже фиксируется: заголовок не съезжает, когда форма растёт
+      const introShift = intro.getBoundingClientRect().top - card.getBoundingClientRect().top;
+      grid.style.alignItems = 'start';
+      intro.style.marginTop = `${Math.max(0, introShift)}px`;
+      const slack = wave.getBoundingClientRect().top - card.getBoundingClientRect().bottom - 16;
+      areas.forEach((a) => { a.style.maxHeight = `${a.offsetHeight + Math.max(0, slack)}px`; });
+    };
+    addEventListener('resize', fit);
+    document.fonts.ready.then(fit);
+  </script>
 </BioLayout>

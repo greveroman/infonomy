@@ -31,27 +31,31 @@
     "label": "Проект",
     "name": "Конструкторское бюро Вектор",
     "tagline": "Архитектура живых систем",
-    "_comment": "Ссылки футера различаются по страницам, как на исходном сайте: два столбца на каждую страницу.",
+    "_comment": "Ссылки подвала = пункты главного меню (два столбца), одинаковые на всех страницах.",
     "links": {
       "home": [
         [
+          {
+            "label": "главная",
+            "href": "/"
+          },
           {
             "label": "о проекте",
             "href": "/about"
           },
           {
-            "label": "этапы работы",
-            "href": "/about#stages"
-          },
-          {
-            "label": "обзоры",
-            "href": "/reviews"
+            "label": "команда",
+            "href": "/team"
           }
         ],
         [
           {
-            "label": "опубликованные документы",
-            "href": "/#docs"
+            "label": "эксперты",
+            "href": "/experts"
+          },
+          {
+            "label": "обзоры",
+            "href": "/reviews"
           }
         ]
       ],
@@ -62,44 +66,48 @@
             "href": "/"
           },
           {
-            "label": "этапы работы",
-            "href": "/about#stages"
+            "label": "о проекте",
+            "href": "/about"
           },
           {
-            "label": "обзоры",
-            "href": "/reviews"
+            "label": "команда",
+            "href": "/team"
           }
         ],
         [
           {
-            "label": "опубликованные документы",
-            "href": "/reviews#docs"
+            "label": "эксперты",
+            "href": "/experts"
+          },
+          {
+            "label": "обзоры",
+            "href": "/reviews"
           }
         ]
       ],
       "reviews": [
         [
           {
-            "label": "о проекте",
-            "href": "/about"
-          },
-          {
-            "label": "этапы работы",
-            "href": "/about#stages"
-          },
-          {
-            "label": "обзоры",
-            "href": "/reviews"
-          }
-        ],
-        [
-          {
             "label": "главная",
             "href": "/"
           },
           {
-            "label": "опубликованные документы",
-            "href": "/reviews#docs"
+            "label": "о проекте",
+            "href": "/about"
+          },
+          {
+            "label": "команда",
+            "href": "/team"
+          }
+        ],
+        [
+          {
+            "label": "эксперты",
+            "href": "/experts"
+          },
+          {
+            "label": "обзоры",
+            "href": "/reviews"
           }
         ]
       ],
@@ -110,18 +118,22 @@
             "href": "/"
           },
           {
-            "label": "этапы работы",
-            "href": "/about#stages"
+            "label": "о проекте",
+            "href": "/about"
           },
           {
-            "label": "обзоры",
-            "href": "/reviews"
+            "label": "команда",
+            "href": "/team"
           }
         ],
         [
           {
-            "label": "опубликованные документы",
-            "href": "/reviews#docs"
+            "label": "эксперты",
+            "href": "/experts"
+          },
+          {
+            "label": "обзоры",
+            "href": "/reviews"
           }
         ]
       ],
@@ -132,18 +144,22 @@
             "href": "/"
           },
           {
-            "label": "этапы работы",
-            "href": "/about#stages"
+            "label": "о проекте",
+            "href": "/about"
           },
           {
-            "label": "обзоры",
-            "href": "/reviews"
+            "label": "команда",
+            "href": "/team"
           }
         ],
         [
           {
-            "label": "опубликованные документы",
-            "href": "/reviews#docs"
+            "label": "эксперты",
+            "href": "/experts"
+          },
+          {
+            "label": "обзоры",
+            "href": "/reviews"
           }
         ]
       ],
@@ -154,18 +170,22 @@
             "href": "/"
           },
           {
-            "label": "этапы работы",
-            "href": "/about#stages"
+            "label": "о проекте",
+            "href": "/about"
           },
           {
-            "label": "обзоры",
-            "href": "/reviews"
+            "label": "команда",
+            "href": "/team"
           }
         ],
         [
           {
-            "label": "опубликованные документы",
-            "href": "/reviews#docs"
+            "label": "эксперты",
+            "href": "/experts"
+          },
+          {
+            "label": "обзоры",
+            "href": "/reviews"
           }
         ]
       ]

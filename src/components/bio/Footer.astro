@@ -29,3 +29,21 @@ const columns = f.links[Astro.props.page];
   const ftr = document.querySelector<HTMLElement>('.ftr');
   if (ftr) new ResizeObserver(() => document.documentElement.style.setProperty('--ftr-h', `${ftr.offsetHeight}px`)).observe(ftr);
 </script>
+<script>
+  // Подпись под логотипом — той же ширины, что строка «логотип + КБ ВЕКТОР»
+  const fitTagline = () => {
+    const logo = document.querySelector<HTMLElement>('.ftr__logo');
+    const tag = document.querySelector<HTMLElement>('.ftr__tagline');
+    if (!logo || !tag) return;
+    tag.style.letterSpacing = '0px';
+    const n = (tag.textContent ?? '').length;
+    const target = logo.getBoundingClientRect().width;
+    for (let k = 0; k < 4; k++) {
+      const d = target - tag.getBoundingClientRect().width;
+      if (Math.abs(d) < 0.3) break;
+      tag.style.letterSpacing = `${parseFloat(tag.style.letterSpacing) + d / n}px`;
+    }
+  };
+  document.fonts.ready.then(fitTagline);
+  addEventListener('resize', fitTagline);
+</script>

@@ -178,7 +178,8 @@ em.acc{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--le
 .ftr__logo{display:flex;align-items:center;gap:12px;width:fit-content;margin-bottom:8px;}
 .ftr__mark{flex-shrink:0;height:34px;width:calc(34px * 166 / 96);background:url(/images/logo.png) left center/auto 100% no-repeat;filter:brightness(0) invert(1);opacity:.9;}
 .ftr__word{font-size:20px;font-weight:500;letter-spacing:0.16em;color:#fff;white-space:nowrap;}
-.ftr__tagline{margin-top:5px;font-size:15px;letter-spacing:normal;color:rgba(230,239,232,0.82);width:max-content;white-space:nowrap;}
+.ftr__tagline{margin-top:5px;font-size:15px;line-height:1.25;letter-spacing:normal;color:rgba(230,239,232,0.82);width:max-content;white-space:nowrap;}
+.ftr__tagline + .ftr__tagline{margin-top:0;}
 .ftr__rights{text-transform:none;letter-spacing:0.02em;}
 
 /* ===== Страница «Присоединиться» (форма заявки) ===== */

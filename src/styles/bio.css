@@ -190,7 +190,7 @@ em.acc{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--le
 
 /* «Эксперты»: тот же ряд кругов, листается вбок */
 .ex-head{position:relative;}
-.ex-nav{position:absolute;right:0;bottom:8px;}
+.ex-nav{position:absolute;right:0;top:50%;transform:translateY(-50%);}
 .ex-nav{display:flex;gap:10px;flex-shrink:0;}
 .ex-btn{width:52px;height:52px;border-radius:50%;border:0;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#fff;
   background:linear-gradient(180deg,#2f5a3f 0%,var(--leaf-deep) 60%,#17301f 100%);box-shadow:inset 0 1px 0 rgba(255,255,255,0.22),0 6px 14px -6px rgba(20,32,26,0.55);transition:transform .3s var(--ease),opacity .3s,background .3s;}
@@ -205,6 +205,17 @@ em.acc{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--le
 
 /* ===== Страница «Обзоры» ===== */
 .sec--white .card{background:var(--bg);}
+/* документы — ряд по 3 карточки, листается по одной */
+.rv-track{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 2 * 32px) / 3);gap:32px;overflow:hidden;padding:20px 0 40px;margin:-20px 0 -40px;}
+@media (max-width:1000px){.rv-track{grid-auto-columns:calc((100% - 32px) / 2);}}
+/* все карточки одного размера; под каждой — «скачать» */
+.rv-item,.rv-item > div{display:flex;flex-direction:column;height:100%;}
+.rv-item .card{flex:1;display:flex;flex-direction:column;}
+.rv-item .card__body{flex:1;display:flex;flex-direction:column;}
+.rv-item .card__more{margin-top:auto;padding-top:14px;}
+.doc-dl{margin-top:14px;align-self:flex-start;display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:999px;font-size:14px;font-weight:500;color:var(--leaf-deep);box-shadow:inset 0 0 0 1px var(--leaf-2);transition:background .3s,color .3s;}
+a.doc-dl:hover{background:var(--leaf-deep);color:#fff;}
+.doc-dl--off{color:var(--muted);box-shadow:inset 0 0 0 1px var(--line);cursor:default;}
 .rv-hero h1{max-width:16em;}
 
 /* ===== Страница «О проекте» ===== */
@@ -465,7 +476,13 @@ em.acc{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--le
 @media (min-width:1001px){
   /* «Обзоры»: заголовок помельче (он длинный), документы — последний слайд перед подвалом */
   .rv-hero h1{font-size:clamp(36px,min(4.6vw,7vh),84px);line-height:1.02;letter-spacing:-0.04em;}
-  .rv-docs.slide{padding-bottom:0 !important;}
+  /* 2 слайда: второй = документы + подвал, ровно одно окно (100 — полоса под меню, 110 — волна, 282 — подвал) */
+  .rv-docs.slide{padding-bottom:0 !important;height:calc(100vh - 100px - 110px - 282px);}
+  .rv-docs.slide > .wrap{justify-content:center;padding-bottom:0;}
+  .rv-docs .rv-track{margin-top:calc(2.4vh - 20px);}
+  .rv-docs .card__win{height:clamp(56px,calc(24vh - 90px),190px);}
+  .rv-docs .card__body{padding-top:10px;}
+  .rv-docs .card{padding-bottom:18px;}
 }
 @media (max-width:1100px){
   /* 5 пунктов меню на узких экранах: прокручиваются внутри капсулы, страница не вылезает за край */

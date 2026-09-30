@@ -5,8 +5,10 @@ interface Props {
   doc: (typeof docs.items)[number];
   index: number;
   href?: string;
+  /** без блока «описание к документу» под карточкой */
+  compact?: boolean;
 }
-const { doc, index, href } = Astro.props;
+const { doc, index, href, compact = false } = Astro.props;
 const link = href ?? doc.url ?? null;
 const Tag = link ? 'a' : 'div';
 
@@ -27,9 +29,12 @@ const num = String(index + 1).padStart(2, '0');
       {link && <div class="card__more">читать <span>→</span></div>}
     </div>
   </Tag>
-  <div class="doc-desc">
+  {compact && (doc.url
+    ? <a class="doc-dl" href={doc.url} download>скачать <span aria-hidden="true">↓</span></a>
+    : <span class="doc-dl doc-dl--off" title="Ссылка на файл появится позже">скачать <span aria-hidden="true">↓</span></span>)}
+  {!compact && <div class="doc-desc">
     <div class="label">{docs.descriptionLabel}</div>
     <p>{doc.description}</p>
     {!link && <p style="color:#b42318;">{docs.linkPlaceholder}</p>}
-  </div>
+  </div>}
 </div>

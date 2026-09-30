@@ -225,7 +225,7 @@ textarea.jf__field{line-height:1.55;resize:vertical;min-height:88px;}
   .jn .jf__label{font-size:11px;}
   .jn .jf__hint{display:none;}
   .jn .jf__field{padding:clamp(7px,1.1vh,12px) 14px;font-size:15px;border-radius:14px;}
-  .jn textarea.jf__field{min-height:0;height:clamp(56px,11vh,120px);resize:none;}
+  .jn textarea.jf__field{min-height:56px;height:clamp(56px,11vh,120px);resize:vertical;max-height:50vh;}
   .jn .jf__submit,.jn .jf__error{grid-column:1 / -1;}
   .jn .jf__submit{justify-self:start;}
   .jn .jf__submit{padding:clamp(10px,1.4vh,15px) 28px;}

@@ -3,13 +3,21 @@
   "title": "Команда",
   "titleAccent": "проекта",
   "members": [
-    { "name": "Имя Фамилия", "photo": null },
-    { "name": "Имя Фамилия", "photo": null },
-    { "name": "Имя Фамилия", "photo": null },
-    { "name": "Имя Фамилия", "photo": null },
-    { "name": "Имя Фамилия", "photo": null },
-    { "name": "Имя Фамилия", "photo": null },
-    { "name": "Имя Фамилия", "photo": null },
-    { "name": "Имя Фамилия", "photo": null }
+    {
+      "name": "Имя Фамилия",
+      "photo": null
+    },
+    {
+      "name": "Имя Фамилия",
+      "photo": null
+    },
+    {
+      "name": "Имя Фамилия",
+      "photo": null
+    },
+    {
+      "name": "Имя Фамилия",
+      "photo": null
+    }
   ]
 }

@@ -93,9 +93,9 @@ em.acc{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--le
 .hdr__nav a[aria-current="page"]:hover{color:#fff;background:linear-gradient(180deg,#2f5a3f 0%,var(--leaf-deep) 60%,#17301f 100%);}
 
 /* Блик, пробегающий по кнопке при наведении */
-.hdr .btn--leaf{position:relative;overflow:hidden;font-size:17px;padding:15px 28px;}
-.hdr .btn--leaf::after{content:"";position:absolute;top:0;bottom:0;left:-60%;width:40%;background:linear-gradient(100deg,transparent,rgba(255,255,255,0.35),transparent);transform:skewX(-20deg);transition:left .7s var(--ease);}
-.hdr .btn--leaf:hover::after{left:120%;}
+.hdr .btn--amber{position:relative;overflow:hidden;font-size:17px;padding:15px 28px;box-shadow:inset 0 1px 0 rgba(255,255,255,0.45),inset 0 -2px 4px rgba(120,70,0,0.18),0 6px 16px -6px rgba(243,183,96,0.8);}
+.hdr .btn--amber::after{content:"";position:absolute;top:0;bottom:0;left:-60%;width:40%;background:linear-gradient(100deg,transparent,rgba(255,255,255,0.35),transparent);transform:skewX(-20deg);transition:left .7s var(--ease);}
+.hdr .btn--amber:hover::after{left:120%;}
 @media (prefers-reduced-motion:reduce){.hdr__pill::before{animation:none;}}
 
 /* Hero */
@@ -306,7 +306,7 @@ em.acc{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--le
 @media (max-width:1100px){
   .hdr__nav a{font-size:15px;padding:8px 13px;}
   .hdr__word{font-size:17px;}
-  .hdr .btn--leaf{font-size:15px;padding:12px 20px;}
+  .hdr .btn--amber{font-size:15px;padding:12px 20px;}
 }
 @media (max-width:820px){
   .hdr .btn{display:none;}

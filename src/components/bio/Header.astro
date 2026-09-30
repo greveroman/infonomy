@@ -16,7 +16,7 @@ const current = Astro.props.current.replace(/(\.html|\/)$/, '') || '/';
           <a href={item.href} aria-current={item.href === current ? 'page' : undefined}>{item.label}</a>
         ))}
       </nav>
-      <a href={site.joinButton.href} class="btn btn--leaf" aria-current={current === site.joinButton.href ? 'page' : undefined}>
+      <a href={site.joinButton.href} class="btn btn--amber" aria-current={current === site.joinButton.href ? 'page' : undefined}>
         {site.joinButton.label}
       </a>
     </div>

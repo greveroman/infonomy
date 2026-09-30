@@ -363,7 +363,8 @@ em.acc{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--le
   .ab-hero h1{font-size:clamp(40px,min(5.4vw,8vh),92px);line-height:1.0;letter-spacing:-0.04em;}
   .ab-hero .slab{max-width:min(760px,60%);padding-top:clamp(28px,5vh,64px);padding-bottom:clamp(28px,5vh,64px);}
   .ab-hero__lead{font-size:clamp(18px,2.6vh,28px);}
-  .ab-quote{font-size:clamp(24px,3.8vh,48px);margin-top:1.8vh;}
+  /* цитата манифеста — в одну строку */
+  .ab-quote{font-size:min(clamp(24px,3.8vh,48px),3.4vw);margin-top:1.8vh;max-width:none;white-space:nowrap;}
   .ab-cols{margin-top:2.6vh;font-size:clamp(12px,1.42vh,15px);line-height:1.55;}
   .ab-cols p{margin-bottom:.7em;}
   /* нижний край текста не ближе ~80 px к волне: эта полоса видна над меню на следующем слайде */

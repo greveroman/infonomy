@@ -153,6 +153,7 @@ em.acc{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--le
 /* Участники — вечерний вид: тёмная зелень и тёплое свечение окон */
 .join{position:relative;color:#e6efe8;}
 .join__body{position:relative;background:var(--night);overflow:hidden;}
+.join__foot{position:relative;z-index:1;pointer-events:none;}
 .join__bg{position:absolute;inset:0;background:url(/images/hero.jpg) center 60%/cover;opacity:0.22;filter:saturate(0.7);}
 .join__glow{position:absolute;inset:0;background:radial-gradient(40% 50% at 78% 70%,rgba(243,183,96,0.28),transparent 70%),radial-gradient(35% 45% at 15% 20%,rgba(143,216,191,0.12),transparent 70%);}
 .join .strata{inset:0;background-color:rgba(143,216,191,0.12);}
@@ -475,7 +476,9 @@ a.doc-dl:hover{background:var(--leaf-deep);color:#fff;}
   .join__wave .terrace{display:block;}
   .join.slide .join__body{padding-top:110px;}
   .join.slide .join__body{flex:1;display:flex;flex-direction:column;justify-content:center;}
-  .join.slide .join__in{padding:6vh 0;}
+  .join.slide .join__in{padding:3vh 0;}
+  .join__foot{position:relative;z-index:1;flex-shrink:0;pointer-events:none;margin-top:-60px;}
+  .join.slide .join__body > .wrap{flex:1 0 auto;display:flex;flex-direction:column;justify-content:center;width:100%;}
 
   .hero h1{font-size:clamp(48px,min(8.6vw,10.5vh),132px);}
   /* Блок первого слайда — одна цельная карточка: фото на всю ширину, слева уходит в белый, текст на белом.

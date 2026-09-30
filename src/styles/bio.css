@@ -173,6 +173,10 @@ em.acc{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--le
 .ftr nav a:hover{color:#fff;border-bottom-color:var(--mint);}
 .ftr__bottom{padding:22px 0 36px;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:rgba(230,239,232,0.4);}
 
+/* ===== Страница «Обзоры» ===== */
+.sec--white .card{background:var(--bg);}
+.rv-hero h1{max-width:16em;}
+
 /* ===== Страница «О проекте» ===== */
 .ab-hero__lead{font-size:clamp(20px,2.2vw,30px);line-height:1.35;letter-spacing:-0.02em;color:var(--ink);}
 .ab-quote{margin-top:3vh;font-family:var(--serif);font-style:italic;font-size:clamp(28px,3.4vw,52px);line-height:1.15;letter-spacing:-0.01em;color:var(--leaf);max-width:22em;}
@@ -427,4 +431,14 @@ em.acc{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--le
   .ab-tabs__list{--tab-pad:clamp(10px,1.5vh,16px);}
   .ab-tab{padding:var(--tab-pad) 14px var(--tab-pad) 24px;}
   .ab-tab span{font-size:clamp(11.5px,1.2vh,12.5px);letter-spacing:-0.005em;}
+}
+@media (min-width:1001px){
+  /* «Обзоры»: заголовок помельче (он длинный), документы — последний слайд перед подвалом */
+  .rv-hero h1{font-size:clamp(36px,min(4.6vw,7vh),84px);line-height:1.02;letter-spacing:-0.04em;}
+  .rv-docs.slide{padding-bottom:0 !important;}
+}
+@media (max-width:1100px){
+  /* 5 пунктов меню на узких экранах: прокручиваются внутри капсулы, страница не вылезает за край */
+  .hdr__nav{min-width:0;flex:1 1 auto;overflow-x:auto;scrollbar-width:none;}
+  .hdr__nav::-webkit-scrollbar{display:none;}
 }

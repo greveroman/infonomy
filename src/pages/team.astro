@@ -1,0 +1,19 @@
+---
+// Страница «Команда» — пока заготовка в общем стиле; содержание будет добавлено.
+import BioLayout from '../layouts/BioLayout.astro';
+import Terrace from '../components/bio/Terrace.astro';
+---
+<BioLayout page="team">
+  <section class="hero slide ab-hero rv-hero">
+    <span class="snap snap--top" aria-hidden="true"></span>
+    <div class="strata" aria-hidden="true"></div>
+    <div class="wrap">
+      <h1>Команда <em class="acc">проекта</em></h1>
+      <div class="hero__stage">
+        <div class="hero__photo" role="img" aria-label="Пейзаж: холмы, река и ветрогенераторы"></div>
+        <div class="slab"><p class="ab-hero__lead" style="color:#b42318;">[НУЖЕН ТЕКСТ: описание команды и участников]</p></div>
+      </div>
+    </div>
+    <div class="slide__terrace"><Terrace fill="#0d1812" /></div>
+  </section>
+</BioLayout>

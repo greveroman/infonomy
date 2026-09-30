@@ -1,22 +1,35 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import DocumentCard from '../components/DocumentCard.astro';
+import BioLayout from '../layouts/BioLayout.astro';
+import Terrace from '../components/bio/Terrace.astro';
+import DocCard from '../components/bio/DocCard.astro';
 import reviews from '../content/reviews.json';
 import docs from '../content/documents.json';
+// «Библиотека опубликованных обзоров и докладов в ходе исследования.» — вторую часть выделяем курсивом
+const [titleA, titleB] = reviews.title.split(/ (?=обзоров)/);
 ---
-<BaseLayout page="reviews">
-  <section id="library" data-m="wrap" style="max-width:1480px;margin:0 auto;padding:92px;">
-    <div data-m="pad" style="border-radius:20px;background:#fff;box-shadow:inset 0 0 0 1px #e2e6ea,0 10px 30px rgba(18,24,33,0.05);padding:clamp(44px,6vw,92px);">
-      <h1 style="font-weight:350;font-size:clamp(34px,4.2vw,62px);line-height:1.05;letter-spacing:-0.04em;color:#121821;margin:0;max-width:19em;text-wrap:balance;">{reviews.title}</h1>
-      <div style="height:1px;background:#e9edf2;margin:38px 0 34px;max-width:720px;"></div>
-      <p style="font-size:18px;line-height:1.7;color:#454c56;max-width:800px;text-wrap:pretty;">{reviews.lead}</p>
+<BioLayout page="reviews">
+  <!-- 1. Библиотека: заголовок и карточка с фото -->
+  <section class="hero slide ab-hero rv-hero">
+    <span class="snap snap--top" aria-hidden="true"></span>
+    <div class="strata" aria-hidden="true"></div>
+    <div class="wrap">
+      <h1>{titleB ? <>{titleA}<br /><em class="acc">{titleB}</em></> : reviews.title}</h1>
+      <div class="hero__stage">
+        <div class="hero__photo" role="img" aria-label="Пейзаж: холмы, река и ветрогенераторы"></div>
+        <div class="slab"><p class="ab-hero__lead">{reviews.lead}</p></div>
+      </div>
     </div>
+    <div class="slide__terrace"><span class="snap" aria-hidden="true"></span><Terrace fill="#ffffff" /></div>
   </section>
 
-  <section id="docs" data-m="wrap" style="max-width:1480px;margin:0 auto;padding:0 92px 92px;">
-    <h2 style="font-weight:400;font-size:clamp(28px,2.6vw,38px);line-height:1.15;letter-spacing:-0.04em;color:#121821;margin:0;">{reviews.docsTitle}</h2>
-    <div class="doc-grid" style="margin-top:44px;">
-      {docs.items.map((d, i) => <DocumentCard doc={d} index={i} />)}
+  <!-- 2. Опубликованные документы -->
+  <section class="sec sec--white slide rv-docs" id="docs">
+    <div class="wrap">
+      <div class="eyebrow">{reviews.docsTitle}</div>
+      <div class="docs">
+        {docs.items.map((d, i) => <DocCard doc={d} index={i} />)}
+      </div>
     </div>
+    <div class="slide__terrace"><Terrace fill="#0d1812" /></div>
   </section>
-</BaseLayout>
+</BioLayout>

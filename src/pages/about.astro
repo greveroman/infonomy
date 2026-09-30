@@ -99,28 +99,36 @@ const check = '<svg viewBox="0 0 20 20" width="12" height="12"><path d="M4 10.5 
     <div class="slide__terrace"><span class="snap" aria-hidden="true"></span><Terrace fill="#ffffff" /></div>
   </section>
 
-  <!-- 6. Этап 1 -->
+  <!-- 6. Этап 1: слева блоки-кнопки, справа общее окно с содержимым выбранного блока -->
   <section class="sec sec--white slide" id="stages">
     <div class="wrap">
       <div class="eyebrow">{about.stagesTitle}</div>
-      <div class="ab-stagework">
-        <h2 class="h2">{stage1.title}</h2>
-        <div class="ab-accs">
-          <Accordion title={stage1.event} subtitle={stage1.date} group="stage1" open>
-            {stage1.paragraphs.map((p) => <p>{p}</p>)}
-          </Accordion>
-          <Accordion title={stage1.start.title} group="stage1">
-            {stage1.start.paragraphs.map((p) => <p>{p}</p>)}
-          </Accordion>
-          <Accordion title={stage1.algorithm.title} group="stage1">
-            {stage1.algorithm.steps.map((s) => (
-              <div class="ab-step"><span>{s.num}</span><p>{s.text}</p></div>
-            ))}
-          </Accordion>
-          <Accordion title={stage1.task.title} group="stage1">
-            <p>{stage1.task.text}</p>
-          </Accordion>
+      <h2 class="h2 ab-stagehead">{stage1.title}</h2>
+      <div class="ab-tabs" data-tabs>
+        <div class="ab-tabs__list" role="tablist" aria-label={stage1.title}>
+          <button class="ab-tab" role="tab" id="s1-t1" aria-controls="s1-p1" aria-selected="true"><b>{stage1.event}</b><span>{stage1.date}</span></button>
+          <button class="ab-tab" role="tab" id="s1-t2" aria-controls="s1-p2" aria-selected="false" tabindex="-1"><b>{stage1.start.title}</b></button>
+          <button class="ab-tab" role="tab" id="s1-t3" aria-controls="s1-p3" aria-selected="false" tabindex="-1"><b>{stage1.algorithm.title}</b></button>
+          <button class="ab-tab" role="tab" id="s1-t4" aria-controls="s1-p4" aria-selected="false" tabindex="-1"><b>{stage1.task.title}</b></button>
           <div class="ab-note"><b>{stage1.important.label}</b> {stage1.important.text}</div>
+        </div>
+        <div class="ab-tabs__panel">
+          <div class="ab-panel" role="tabpanel" id="s1-p1" aria-labelledby="s1-t1">
+            <div class="ab-panel__title">{stage1.event}</div>
+            {stage1.paragraphs.map((p) => <p>{p}</p>)}
+          </div>
+          <div class="ab-panel" role="tabpanel" id="s1-p2" aria-labelledby="s1-t2" hidden>
+            <div class="ab-panel__title">{stage1.start.title}</div>
+            {stage1.start.paragraphs.map((p) => <p>{p}</p>)}
+          </div>
+          <div class="ab-panel" role="tabpanel" id="s1-p3" aria-labelledby="s1-t3" hidden>
+            <div class="ab-panel__title">{stage1.algorithm.title}</div>
+            {stage1.algorithm.steps.map((st) => <div class="ab-step"><span>{st.num}</span><p>{st.text}</p></div>)}
+          </div>
+          <div class="ab-panel" role="tabpanel" id="s1-p4" aria-labelledby="s1-t4" hidden>
+            <div class="ab-panel__title">{stage1.task.title}</div>
+            <p>{stage1.task.text}</p>
+          </div>
         </div>
       </div>
     </div>
@@ -151,6 +159,30 @@ const check = '<svg viewBox="0 0 20 20" width="12" height="12"><path d="M4 10.5 
       </div>
     </div>
   </section>
+
+  <script>
+    // Блоки-вкладки: слева кнопки, справа общее окно. Клик/Enter — показать блок; стрелки ↑/↓ — соседний.
+    document.querySelectorAll<HTMLElement>('[data-tabs]').forEach((root) => {
+      const tabs = [...root.querySelectorAll<HTMLButtonElement>('[role=tab]')];
+      const show = (t: HTMLButtonElement) => {
+        tabs.forEach((x) => {
+          const on = x === t;
+          x.setAttribute('aria-selected', String(on));
+          x.tabIndex = on ? 0 : -1;
+          document.getElementById(x.getAttribute('aria-controls')!)!.hidden = !on;
+        });
+      };
+      tabs.forEach((t, i) => {
+        t.addEventListener('click', () => show(t));
+        t.addEventListener('keydown', (e) => {
+          const d = e.key === 'ArrowDown' ? 1 : e.key === 'ArrowUp' ? -1 : 0;
+          if (!d) return;
+          e.preventDefault(); e.stopPropagation();
+          const n = tabs[(i + d + tabs.length) % tabs.length]; show(n); n.focus();
+        });
+      });
+    });
+  </script>
 
   <!-- 8. Открытое участие (+ подвал) -->
   <section class="join slide" id="participation">

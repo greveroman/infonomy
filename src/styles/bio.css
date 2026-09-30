@@ -196,9 +196,9 @@ em.acc{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--le
 .ex-btn:hover:not(:disabled){transform:translateY(-2px);background:linear-gradient(180deg,#5d9b49 0%,var(--leaf) 60%,#3c7430 100%);}
 .ex-btn:disabled{opacity:.3;cursor:default;}
 .ex-track{display:grid;grid-auto-flow:column;grid-template-columns:none;grid-auto-columns:calc((100% - 3 * clamp(16px,2vw,32px)) / 4);
-  overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;padding:10px 4px 16px;margin:-10px -4px -16px;}
+  /* листание только по целым кругам (скриптом): никогда не остаются обрезанные края */
+  overflow:hidden;padding:20px 0 30px;margin:-20px 0 -30px;}
 .ex-track::-webkit-scrollbar{display:none;}
-.ex-track .tm-person{scroll-snap-align:start;}
 .ex-track .tm-photo{width:min(100%,var(--tm-d));}
 @media (max-width:1000px){.ex-track{grid-template-columns:none;grid-auto-columns:calc((100% - 16px) / 2);}}
 

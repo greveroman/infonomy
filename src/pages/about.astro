@@ -114,19 +114,15 @@ const check = '<svg viewBox="0 0 20 20" width="12" height="12"><path d="M4 10.5 
         </div>
         <div class="ab-tabs__panel">
           <div class="ab-panel" role="tabpanel" id="s1-p1" aria-labelledby="s1-t1">
-            <div class="ab-panel__title">{stage1.event}</div>
             {stage1.paragraphs.map((p) => <p>{p}</p>)}
           </div>
           <div class="ab-panel" role="tabpanel" id="s1-p2" aria-labelledby="s1-t2" hidden>
-            <div class="ab-panel__title">{stage1.start.title}</div>
             {stage1.start.paragraphs.map((p) => <p>{p}</p>)}
           </div>
           <div class="ab-panel" role="tabpanel" id="s1-p3" aria-labelledby="s1-t3" hidden>
-            <div class="ab-panel__title">{stage1.algorithm.title}</div>
             {stage1.algorithm.steps.map((st) => <div class="ab-step"><span>{st.num}</span><p>{st.text}</p></div>)}
           </div>
           <div class="ab-panel" role="tabpanel" id="s1-p4" aria-labelledby="s1-t4" hidden>
-            <div class="ab-panel__title">{stage1.task.title}</div>
             <p>{stage1.task.text}</p>
           </div>
         </div>

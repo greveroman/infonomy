@@ -8,13 +8,14 @@ const columns = f.links[Astro.props.page];
 <footer class="ftr">
   <div class="wrap hdr__wrap">
     <div class="ftr__grid">
-      <div class="ftr__brand">
-        <a href="/" class="ftr__logo" aria-label={site.name}>
-          <span class="ftr__mark" aria-hidden="true"></span>
+      <a href="/" class="ftr__brand" aria-label={site.name}>
+        <span class="ftr__mark" aria-hidden="true"></span>
+        <span class="ftr__lines">
           <span class="ftr__word">КБ ВЕКТОР</span>
-        </a>
-        <div class="ftr__tagline">{f.tagline}</div>
-      </div>
+          <span class="ftr__tagline">конструкторское бюро</span>
+          <span class="ftr__tagline">{f.tagline.toLowerCase()}</span>
+        </span>
+      </a>
       {columns.map((col) => (
         <nav aria-label="Навигация в подвале">
           {col.map((l) => <a href={l.href}>{l.label}</a>)}
@@ -30,19 +31,21 @@ const columns = f.links[Astro.props.page];
   if (ftr) new ResizeObserver(() => document.documentElement.style.setProperty('--ftr-h', `${ftr.offsetHeight}px`)).observe(ftr);
 </script>
 <script>
-  // Подпись под логотипом — той же ширины, что строка «логотип + КБ ВЕКТОР»
+  // Подписи — той же ширины, что «КБ ВЕКТОР»
   const fitTagline = () => {
-    const logo = document.querySelector<HTMLElement>('.ftr__logo');
-    const tag = document.querySelector<HTMLElement>('.ftr__tagline');
-    if (!logo || !tag) return;
-    tag.style.letterSpacing = '0px';
-    const n = (tag.textContent ?? '').length;
-    const target = logo.getBoundingClientRect().width;
-    for (let k = 0; k < 4; k++) {
-      const d = target - tag.getBoundingClientRect().width;
-      if (Math.abs(d) < 0.3) break;
-      tag.style.letterSpacing = `${parseFloat(tag.style.letterSpacing) + d / n}px`;
-    }
+    const word = document.querySelector<HTMLElement>('.ftr__word');
+    if (!word) return;
+    // сравниваем по видимому краю букв: разрядка добавляет хвост после последнего символа
+    const target = word.getBoundingClientRect().width - parseFloat(getComputedStyle(word).letterSpacing);
+    document.querySelectorAll<HTMLElement>('.ftr__tagline').forEach((tag) => {
+      tag.style.letterSpacing = '0px';
+      const n = (tag.textContent ?? '').length;
+      for (let k = 0; k < 4; k++) {
+        const d = target - (tag.getBoundingClientRect().width - parseFloat(tag.style.letterSpacing));
+        if (Math.abs(d) < 0.3) break;
+        tag.style.letterSpacing = `${parseFloat(tag.style.letterSpacing) + d / (n - 1)}px`;
+      }
+    });
   };
   document.fonts.ready.then(fitTagline);
   addEventListener('resize', fitTagline);

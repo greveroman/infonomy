@@ -238,7 +238,9 @@ em.acc{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--le
 .ab-tab[aria-selected=true]::before{background:linear-gradient(180deg,var(--leaf-deep),var(--leaf-2));}
 .ab-tab:focus-visible{outline:2px solid var(--leaf);outline-offset:2px;}
 .ab-tabs__list .ab-note{margin-top:auto;}
-.ab-tabs__panel{position:relative;align-self:start;border-radius:28px;border-top-right-radius:90px 70px;background:var(--surface);box-shadow:0 0 0 1px var(--line),0 40px 70px -40px rgba(20,32,26,0.45);padding:clamp(18px,2.6vh,30px) clamp(60px,5vw,90px) clamp(18px,2.6vh,30px) clamp(22px,2.2vw,36px);}
+/* кнопки одной высоты — по самой высокой */
+.ab-tabs__btns{display:grid;grid-auto-rows:1fr;gap:10px;}
+.ab-tabs__panel{position:relative;align-self:stretch;align-content:start;border-radius:28px;border-top-right-radius:90px 70px;background:var(--surface);box-shadow:0 0 0 1px var(--line),0 40px 70px -40px rgba(20,32,26,0.45);padding:clamp(18px,2.6vh,30px) clamp(60px,5vw,90px) clamp(18px,2.6vh,30px) clamp(22px,2.2vw,36px);}
 .sec--white .ab-tabs__panel{background:var(--bg);}
 .ab-panel{display:flex;flex-direction:column;gap:12px;font-size:15px;line-height:1.65;color:var(--ink-2);animation:ab-fade .45s var(--ease);}
 /* все тексты лежат в одной ячейке: окно всегда размером с самый длинный, при переключении не меняется */
@@ -410,7 +412,7 @@ em.acc{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--le
   .ab-accs{max-height:calc(100vh - 210px - 110px - 14vh);overflow-y:auto;overscroll-behavior:contain;padding:4px;margin:-4px;}
   .ab-stagehead{font-size:clamp(24px,3.6vh,42px) !important;}
   /* слайд с вкладками прижат к верху — при смене блока ничего не прыгает */
-  #stages.slide > .wrap{justify-content:flex-start;padding-top:4vh;}
+  #stages.slide > .wrap,#stage-2.slide > .wrap{justify-content:flex-start;padding-top:4vh;}
   .ab-panel{font-size:clamp(13.5px,1.6vh,15.5px);gap:1.2vh;}
   .ab-tabs__list{--tab-pad:clamp(10px,1.5vh,16px);}
   .ab-tab{padding:var(--tab-pad) 20px var(--tab-pad) 24px;}

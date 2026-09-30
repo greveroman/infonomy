@@ -1,7 +1,6 @@
 ---
 import BioLayout from '../layouts/BioLayout.astro';
 import Terrace from '../components/bio/Terrace.astro';
-import Accordion from '../components/bio/Accordion.astro';
 import about from '../content/about.json';
 const { hero, manifesto, methodology, collaboration, tasks, summary, stage1, stage2, participation } = about;
 const [step1, step2, step3] = stage2.steps;
@@ -106,10 +105,12 @@ const check = '<svg viewBox="0 0 20 20" width="12" height="12"><path d="M4 10.5 
       <h2 class="h2 ab-stagehead">{stage1.title}</h2>
       <div class="ab-tabs" data-tabs>
         <div class="ab-tabs__list" role="tablist" aria-label={stage1.title}>
-          <button class="ab-tab" role="tab" id="s1-t1" aria-controls="s1-p1" aria-selected="true"><b>{stage1.event}</b><span>{stage1.date}</span></button>
-          <button class="ab-tab" role="tab" id="s1-t2" aria-controls="s1-p2" aria-selected="false" tabindex="-1"><b>{stage1.start.title}</b></button>
-          <button class="ab-tab" role="tab" id="s1-t3" aria-controls="s1-p3" aria-selected="false" tabindex="-1"><b>{stage1.algorithm.title}</b></button>
-          <button class="ab-tab" role="tab" id="s1-t4" aria-controls="s1-p4" aria-selected="false" tabindex="-1"><b>{stage1.task.title}</b></button>
+          <div class="ab-tabs__btns">
+            <button class="ab-tab" role="tab" id="s1-t1" aria-controls="s1-p1" aria-selected="true"><b>{stage1.event}</b><span>{stage1.date}</span></button>
+            <button class="ab-tab" role="tab" id="s1-t2" aria-controls="s1-p2" aria-selected="false" tabindex="-1"><b>{stage1.start.title}</b></button>
+            <button class="ab-tab" role="tab" id="s1-t3" aria-controls="s1-p3" aria-selected="false" tabindex="-1"><b>{stage1.algorithm.title}</b></button>
+            <button class="ab-tab" role="tab" id="s1-t4" aria-controls="s1-p4" aria-selected="false" tabindex="-1"><b>{stage1.task.title}</b></button>
+          </div>
           <div class="ab-note"><b>{stage1.important.label}</b> {stage1.important.text}</div>
         </div>
         <div class="ab-tabs__panel">
@@ -131,26 +132,33 @@ const check = '<svg viewBox="0 0 20 20" width="12" height="12"><path d="M4 10.5 
     <div class="slide__terrace"><span class="snap" aria-hidden="true"></span><Terrace fill="#f5f7f2" flip /></div>
   </section>
 
-  <!-- 7. Этап 2 -->
+  <!-- 7. Этап 2: слева блоки-кнопки, справа общее окно (как в этапе 1) -->
   <section class="sec slide slide--pre-dark" id="stage-2">
     <div class="wrap">
       <div class="eyebrow">{about.stagesTitle}</div>
-      <div class="ab-stagework">
-        <h2 class="h2">{stage2.titleLines[0]}<br />{stage2.titleLines[1]}</h2>
-        <div class="ab-accs">
-          <Accordion title={step1.label} subtitle={step1.title} group="stage2" open>
+      <h2 class="h2 ab-stagehead">{stage2.titleLines[0]} {stage2.titleLines[1]}</h2>
+      <div class="ab-tabs" data-tabs>
+        <div class="ab-tabs__list" role="tablist" aria-label={stage2.titleLines.join(' ')}>
+          <div class="ab-tabs__btns">
+            {[step1, step2, step3].map((st, i) => (
+              <button class="ab-tab" role="tab" id={`s2-t${i + 1}`} aria-controls={`s2-p${i + 1}`} aria-selected={i === 0 ? 'true' : 'false'} tabindex={i === 0 ? undefined : '-1'}><b>{st.label}</b><span>{st.title}</span></button>
+            ))}
+          </div>
+          <div class="ab-note"><b>{stage2.important.label}</b> {stage2.important.text}</div>
+        </div>
+        <div class="ab-tabs__panel">
+          <div class="ab-panel" role="tabpanel" id="s2-p1" aria-labelledby="s2-t1">
             <p>{step1.text}</p>
-          </Accordion>
-          <Accordion title={step2.label} subtitle={step2.title} group="stage2">
+          </div>
+          <div class="ab-panel" role="tabpanel" id="s2-p2" aria-labelledby="s2-t2" hidden>
             <p>{step2.text}</p>
             <ul class="ab-dash">{step2.list!.map((x) => <li>{x}</li>)}</ul>
-          </Accordion>
-          <Accordion title={step3.label} subtitle={step3.title} group="stage2">
+          </div>
+          <div class="ab-panel" role="tabpanel" id="s2-p3" aria-labelledby="s2-t3" hidden>
             <ul class="ab-dash">{step3.list!.map((x) => <li>{x}</li>)}</ul>
             <p>{stage2.after.text}</p>
             <ul class="ab-dash">{stage2.after.list.map((x) => <li>{x}</li>)}</ul>
-          </Accordion>
-          <div class="ab-note"><b>{stage2.important.label}</b> {stage2.important.text}</div>
+          </div>
         </div>
       </div>
     </div>

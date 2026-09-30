@@ -189,7 +189,8 @@ em.acc{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--le
 @media (max-width:1000px){.tm-grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
 
 /* «Эксперты»: тот же ряд кругов, листается вбок */
-.ex-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;}
+.ex-head{position:relative;}
+.ex-nav{position:absolute;right:0;bottom:8px;}
 .ex-nav{display:flex;gap:10px;flex-shrink:0;}
 .ex-btn{width:52px;height:52px;border-radius:50%;border:0;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#fff;
   background:linear-gradient(180deg,#2f5a3f 0%,var(--leaf-deep) 60%,#17301f 100%);box-shadow:inset 0 1px 0 rgba(255,255,255,0.22),0 6px 14px -6px rgba(20,32,26,0.55);transition:transform .3s var(--ease),opacity .3s,background .3s;}
@@ -479,5 +480,7 @@ em.acc{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--le
   .tm-hero h1{font-size:clamp(32px,min(4.4vw,6vh),80px);line-height:1;letter-spacing:-0.04em;}
   /* диаметр круга от высоты окна: заголовок + круг + имя помещаются над волной */
   .tm-hero .tm-grid{margin-top:4vh;--tm-d:min(100%,300px,max(150px,calc(100vh - 74px - 282px - 110px - 13vh - 50px)));}
+  /* у «Экспертов» ряд с запасом под тень (padding 20/30) — компенсируем, чтобы всё стояло как на «Команде» */
+  .tm-hero .ex-track{margin-top:calc(4vh - 20px);margin-bottom:-30px;}
   .tm-hero .slide__terrace{margin-top:0;}
 }

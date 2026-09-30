@@ -120,7 +120,7 @@ const check = '<svg viewBox="0 0 20 20" width="12" height="12"><path d="M4 10.5 
             {stage1.start.paragraphs.map((p) => <p>{p}</p>)}
           </div>
           <div class="ab-panel" role="tabpanel" id="s1-p3" aria-labelledby="s1-t3" hidden>
-            {stage1.algorithm.steps.map((st) => <div class="ab-step"><span>{st.num}</span><p>{st.text}</p></div>)}
+            {stage1.algorithm.steps.map((st) => <div class="ab-step"><span>{String(st.num).padStart(2, '0')}</span><p>{st.text}</p></div>)}
           </div>
           <div class="ab-panel" role="tabpanel" id="s1-p4" aria-labelledby="s1-t4" hidden>
             <p>{stage1.task.text}</p>

@@ -213,8 +213,10 @@ em.acc{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--le
 .ab-accs{display:flex;flex-direction:column;gap:12px;}
 .ab-note{border-radius:20px;background:rgba(76,138,58,0.08);box-shadow:inset 0 0 0 1px rgba(76,138,58,0.25);padding:16px 20px;font-size:14.5px;line-height:1.55;}
 .ab-note b{color:var(--leaf-deep);}
-.ab-step{display:flex;gap:14px;align-items:flex-start;}
-.ab-step span{flex-shrink:0;width:28px;height:28px;border-radius:50%;background:var(--leaf-deep);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;}
+/* шаги алгоритма — как пункты листа «Краткое содержание»: зелёный номер 01, 02 и тонкие разделители */
+.ab-step{display:flex;gap:16px;align-items:flex-start;padding-top:1.4vh;border-top:1px solid var(--line);}
+.ab-step:first-child{border-top:0;padding-top:0;}
+.ab-step span{flex-shrink:0;width:24px;font-size:13px;font-weight:600;letter-spacing:0.12em;color:var(--leaf);padding-top:3px;}
 .ab-dash{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px;}
 .ab-dash li{position:relative;padding-left:20px;}
 .ab-dash li::before{content:"";position:absolute;left:0;top:.75em;width:10px;height:2px;border-radius:2px;background:var(--leaf-2);}

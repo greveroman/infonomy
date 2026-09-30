@@ -15,7 +15,7 @@ import team from '../content/team.json';
             <div class="tm-photo">
               {m.photo
                 ? <img src={m.photo} alt={m.name} loading="lazy" />
-                : <svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="38" r="17" /><path d="M16 92c3-19 17-30 34-30s31 11 34 30z" /></svg>}
+                : null}
             </div>
             <div class="tm-name">{m.name}</div>
           </li>

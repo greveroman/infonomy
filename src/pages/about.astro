@@ -141,7 +141,7 @@ const check = '<svg viewBox="0 0 20 20" width="12" height="12"><path d="M4 10.5 
         <div class="ab-tabs__list" role="tablist" aria-label={stage2.titleLines.join(' ')}>
           <div class="ab-tabs__btns">
             {[step1, step2, step3].map((st, i) => (
-              <button class="ab-tab" role="tab" id={`s2-t${i + 1}`} aria-controls={`s2-p${i + 1}`} aria-selected={i === 0 ? 'true' : 'false'} tabindex={i === 0 ? undefined : '-1'}><b>{st.label}</b><span>{st.title}</span></button>
+              <button class="ab-tab" role="tab" id={`s2-t${i + 1}`} aria-controls={`s2-p${i + 1}`} aria-selected={i === 0 ? 'true' : 'false'} tabindex={i === 0 ? undefined : '-1'}><b>{st.label}</b><span title={st.title}>{st.title}</span></button>
             ))}
           </div>
           <div class="ab-note"><b>{stage2.important.label}</b> {stage2.important.text}</div>

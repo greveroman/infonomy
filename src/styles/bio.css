@@ -232,6 +232,8 @@ em.acc{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--le
 .ab-tabs__list{--tab-pad:16px;}
 .ab-tab{justify-content:center;min-height:calc(2 * var(--tab-pad) + 46px);}
 .ab-tab span{font-size:14px;line-height:1.45;color:var(--muted);}
+/* подпись в одну строку — все кнопки одной высоты на обоих слайдах этапов */
+.ab-tab b,.ab-tab span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%;}
 .ab-tab::before{content:"";position:absolute;left:10px;top:18px;bottom:18px;width:3px;border-radius:3px;background:transparent;transition:background .35s var(--ease);}
 .ab-tab:hover{transform:translateX(4px);box-shadow:inset 0 0 0 1px var(--leaf-2);}
 .ab-tab[aria-selected=true]{background:var(--surface);box-shadow:inset 0 0 0 1.5px var(--leaf),0 18px 36px -24px rgba(30,61,43,0.45);}
@@ -416,5 +418,5 @@ em.acc{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--le
   .ab-panel{font-size:clamp(13.5px,1.6vh,15.5px);gap:1.2vh;}
   .ab-tabs__list{--tab-pad:clamp(10px,1.5vh,16px);}
   .ab-tab{padding:var(--tab-pad) 20px var(--tab-pad) 24px;}
-  .ab-tab span{font-size:clamp(12.5px,1.4vh,14px);}
+  .ab-tab span{font-size:clamp(12px,1.3vh,13.5px);}
 }

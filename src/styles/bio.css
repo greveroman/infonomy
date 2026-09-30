@@ -84,7 +84,7 @@ em.acc{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--le
   animation:hdr-orbit 9s linear infinite;}
 @keyframes hdr-orbit{to{--hdr-a:360deg;}}
 
-.hdr__nav{position:relative;display:flex;gap:4px;padding:4px;border-radius:999px;background:linear-gradient(180deg,rgba(234,240,231,0.7),rgba(245,247,242,0.5));box-shadow:inset 0 1px 3px rgba(30,61,43,0.10),inset 0 -1px 0 rgba(255,255,255,0.9);}
+.hdr__nav{position:relative;display:flex;gap:4px;padding:4px;border-radius:999px;background:linear-gradient(180deg,rgba(234,240,231,0.7),rgba(245,247,242,0.5));box-shadow:inset 0 0 0 1px rgba(160,180,160,0.45),inset 0 1px 3px rgba(30,61,43,0.10);}
 .hdr__nav a{position:relative;white-space:nowrap;font-size:18px;color:var(--muted);padding:10px 22px;border-radius:999px;transition:color .35s var(--ease),background .35s var(--ease),box-shadow .35s var(--ease);}
 .hdr__nav a:hover{color:var(--leaf-deep);background:rgba(255,255,255,0.7);box-shadow:0 0 18px -4px rgba(143,216,191,0.9);}
 /* Активный пункт — световая капсула с точкой-индикатором */
@@ -173,6 +173,36 @@ em.acc{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--le
 .ftr nav a{width:fit-content;color:rgba(230,239,232,0.82);border-bottom:1px solid transparent;transition:color .3s,border-color .3s;}
 .ftr nav a:hover{color:#fff;border-bottom-color:var(--mint);}
 .ftr__bottom{padding:22px 0 36px;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:rgba(230,239,232,0.4);}
+
+/* ===== Страница «Присоединиться» (форма заявки) ===== */
+html[data-page="join"]{scroll-snap-type:none !important;}
+.hero.jn{padding:9vh 0 0;}
+.jn > .wrap{position:relative;z-index:1;}
+.jn__grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:56px;align-items:start;}
+.jn__intro{position:sticky;top:120px;}
+.hero.jn h1{margin-top:2.4vh;font-size:clamp(36px,3.6vw,58px) !important;line-height:1.05;letter-spacing:-0.035em;}
+.jn__lead{margin-top:2.4vh;font-size:18px;line-height:1.6;color:var(--ink-2);max-width:26em;}
+.jn__card{background:var(--surface);border-radius:32px;border-top-right-radius:120px 90px;padding:clamp(28px,3vw,48px);box-shadow:0 0 0 1px var(--line),0 40px 80px -40px rgba(20,32,26,0.45);}
+.jn .slide__terrace{margin-top:8vh;}
+.jf{display:flex;flex-direction:column;gap:20px;}
+.jf__row{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:20px;}
+.jf__cell{display:flex;flex-direction:column;gap:8px;}
+.jf__label{font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--leaf-deep);}
+.jf__label span{color:var(--muted);}
+.jf__hint{font-size:13px;line-height:1.4;color:var(--muted);margin-top:-2px;}
+.jf__field{width:100%;font:inherit;font-size:16px;color:var(--ink);background:var(--bg);border:0;border-radius:16px;padding:13px 16px;box-shadow:inset 0 0 0 1px var(--line);outline:none;transition:box-shadow .3s var(--ease),background .3s var(--ease);}
+textarea.jf__field{line-height:1.55;resize:vertical;min-height:88px;}
+.jf__field::placeholder{color:#9aa39c;}
+.jf__field:focus{background:var(--surface);box-shadow:inset 0 0 0 1.5px var(--leaf),0 0 0 4px rgba(127,179,95,0.18);}
+.jf__field[aria-invalid="true"]{box-shadow:inset 0 0 0 1.5px #b42318;}
+.jf__select{position:relative;color:var(--leaf-deep);}
+.jf__select .jf__field{appearance:none;cursor:pointer;padding-right:40px;}
+.jf__select svg{position:absolute;right:16px;top:50%;transform:translateY(-50%);pointer-events:none;}
+.jf__submit{align-self:flex-start;margin-top:4px;border:0;cursor:pointer;font-size:16px;padding:15px 30px;}
+.jf__submit:disabled{opacity:.6;cursor:default;}
+.jf__error{font-size:15px;line-height:1.5;color:#b42318;}
+.jf__success{border-radius:20px;background:rgba(76,138,58,0.08);box-shadow:inset 0 0 0 1px rgba(76,138,58,0.3);padding:24px 26px;font-weight:600;font-size:17px;line-height:1.5;color:var(--leaf-deep);outline:none;}
+@media (max-width:1000px){.jn__grid{grid-template-columns:1fr;gap:32px;}.jn__intro{position:static;}}
 
 /* ===== Страница «Команда» ===== */
 /* 4 человека в один ряд — большие круги на линии, как этапы методологии; имя под кругом */

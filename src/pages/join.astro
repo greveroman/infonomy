@@ -1,25 +1,24 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import JoinForm from '../components/JoinForm.astro';
+import BioLayout from '../layouts/BioLayout.astro';
+import Terrace from '../components/bio/Terrace.astro';
+import JoinForm from '../components/bio/JoinForm.astro';
 import join from '../content/join.json';
+// «Подать заявку на участие в разработке Концепции» — последнее слово курсивом
+const i = join.title.lastIndexOf(' ');
 ---
-<BaseLayout page="join">
-  <section id="apply" data-m="wrap" style="max-width:1480px;margin:0 auto;padding:92px;">
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));border-radius:20px;overflow:hidden;box-shadow:inset 0 0 0 1px #e6eaef,0 10px 28px rgba(18,24,33,0.04);background:#fff;">
-      <div data-m="formleft" style="background:#1e2530;padding:clamp(40px,4.4vw,64px);display:flex;flex-direction:column;justify-content:space-between;gap:40px;">
-        <div>
-          <div style="display:inline-block;box-shadow:inset 0 0 0 1px rgba(255,255,255,0.28);border-radius:999px;padding:9px 18px;font-family:Manrope,'Helvetica Neue',Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.72);">{join.label}</div>
-          <h1 style="font-weight:400;font-size:clamp(28px,2.6vw,38px);line-height:1.15;letter-spacing:-0.04em;color:#fff;margin:26px 0 0;max-width:12em;">{join.title}</h1>
-          <p style="font-size:16px;line-height:1.65;color:rgba(255,255,255,0.62);margin-top:20px;max-width:34em;">{join.successMessage}</p>
+<BioLayout page="join">
+  <section class="hero jn">
+    <div class="strata" aria-hidden="true"></div>
+    <div class="wrap">
+      <div class="jn__grid">
+        <div class="jn__intro">
+          <div class="eyebrow">{join.label}</div>
+          <h1>{join.title.slice(0, i)} <em class="acc">{join.title.slice(i + 1)}</em></h1>
+          <p class="jn__lead">{join.successMessage}</p>
         </div>
-        <div style="display:flex;align-items:center;gap:10px;" aria-hidden="true">
-          <div style="width:24px;height:2px;background:rgba(255,255,255,0.5);"></div>
-          <img src="/images/logo.png" alt="" width="564" height="96" style="height:13px;width:auto;display:block;opacity:0.5;filter:invert(1);" />
-        </div>
-      </div>
-      <div data-m="formright" style="padding:clamp(36px,3.6vw,56px);display:flex;flex-direction:column;gap:24px;background:#fff;">
-        <JoinForm />
+        <div class="jn__card"><JoinForm /></div>
       </div>
     </div>
+    <div class="slide__terrace"><Terrace fill="#0d1812" /></div>
   </section>
-</BaseLayout>
+</BioLayout>

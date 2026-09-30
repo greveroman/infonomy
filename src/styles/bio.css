@@ -215,10 +215,10 @@ textarea.jf__field{line-height:1.55;resize:vertical;min-height:88px;}
   .hero.jn h1{font-size:clamp(28px,min(3vw,5vh),52px) !important;}
   .jn__lead{font-size:clamp(14px,1.8vh,18px);}
   .jn__card{padding:clamp(18px,2.6vh,36px) clamp(22px,2.4vw,40px);border-top-right-radius:90px 70px;}
-  /* раскладка: имя · город · область / телефон · почта / опыт · мотивация · комментарий / кнопка */
+  /* раскладка: имя · город · экспертиза / телефон · почта / опыт · мотивация / кнопка */
   .jn .jf{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:clamp(8px,1.6vh,18px) 18px;align-items:end;}
   .jn .jf__cell{grid-column:span 2;}
-  .jn .jf__cell[data-f="phone"],.jn .jf__cell[data-f="email"]{grid-column:span 3;}
+  .jn .jf__cell[data-f="phone"],.jn .jf__cell[data-f="email"],.jn .jf__cell[data-f="experience"],.jn .jf__cell[data-f="motivation"]{grid-column:span 3;}
   .jn .jf__label{line-height:1.35;}
   .jn .jf__row{display:contents;}
   .jn .jf__cell{gap:5px;}

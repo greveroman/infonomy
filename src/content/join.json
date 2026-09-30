@@ -72,14 +72,6 @@
       "placeholder": "Что вы видите в этой работе для себя и своего региона?",
       "required": false,
       "row": 6
-    },
-    {
-      "name": "comment",
-      "label": "Комментарии",
-      "type": "textarea",
-      "placeholder": "Ссылки на проекты, публикации, сайт — по желанию.",
-      "required": false,
-      "row": 7
     }
   ]
 }

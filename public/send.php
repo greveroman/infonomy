@@ -17,7 +17,6 @@ $FIELDS = [
   'email'      => ['Почта', true],
   'experience' => ['Компетенции и опыт', true],
   'motivation' => ['Мотивация к участию', false],
-  'comment'    => ['Комментарии', false],
 ];
 
 header('Content-Type: application/json; charset=utf-8');

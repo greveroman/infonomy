@@ -73,7 +73,7 @@ em.acc{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--le
 /* Символ из логотипа (левые 166 из 564 px картинки), без текстовой части */
 .hdr__mark{height:34px;width:calc(34px * 166 / 96);background:url(/images/logo.png) left center/auto 100% no-repeat;opacity:0.85;transition:opacity .3s;}
 .hdr__word{font-size:20px;font-weight:500;letter-spacing:0.16em;color:var(--ink);white-space:nowrap;}
-.hdr__word b{font-weight:700;color:var(--leaf-deep);}
+.hdr__word b{font-weight:inherit;color:inherit;}
 .hdr__logo:hover .hdr__mark{opacity:1;}
 
 /* Футуристичная кромка: по контуру капсулы медленно бежит светящаяся линия */

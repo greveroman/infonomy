@@ -9,7 +9,6 @@ const columns = f.links[Astro.props.page];
   <div class="wrap">
     <div class="ftr__grid">
       <div>
-        <div class="eyebrow">{f.label}</div>
         <div class="ftr__name">{f.name}<br />{f.tagline}</div>
       </div>
       {columns.map((col) => (
@@ -18,6 +17,6 @@ const columns = f.links[Astro.props.page];
         </nav>
       ))}
     </div>
-    <div class="ftr__bottom"><span>{f.copyright}</span><span class="ftr__rights">{f.rights}</span></div>
+    <div class="ftr__bottom"><span class="ftr__rights">{f.rights}</span></div>
   </div>
 </footer>

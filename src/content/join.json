@@ -26,7 +26,7 @@
     },
     {
       "name": "area",
-      "label": "Ваша экспертиза",
+      "label": "Экспертиза",
       "type": "select",
       "required": true,
       "options": [
@@ -41,7 +41,7 @@
     },
     {
       "name": "phone",
-      "label": "Ваш телефон",
+      "label": "Телефон",
       "type": "tel",
       "placeholder": "+7 000 000-00-00",
       "required": false,
@@ -50,7 +50,7 @@
     },
     {
       "name": "email",
-      "label": "Ваша почта",
+      "label": "Почта",
       "type": "email",
       "placeholder": "example@mail.ru",
       "required": true,
@@ -59,15 +59,15 @@
     },
     {
       "name": "experience",
-      "label": "Ваши компетенции и опыт",
+      "label": "Компетенции и опыт",
       "type": "textarea",
-      "placeholder": "Расскажите кратко о вашей профессиональной экспертизе и релевантном опыте.",
+      "placeholder": "Расскажите кратко о профессиональной экспертизе и релевантном опыте.",
       "required": true,
       "row": 5
     },
     {
       "name": "motivation",
-      "label": "Ваша мотивация участвовать",
+      "label": "Мотивация к участию",
       "type": "textarea",
       "placeholder": "Что вы видите в этой работе для себя и своего региона?",
       "required": false,

@@ -12,13 +12,13 @@ $SUBJECT = 'Заявка на участие — Конструкторское 
 $FIELDS = [
   'name'       => ['Фамилия и имя', true],
   'city'       => ['Город / регион', true],
-  'area'       => ['В какой области ваша экспертиза?', true],
-  'phone'      => ['Ваш телефон', false],
-  'email'      => ['Ваша почта', true],
+  'area'       => ['Экспертиза', true],
+  'phone'      => ['Телефон', false],
+  'email'      => ['Почта', true],
   'messenger'  => ['Telegram / MAX', false],
-  'experience' => ['Ваши компетенции и опыт', true],
-  'motivation' => ['Ваша мотивация участвовать', false],
-  'comment'    => ['Поле для дополнительных комментариев', false],
+  'experience' => ['Компетенции и опыт', true],
+  'motivation' => ['Мотивация к участию', false],
+  'comment'    => ['Комментарии', false],
 ];
 
 header('Content-Type: application/json; charset=utf-8');

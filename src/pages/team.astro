@@ -3,6 +3,8 @@
 import BioLayout from '../layouts/BioLayout.astro';
 import Terrace from '../components/bio/Terrace.astro';
 import team from '../content/team.json';
+// метка сборки в адресе фото: после замены снимка браузер не покажет старую копию из кэша
+const v = Date.now().toString(36);
 ---
 <BioLayout page="team">
   <section class="hero slide tm-hero">
@@ -14,7 +16,7 @@ import team from '../content/team.json';
           <li class="tm-person">
             <div class="tm-photo">
               {m.photo
-                ? <img src={m.photo} alt={m.name} loading="lazy" />
+                ? <img src={`${m.photo}?v=${v}`} alt={m.name} loading="lazy" />
                 : null}
             </div>
             <div class="tm-name">{m.name}</div>

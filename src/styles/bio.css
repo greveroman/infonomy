@@ -240,7 +240,9 @@ em.acc{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--le
 .ab-tab[aria-selected=true]{background:var(--surface);box-shadow:inset 0 0 0 1.5px var(--leaf),0 18px 36px -24px rgba(30,61,43,0.45);}
 .ab-tab[aria-selected=true]::before{background:linear-gradient(180deg,var(--leaf-deep),var(--leaf-2));}
 .ab-tab:focus-visible{outline:2px solid var(--leaf);outline-offset:2px;}
-.ab-tabs__list .ab-note{margin-top:auto;}
+.ab-tabs__list .ab-note{margin-top:0;}
+/* «Важно» — сразу под кнопками, той же высоты, что они (при длинном тексте растёт) */
+.ab-tabs__list .ab-note{min-height:calc(2 * var(--tab-pad) + 46px);display:flex;align-items:center;}
 /* «Важно» на слайдах этапов — янтарная подсветка, как у кнопки «присоединиться» */
 .ab-tabs__list .ab-note{background:var(--amber);color:var(--night);box-shadow:0 0 36px -6px rgba(243,183,96,0.65);}
 .ab-tabs__list .ab-note b{color:var(--night);}

@@ -111,7 +111,7 @@ const check = '<svg viewBox="0 0 20 20" width="12" height="12"><path d="M4 10.5 
             <button class="ab-tab" role="tab" id="s1-t3" aria-controls="s1-p3" aria-selected="false" tabindex="-1"><b>{stage1.algorithm.title}</b></button>
             <button class="ab-tab" role="tab" id="s1-t4" aria-controls="s1-p4" aria-selected="false" tabindex="-1"><b>{stage1.task.title}</b></button>
           </div>
-          <div class="ab-note"><b>{stage1.important.label}</b> {stage1.important.text}</div>
+          <div class="ab-note"><p><b>{stage1.important.label}</b> {stage1.important.text}</p></div>
         </div>
         <div class="ab-tabs__panel">
           <div class="ab-panel" role="tabpanel" id="s1-p1" aria-labelledby="s1-t1">
@@ -144,7 +144,7 @@ const check = '<svg viewBox="0 0 20 20" width="12" height="12"><path d="M4 10.5 
               <button class="ab-tab" role="tab" id={`s2-t${i + 1}`} aria-controls={`s2-p${i + 1}`} aria-selected={i === 0 ? 'true' : 'false'} tabindex={i === 0 ? undefined : '-1'}><b>{st.label}</b><span title={st.title}>{st.title}</span></button>
             ))}
           </div>
-          <div class="ab-note"><b>{stage2.important.label}</b> {stage2.important.text}</div>
+          <div class="ab-note"><p><b>{stage2.important.label}</b> {stage2.important.text}</p></div>
         </div>
         <div class="ab-tabs__panel">
           <div class="ab-panel" role="tabpanel" id="s2-p1" aria-labelledby="s2-t1">

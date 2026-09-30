@@ -26,7 +26,7 @@
     },
     {
       "name": "area",
-      "label": "Экспертиза",
+      "label": "Ваша экспертиза",
       "type": "select",
       "required": true,
       "options": [

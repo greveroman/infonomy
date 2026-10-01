@@ -30,7 +30,7 @@ const i = join.title.lastIndexOf(' ');
     const grid = document.querySelector<HTMLElement>('.jn__grid')!;
     const intro = document.querySelector<HTMLElement>('.jn__intro')!;
     const areas = [...document.querySelectorAll<HTMLTextAreaElement>('.jn textarea')];
-    const desktop = matchMedia('(min-width: 1001px)');
+    const desktop = matchMedia('(min-width: 1001px) and (hover: hover)');
     const fit = () => {
       wrap.style.justifyContent = ''; wrap.style.paddingTop = '';
       grid.style.alignItems = ''; intro.style.marginTop = '';

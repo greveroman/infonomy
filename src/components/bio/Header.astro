@@ -11,7 +11,8 @@ const current = Astro.props.current.replace(/(\.html|\/)$/, '') || '/';
         <span class="hdr__mark" aria-hidden="true"></span>
         <span class="hdr__word"><b>КБ</b> ВЕКТОР</span>
       </a>
-      <nav class="hdr__nav" aria-label="Основное меню">
+      <button class="hdr__burger" type="button" aria-label="Меню" aria-expanded="false" aria-controls="hdr-menu"><span></span><span></span><span></span></button>
+      <nav class="hdr__nav" id="hdr-menu" aria-label="Основное меню">
         {site.nav.map((item) => (
           <a href={item.href} aria-current={item.href === current ? 'page' : undefined}>{item.label}</a>
         ))}
@@ -22,3 +23,13 @@ const current = Astro.props.current.replace(/(\.html|\/)$/, '') || '/';
     </div>
   </div>
 </header>
+<script>
+  // Телефон и узкий планшет: меню открывается кнопкой-«бургером» и закрывается по ссылке, Esc или тапу мимо
+  const hdr = document.querySelector<HTMLElement>('.hdr');
+  const btn = hdr?.querySelector<HTMLButtonElement>('.hdr__burger');
+  const set = (open: boolean) => { hdr!.classList.toggle('is-open', open); btn!.setAttribute('aria-expanded', String(open)); };
+  btn?.addEventListener('click', () => set(!hdr!.classList.contains('is-open')));
+  hdr?.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => set(false)));
+  addEventListener('keydown', (e) => { if (e.key === 'Escape') set(false); });
+  addEventListener('click', (e) => { if (hdr && !hdr.contains(e.target as Node)) set(false); });
+</script>

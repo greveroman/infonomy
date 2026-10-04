@@ -869,3 +869,14 @@ a.doc-dl:hover{background:var(--leaf-deep);color:#fff;}
 @media (min-width:1001px){
   html[data-page="home"]:not(.touch) :is(main .h2,#join .join__count){font-size:48px !important;line-height:1.08 !important;}
 }
+/* Главная, компьютер: карточки документов одной высоты, «читать» внизу карточки, описания начинаются на одном уровне */
+@media (min-width:1001px){
+  html[data-page="home"]:not(.touch) #docs .docs{row-gap:0;}
+  html[data-page="home"]:not(.touch) #docs .docs > div{display:grid;grid-template-rows:subgrid;grid-row:span 2;row-gap:14px;}
+  html[data-page="home"]:not(.touch) #docs .card{display:flex;flex-direction:column;}
+  html[data-page="home"]:not(.touch) #docs .card__body{flex:1;display:flex;flex-direction:column;}
+  html[data-page="home"]:not(.touch) #docs .card__more{margin-top:auto;padding-top:12px;}
+  html[data-page="home"]:not(.touch) #docs .card__win{height:clamp(64px,8.5vh,120px);}
+  html[data-page="home"]:not(.touch) #docs .docs-head p{max-width:none;}
+  html[data-page="home"]:not(.touch) #docs .docs{margin-top:clamp(16px,2.6vh,32px);}
+}

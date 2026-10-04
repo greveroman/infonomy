@@ -21,7 +21,7 @@ const [countA, countNum, countB] = participants.count.split(/(\d+)/);
       <div class="hero__stage">
         <div class="hero__photo" role="img" aria-label="Пейзаж: холмы, река и ветрогенераторы"></div>
         <div class="slab">
-          <h2>{hero.subtitleLines.map((l) => <span>{l}</span>)}</h2>
+          <h2>{hero.subtitleLines.map((l, i) => i > 0 ? <em class="acc">{l}</em> : <span>{l}</span>)}</h2>
           <div class="slab__paras">
             <p class="lead">{hero.paragraphs[0]}</p>
             <p>{hero.paragraphs[1]}</p>

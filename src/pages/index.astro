@@ -4,14 +4,13 @@ import DocCard from '../components/bio/DocCard.astro';
 import Terrace from '../components/bio/Terrace.astro';
 import home from '../content/home.json';
 import docs from '../content/documents.json';
-const { hero, initiative, research, participants } = home;
+const { hero, initiative, research } = home;
 const last = hero.titleLines.length - 1;
 // «… — это …»: вторую часть заголовка выделяем курсивом
 const [initA, initB] = initiative.title.split(' — ');
 // «Ход исследования»: последнее слово — акцентным курсивом, как в заголовке первого слайда
 const [resA, resB] = research.title.split(/ (?=\S+$)/);
 // «Более 100 участников»: число выделяем тёплым цветом
-const [countA, countNum, countB] = participants.count.split(/(\d+)/);
 ---
 <BioLayout page="home">
   <section class="hero slide"><span class="snap snap--top" aria-hidden="true"></span>
@@ -61,29 +60,7 @@ const [countA, countNum, countB] = participants.count.split(/(\d+)/);
         {docs.items.filter((d) => !d.placeholder).map((d, i) => <DocCard doc={d} index={i} href={`/reviews#${d.id}`} />)}
       </div>
     </div>
+    <div class="slide__terrace"><Terrace fill="#0d1812" /></div>
   </section>
 
-  <section class="join slide" id="join" data-snap>
-    <div class="join__wave"><span class="snap" aria-hidden="true"></span><Terrace fill="#f5f7f2" above /></div>
-    <div class="join__body">
-      <div class="join__bg" aria-hidden="true"></div>
-      <div class="join__glow" aria-hidden="true"></div>
-      <div class="strata" aria-hidden="true"></div>
-      <div class="wrap">
-        <div class="join__in">
-          <div class="join__cap">
-            <div>
-              <div class="eyebrow">{participants.label}</div>
-              <div class="join__count">{countNum ? <>{countA}<em class="acc">{countNum}</em>{countB}</> : participants.count}</div>
-            </div>
-            <div>
-              <p class="join__text">{participants.text}</p>
-              <a href={participants.button.href} class="btn btn--amber">{participants.button.label} <span class="arr">→</span></a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="join__foot"><Terrace fill="#0d1812" /></div>
-    </div>
-  </section>
 </BioLayout>

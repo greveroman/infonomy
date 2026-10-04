@@ -882,10 +882,9 @@ a.doc-dl:hover{background:var(--leaf-deep);color:#fff;}
   html[data-page="home"]:not(.touch) #docs .docs-head .btn{flex-shrink:0;}
   html[data-page="home"]:not(.touch) #docs .docs{margin-top:clamp(16px,2.6vh,32px);}
 }
-/* Главная, компьютер: шкала — большой заголовок / заголовок 36 px / подзаголовок 26 px / текст 15 px / мелкий текст 13 px */
+/* Главная, компьютер: шкала — большой заголовок / заголовок / подзаголовок / текст 15 px */
 @media (min-width:1001px){
   html[data-page="home"]:not(.touch) :is(.slab h2,#docs .docs-head .h2){font-size:36px !important;line-height:1.15 !important;letter-spacing:-0.02em !important;}
-  html[data-page="home"]:not(.touch) :is(#docs .doc-desc .label,#docs .doc-desc p){font-size:13px !important;line-height:1.55 !important;}
 }
 /* Главная, компьютер: ЗАГОЛОВОК — 26 px, как «Архитектура живых систем — это открытая форма…»:
    первая часть обычным шрифтом, вторая — зелёным курсивом. Подзаголовок «Промежуточные обзоры…» — 20 px */
@@ -895,4 +894,21 @@ a.doc-dl:hover{background:var(--leaf-deep);color:#fff;}
   html[data-page="home"]:not(.touch) :is(.slab h2,main .h2) em.acc{font-family:var(--serif);font-style:italic;color:var(--leaf);display:inline;}
   html[data-page="home"]:not(.touch) .slab h2 em.acc{display:block;}
   html[data-page="home"]:not(.touch) #docs .docs-head .lead{font-size:20px !important;line-height:1.35 !important;}
+}
+/* Главная, компьютер: блок участников удалён — последний слайд «Ход исследования» вместе с подвалом ровно один экран */
+@media (min-width:1001px){
+  html[data-page="home"]:not(.touch) #docs.slide{padding-bottom:0 !important;height:calc(100svh - var(--hdr-band) - 110px - var(--ftr-h));}
+  html[data-page="home"]:not(.touch) #docs.slide > .wrap{padding-bottom:0 !important;}
+  html[data-page="home"]:not(.touch) #docs .slide__terrace .terrace{height:60px;}
+  html[data-page="home"]:not(.touch) #docs .docs{margin-top:12px !important;}
+  html[data-page="home"]:not(.touch) #docs .card__win{height:clamp(44px,5.5vh,90px) !important;}
+  html[data-page="home"]:not(.touch) #docs .card{padding-bottom:14px !important;}
+  html[data-page="home"]:not(.touch) #docs .card__body{padding-top:10px !important;}
+  html[data-page="home"]:not(.touch) #docs .card__title{margin-top:4px !important;}
+  html[data-page="home"]:not(.touch) #docs .card__more{padding-top:6px !important;}
+  html[data-page="home"]:not(.touch) #docs .doc-desc p{margin-top:4px !important;}
+}
+/* Главная, компьютер: карточка 1-го слайда — все углы одинаковые, правый верхний не срезан */
+@media (min-width:1001px){
+  html[data-page="home"]:not(.touch) .hero__stage{border-radius:40px !important;}
 }

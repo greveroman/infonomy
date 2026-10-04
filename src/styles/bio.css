@@ -24,7 +24,9 @@
 }
 
 *{box-sizing:border-box;}
-html{scroll-padding-top:100px;}
+html{scroll-padding-top:var(--hdr-band);}
+/* высота шапки в потоке и полоса под меню — от них считаются слайды на компьютере */
+:root{--hdr-h:96px;--hdr-band:calc(var(--hdr-h) + 26px);}
 html,body{margin:0;padding:0;}
 body{background:var(--bg);color:var(--ink-2);font-family:var(--sans);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:clip;}
 a{color:inherit;text-decoration:none;}
@@ -216,7 +218,7 @@ textarea.jf__field{line-height:1.55;resize:vertical;min-height:88px;}
 @media (max-width:1000px),(hover:none){.jn__grid{grid-template-columns:1fr;gap:32px;}.jn__intro{position:static;}}
 /* компьютер: форма в 3 колонки, страница — один экран вместе с подвалом, без прокрутки */
 @media (min-width:1001px) and (hover:hover){
-  html[data-page="join"] .hero.jn{height:calc(100vh - 74px - var(--ftr-h));display:flex;flex-direction:column;padding:2vh 0 0;overflow-x:clip;}
+  html[data-page="join"] .hero.jn{height:calc(100vh - var(--hdr-h) - var(--ftr-h));display:flex;flex-direction:column;padding:2vh 0 0;overflow-x:clip;}
   .hero.jn > .wrap{flex:1;display:flex;flex-direction:column;justify-content:center;min-height:0;}
   .hero.jn .slide__terrace{margin-top:0;flex-shrink:0;}
   .jn__grid{grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:48px;align-items:center;}
@@ -462,12 +464,12 @@ a.doc-dl:hover{background:var(--leaf-deep);color:#fff;}
   .slide > .wrap{flex:1;display:flex;flex-direction:column;justify-content:center;width:100%;min-height:0;}
   .slide__terrace{margin-top:0;flex-shrink:0;}
   /* линии рельефа должны заходить вверх под меню — по вертикали первый слайд не обрезаем */
-  .hero.slide{overflow-x:clip;overflow-y:visible;height:calc(100vh - 74px);padding:5.5vh 0 0;}
+  .hero.slide{overflow-x:clip;overflow-y:visible;height:calc(100vh - var(--hdr-h));padding:5.5vh 0 0;}
   /* заголовок и карточка — по центру свободного места между меню и волной */
   .hero.slide > .wrap{justify-content:center;}
   /* страница = окно: сверху под меню видна волна (стык с предыдущей), внизу — следующая волна.
      Поэтому от волны до волны ровно окно минус 210 px (100 — меню, 110 — сама волна). */
-  .sec.slide{padding:0;height:calc(100vh - 210px);}
+  .sec.slide{padding:0;height:calc(100vh - var(--hdr-band) - 110px);}
   /* Презентация: экран = слайд. Прокрутка всегда останавливается ровно на слайде (встроенный scroll-snap браузера). */
   html{scroll-snap-type:y mandatory;}
   /* якорь = верх волны; отступ под меню (100 px) даёт scroll-padding-top у html */
@@ -477,7 +479,7 @@ a.doc-dl:hover{background:var(--leaf-deep);color:#fff;}
   #docs.slide{padding-bottom:0;}
   /* 3-й слайд: место под волну внизу; сама волна лежит поверх фото 4-го слайда — фото доходит до её края */
   #docs.slide{padding-bottom:110px;}
-  .join.slide{height:auto;min-height:calc(100vh - 100px - var(--ftr-h));margin-top:-110px;overflow:visible;}
+  .join.slide{height:auto;min-height:calc(100vh - var(--hdr-band) - var(--ftr-h));margin-top:-110px;overflow:visible;}
   .join__wave{position:absolute;left:0;right:0;top:0;z-index:2;}
   .join__wave .terrace{display:block;}
   .join.slide .join__body{padding-top:110px;}
@@ -535,7 +537,7 @@ a.doc-dl:hover{background:var(--leaf-deep);color:#fff;}
   .ab-collab__text{font-size:clamp(13px,1.6vh,15.5px);gap:1.4vh;}
   .ab-sheet__list li{font-size:clamp(12.5px,1.5vh,14.5px);}
   /* раскрытый блок не должен выходить за слайд: правая колонка прокручивается внутри при нехватке места */
-  .ab-accs{max-height:calc(100vh - 210px - 110px - 14vh);overflow-y:auto;overscroll-behavior:contain;padding:4px;margin:-4px;}
+  .ab-accs{max-height:calc(100vh - var(--hdr-band) - 110px - 110px - 14vh);overflow-y:auto;overscroll-behavior:contain;padding:4px;margin:-4px;}
   /* заголовки этапов в одну строку */
   .ab-stagehead{font-size:min(clamp(24px,3.6vh,42px),2.8vw) !important;white-space:nowrap;}
   /* слайд с вкладками прижат к верху — при смене блока ничего не прыгает */
@@ -549,7 +551,7 @@ a.doc-dl:hover{background:var(--leaf-deep);color:#fff;}
   /* «Обзоры»: заголовок помельче (он длинный), документы — последний слайд перед подвалом */
   .rv-hero h1{font-size:clamp(36px,min(4.6vw,7vh),84px);line-height:1.02;letter-spacing:-0.04em;}
   /* 2 слайда: второй = документы + подвал, ровно одно окно (100 — полоса под меню, 110 — волна, --ftr-h — подвал) */
-  .rv-docs.slide{padding-bottom:0 !important;height:auto;min-height:calc(100vh - 100px - 110px - var(--ftr-h));}
+  .rv-docs.slide{padding-bottom:0 !important;height:auto;min-height:calc(100vh - var(--hdr-band) - 110px - var(--ftr-h));}
   .rv-docs.slide > .wrap{justify-content:center;padding-bottom:0;padding-top:20px;}
   .rv-docs .rv-track{margin-top:calc(2.4vh - 20px);}
   #docs.rv-docs .card__win{height:clamp(56px,calc(18vh - 90px),150px);}
@@ -566,11 +568,11 @@ a.doc-dl:hover{background:var(--leaf-deep);color:#fff;}
 @media (min-width:1001px) and (hover:hover){
   /* «Команда» — один экран без прокрутки: меню + заголовок + круги + подвал */
   html[data-page="team"],html[data-page="experts"]{scroll-snap-type:none;}
-  .tm-hero.slide{height:calc(100vh - 74px - var(--ftr-h));padding-top:2vh;}
+  .tm-hero.slide{height:calc(100vh - var(--hdr-h) - var(--ftr-h));padding-top:2vh;}
   .tm-hero.slide > .wrap{justify-content:center;}
   .tm-hero h1{font-size:clamp(32px,min(4.4vw,6vh),80px);line-height:1;letter-spacing:-0.04em;}
   /* диаметр круга от высоты окна: заголовок + круг + имя помещаются над волной */
-  .tm-hero .tm-grid{margin-top:4vh;--tm-d:min(100%,300px,max(150px,calc(100vh - 74px - var(--ftr-h) - 110px - 13vh - 50px)));}
+  .tm-hero .tm-grid{margin-top:4vh;--tm-d:min(100%,300px,max(150px,calc(100vh - var(--hdr-h) - var(--ftr-h) - 110px - 13vh - 50px)));}
   /* у «Экспертов» ряд с запасом под тень (padding 20/30) — компенсируем, чтобы всё стояло как на «Команде» */
   .tm-hero .ex-track{margin-top:calc(4vh - 20px);margin-bottom:-30px;}
   .tm-hero .slide__terrace{margin-top:0;}
@@ -703,5 +705,5 @@ a.doc-dl:hover{background:var(--leaf-deep);color:#fff;}
 .ftr nav a{white-space:nowrap;}
 @media (max-width:1200px){.ftr__grid{column-gap:40px;}}
 /* шапка: знак Института и адрес сайта */
-.hdr__icon{display:block;height:40px;width:auto;}
-@media (max-width:640px){.hdr__icon{height:32px;}}
+.hdr__icon{display:block;height:80px;width:auto;}
+@media (max-width:640px){.hdr__icon{height:42px;margin:0;}}

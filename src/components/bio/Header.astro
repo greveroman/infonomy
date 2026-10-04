@@ -19,6 +19,8 @@ const current = Astro.props.current.replace(/(\.html|\/)$/, '') || '/';
       </span>
       <a href="/" class="hdr__logo" aria-label="Институт развития сельских территорий — на главную">
         <img class="hdr__full" src="/images/logo-irst-green.png" alt="Институт развития сельских территорий" width="590" height="240" />
+        <!-- телефон: знак и адрес сайта -->
+        <span class="hdr__short" aria-hidden="true"><img class="hdr__icon" src="/images/irst-mark.png" alt="" width="120" height="138" /><span class="hdr__sep"></span><span class="hdr__word">ИРСТ.РФ</span></span>
       </a>
       <button class="hdr__burger" type="button" aria-label="Меню" aria-expanded="false" aria-controls="hdr-menu"><span></span><span></span><span></span></button>
       <nav class="hdr__nav" id="hdr-menu" aria-label="Основное меню">

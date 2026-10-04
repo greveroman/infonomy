@@ -727,3 +727,17 @@ a.doc-dl:hover{background:var(--leaf-deep);color:#fff;}
   .hdr:not(.is-open) .hdr__full{height:52px;}
   .hdr:not(.is-open) .hdr__logo{margin-left:31px;}
 }
+/* Телефон: в капсуле с логотипом — знак, черта и «ИРСТ.РФ»; капсула по размеру содержимого */
+.hdr__short{display:none;}
+@media (max-width:640px){
+  .hdr__full{display:none !important;}
+  .hdr__short{display:flex;align-items:center;gap:10px;}
+  .hdr__short .hdr__icon{height:40px;margin:0;}
+  .hdr__short .hdr__sep{height:36px;}
+  .hdr__short .hdr__word{display:inline;font-size:16px;}
+  .hdr:not(.is-open) .hdr__head{display:none;}
+  .hdr:not(.is-open) .hdr__logo{position:relative;z-index:1;height:64px;margin:-6px 0 -6px 0;padding:0 22px;border-radius:999px;
+    background:linear-gradient(180deg,#ffffff 0%,#fafcf8 55%,#eaf0e7 100%);
+    box-shadow:0 0 0 1px rgba(210,219,206,0.9),3px 0 6px rgba(20,32,26,0.10);}
+  .hdr:not(.is-open) .hdr__bar{left:40px;}
+}

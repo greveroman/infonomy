@@ -785,7 +785,7 @@ a.doc-dl:hover{background:var(--leaf-deep);color:#fff;}
 /* Главная на планшете */
 @media (min-width:1001px){
   /* над капсулой не видно текста предыдущего слайда */
-  html.touch .hdr::before{content:"";position:absolute;left:0;right:0;top:-14px;height:calc(14px + 14px + 40px);background:var(--bg);z-index:-1;pointer-events:none;}
+  html.touch .hdr::before{content:"";position:absolute;left:0;right:0;top:-14px;height:calc(var(--hdr-band) + 22px);background:var(--bg);z-index:-1;pointer-events:none;}
   /* 1-й слайд: заголовок, карточка с фото и текст в ней меньше, заголовок не под капсулой */
   html.touch .hero.slide{padding-top:calc(28px + 3vh);}
   html.touch .hero h1{font-size:clamp(40px,min(6.4vw,8vh),96px);}
@@ -804,4 +804,20 @@ a.doc-dl:hover{background:var(--leaf-deep);color:#fff;}
   html.touch #join .join__count{font-size:clamp(38px,6.4vh,64px);margin-top:12px;}
   html.touch #join .join__text + .btn{margin-top:16px;}
   html.touch #join .join__foot{margin-top:-40px;}
+}
+/* «О проекте» на планшете: последний слайд (участие) компактнее — вместе с подвалом один экран */
+@media (min-width:1001px){
+  html.touch #participation .join__in{padding:1vh 0;}
+  html.touch #participation .ab-part{padding:16px 26px;gap:28px;}
+  html.touch #participation .ab-part__title{font-size:clamp(26px,4.4vh,40px);}
+  html.touch #participation .ab-part__badge{margin-top:1vh;padding:5px 12px;font-size:12px;}
+  html.touch #participation .ab-part .join__text{margin-top:1vh;font-size:13px !important;line-height:1.45;}
+  html.touch #participation .ab-part .join__text + .btn{margin-top:1.4vh;}
+  html.touch #participation .ab-part__who{padding:12px 18px;}
+  html.touch #participation .ab-part__note{margin-top:4px;font-size:12px !important;}
+  html.touch #participation .ab-part__cats{margin-top:1vh;padding-top:1vh;gap:.8vh 18px;}
+  html.touch #participation .ab-part__cats li{font-size:13px !important;}
+  html.touch #participation .ab-part__cats li span:not(.ab-part__check){font-size:11.5px;}
+  html.touch #participation .ab-part__closing{margin-top:1vh;font-size:12px !important;line-height:1.4;}
+  html.touch #participation .join__foot{margin-top:-40px;}
 }

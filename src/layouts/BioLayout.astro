@@ -62,7 +62,7 @@ const ogImage = new URL(site.ogImage, Astro.site).href;
           const need = Math.max(...kids.map((k) => k.getBoundingClientRect().bottom + parseFloat(getComputedStyle(k).marginBottom))) - top;
           wrap.style.justifyContent = prev;
           const cs = getComputedStyle(wrap);
-          const avail = wrap.clientHeight - parseFloat(cs.paddingTop) - 6; // нижний отступ слайда можно занять
+          const avail = wrap.clientHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom) - 6;
           if (need > avail) wrap.style.transform = `scale(${Math.max(0.45, avail / need)})`; // scale по центру — работает во всех браузерах, в т. ч. Safari на iPad
         });
       };

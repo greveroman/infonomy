@@ -712,6 +712,6 @@ a.doc-dl:hover{background:var(--leaf-deep);color:#fff;}
   .hdr__bg{display:block;position:absolute;inset:0;z-index:-1;pointer-events:none;
     filter:drop-shadow(0 2px 3px rgba(20,32,26,0.06)) drop-shadow(0 12px 16px rgba(20,32,26,0.16));}
   .hdr__head{position:absolute;left:0;top:0;z-index:1;display:block;}
-  .hdr__bar{position:absolute;left:330px;right:0;top:12px;bottom:12px;border-radius:0 999px 999px 0;
+  .hdr__bar{position:absolute;left:270px;right:0;top:12px;bottom:12px;border-radius:0 999px 999px 0;
     background:linear-gradient(180deg,#ffffff 0%,#fafcf8 55%,#eaf0e7 100%) 0 -12px/100% 96px no-repeat;box-shadow:0 0 0 1px rgba(210,219,206,0.9);}
 }

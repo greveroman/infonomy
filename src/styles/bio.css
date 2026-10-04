@@ -753,23 +753,32 @@ a.doc-dl:hover{background:var(--leaf-deep);color:#fff;}
 @media (max-width:1280px){.ftr__logo img{height:66px;}}
 @media (max-width:640px){.ftr__logo img{height:52px;}}
 @media (min-width:821px){.hdr__nav a,.hdr .btn--amber{font-size:15px;}}
-/* Планшет в горизонтали: текст (кроме заголовков) не крупнее пунктов меню — 15 px */
-@media (min-width:1001px) and (hover:none){
-  main p:not(.ab-quote),main li,main .lead,main .ab-hero__lead,main .join__text,main .ab-circle__name,main .ab-stage__title,
-  main .ab-sheet__title,main .ab-tab b,main .tm-name,main .btn,main .jf__success,main .ab-text{font-size:15px !important;}
+/* Планшет (сенсорный экран, класс html.touch) в горизонтали: текст (кроме заголовков) не крупнее пунктов меню — 15 px */
+@media (min-width:1001px){
+  html.touch main p:not(.ab-quote),html.touch main li,html.touch main .lead,html.touch main .ab-hero__lead,html.touch main .join__text,html.touch main .ab-circle__name,html.touch main .ab-stage__title,html.touch main .ab-sheet__title,html.touch main .ab-tab b,html.touch main .tm-name,html.touch main .btn,html.touch main .jf__success,html.touch main .ab-text{font-size:15px !important;}
 }
 /* Планшет в горизонтали: манифест мельче и в 4 колонки, отступы на этапах меньше — слайды помещаются без сильного уменьшения */
-@media (min-width:1001px) and (hover:none){
-  #manifest .ab-quote{margin-top:1.2vh;font-size:clamp(22px,2.6vw,34px);}
-  #manifest .ab-cols{margin-top:2vh;columns:4;column-gap:28px;font-size:12.5px !important;line-height:1.5;}
-  #manifest .ab-cols p{font-size:12.5px !important;margin-bottom:.7em;break-inside:auto;}
-  /* этапы: отступы меньше */
-  #stages .ab-stagehead,#stage-2 .ab-stagehead{margin-top:.6vh;}
-  #stages .ab-tabs,#stage-2 .ab-tabs{margin-top:1.4vh;gap:18px;}
-  .ab-tabs__btns,.ab-tabs__list{gap:6px;}
-  .ab-tabs__list{--tab-pad:9px;}
-  .ab-tab{padding:9px 14px 9px 18px;gap:2px;}
-  .ab-tabs__panel{padding:16px 22px !important;}
-  .ab-panel{gap:7px;line-height:1.5;}
-  .ab-tabs__list .ab-note{padding:10px 14px;line-height:1.45;}
+@media (min-width:1001px){
+  html.touch #manifest .ab-quote{margin-top:1.2vh;font-size:clamp(22px,2.6vw,34px);}
+  html.touch #manifest .ab-cols{margin-top:2vh;columns:4;column-gap:28px;font-size:12.5px !important;line-height:1.5;}
+  html.touch #manifest .ab-cols p{font-size:12.5px !important;margin-bottom:.7em;break-inside:auto;}
+  html.touch /* этапы: отступы меньше */
+  #stages .ab-stagehead,html.touch #stage-2 .ab-stagehead{margin-top:.6vh;}
+  html.touch #stages .ab-tabs,html.touch #stage-2 .ab-tabs{margin-top:1.4vh;gap:18px;}
+  html.touch .ab-tabs__btns,html.touch .ab-tabs__list{gap:6px;}
+  html.touch .ab-tabs__list{--tab-pad:9px;}
+  html.touch .ab-tab{padding:9px 14px 9px 18px;gap:2px;}
+  html.touch .ab-tabs__panel{padding:16px 22px !important;}
+  html.touch .ab-panel{gap:7px;line-height:1.5;}
+  html.touch .ab-tabs__list .ab-note{padding:10px 14px;line-height:1.45;}
+}
+
+/* Сенсорный экран: слайды листает скрипт (один свайп = один слайд), встроенное прилипание отключено */
+@media (min-width:1001px){html.touch-paging{scroll-snap-type:none !important;}}
+/* Главная на планшете: документы компактнее, чтобы слайд не уменьшался сильно */
+@media (min-width:1001px){
+  html.touch #docs .card__win{height:84px;}
+  html.touch #docs .docs-head,html.touch #docs .docs{margin-top:14px;}
+  html.touch #docs .doc-desc p{font-size:13px !important;line-height:1.5;}
+  html.touch #docs .card__body{padding-top:8px;}
 }

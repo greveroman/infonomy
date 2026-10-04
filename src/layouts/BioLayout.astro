@@ -37,6 +37,8 @@ const ogImage = new URL(site.ogImage, Astro.site).href;
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@300..700&family=Literata:ital,opsz,wght@1,7..72,400&display=swap" />
+    <!-- сенсорный экран (iPad и т. п., даже с клавиатурой и трекпадом): своя подгонка слайдов -->
+    <script is:inline>if (navigator.maxTouchPoints > 0) document.documentElement.classList.add('touch');</script>
   </head>
   <body>
     <Header current={Astro.url.pathname} />
@@ -47,11 +49,11 @@ const ogImage = new URL(site.ogImage, Astro.site).href;
     <script>
       // Планшет в горизонтали: каждый слайд — ровно экран. Если на невысоком экране содержимое
       // слайда не помещается, оно пропорционально уменьшается (zoom), чтобы ничего не обрезалось и не уходило под шапку.
-      const slides = matchMedia('(min-width: 1001px) and (hover: none)');
+      const slides = matchMedia('(min-width: 1001px)');
       const fit = () => {
         document.querySelectorAll<HTMLElement>('.slide > .wrap').forEach((wrap) => {
           wrap.style.zoom = '';
-          if (!slides.matches) return;
+          if (!slides.matches || !document.documentElement.classList.contains('touch')) return;
           const kids = [...wrap.children] as HTMLElement[];
           if (!kids.length) return;
           const prev = wrap.style.justifyContent;
@@ -68,6 +70,39 @@ const ogImage = new URL(site.ogImage, Astro.site).href;
       addEventListener('load', fit);
       addEventListener('resize', fit);
       slides.addEventListener('change', fit);
+
+      // Сенсорный экран: один свайп вверх/вниз = ровно один слайд (встроенное «прилипание» Safari работает неточно)
+      const touchPaging = () => slides.matches && document.documentElement.classList.contains('touch') && document.querySelectorAll('.snap').length > 1;
+      const stops = () => {
+        const pad = parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0;
+        const max = document.documentElement.scrollHeight - innerHeight;
+        const ys = [...document.querySelectorAll<HTMLElement>('.snap')].map((s) => Math.round(s.getBoundingClientRect().top + scrollY - pad));
+        ys.push(max);
+        return [...new Set(ys.map((y) => Math.min(Math.max(y, 0), max)))].sort((a, b) => a - b);
+      };
+      let x0 = 0, y0 = 0, busy = false;
+      if (document.documentElement.classList.contains('touch')) {
+        document.documentElement.classList.add('touch-paging');
+        addEventListener('touchstart', (e) => { x0 = e.touches[0].clientX; y0 = e.touches[0].clientY; }, { passive: true });
+        addEventListener('touchmove', (e) => {
+          if (!touchPaging()) return;
+          const dx = e.touches[0].clientX - x0, dy = e.touches[0].clientY - y0;
+          if (Math.abs(dy) > Math.abs(dx)) e.preventDefault();
+        }, { passive: false });
+        addEventListener('touchend', (e) => {
+          if (!touchPaging() || busy) return;
+          const dx = e.changedTouches[0].clientX - x0, dy = e.changedTouches[0].clientY - y0;
+          if (Math.abs(dy) < 30 || Math.abs(dy) < Math.abs(dx)) return;
+          const s = stops(), y = scrollY;
+          let i = s.findIndex((v) => v > y + 4);
+          if (i === -1) i = s.length;
+          const cur = s.reduce((best, v, k) => (Math.abs(v - y) < Math.abs(s[best] - y) ? k : best), 0);
+          const target = dy < 0 ? s[Math.min(cur + 1, s.length - 1)] : s[Math.max(cur - 1, 0)];
+          busy = true;
+          scrollTo({ top: target, behavior: 'smooth' });
+          setTimeout(() => { busy = false; }, 600);
+        }, { passive: true });
+      }
     </script>
   </body>
 </html>

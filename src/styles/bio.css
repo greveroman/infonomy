@@ -753,3 +753,19 @@ a.doc-dl:hover{background:var(--leaf-deep);color:#fff;}
 @media (max-width:1280px){.ftr__logo img{height:66px;}}
 @media (max-width:640px){.ftr__logo img{height:52px;}}
 @media (min-width:821px){.hdr__nav a,.hdr .btn--amber{font-size:15px;}}
+/* Планшет в горизонтали (сенсорный экран): вёрстка как на ноутбуке, но разделы растут по содержимому —
+   невысокий экран Safari не обрезает текст и ничего не заезжает под шапку; без «прилипания» к слайдам */
+@media (min-width:1001px) and (hover:none){
+  html{scroll-snap-type:none !important;}
+  .slide,.hero.slide,.sec.slide,#docs.slide,.rv-docs.slide{height:auto !important;min-height:0;overflow:visible;}
+  .hero.slide{padding-top:calc(var(--hdr-h) * 0 + 48px);}
+  .sec.slide{padding-top:56px !important;}
+  .slide > .wrap{flex:none;}
+  .slide__terrace{margin-top:64px !important;}
+  .ab-accs{max-height:none;overflow:visible;}
+}
+/* Планшет в горизонтали: текст (кроме заголовков) не крупнее пунктов меню — 15 px */
+@media (min-width:1001px) and (hover:none){
+  main p:not(.ab-quote),main li,main .lead,main .ab-hero__lead,main .join__text,main .ab-circle__name,main .ab-stage__title,
+  main .ab-sheet__title,main .ab-tab b,main .tm-name,main .btn,main .jf__success,main .ab-text{font-size:15px !important;}
+}

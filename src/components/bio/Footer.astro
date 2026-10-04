@@ -9,12 +9,9 @@ const columns = f.links[Astro.props.page];
   <div class="wrap hdr__wrap">
     <div class="ftr__grid">
       <div class="ftr__brand">
-        <a href="/" class="ftr__logo" aria-label={site.name}>
-          <span class="ftr__mark" aria-hidden="true"></span>
-          <span class="ftr__word">КБ ВЕКТОР</span>
+        <a href="/" class="ftr__logo" aria-label="Институт развития сельских территорий — на главную">
+          <img src="/images/logo-irst.png" alt="Институт развития сельских территорий" width="844" height="345" />
         </a>
-        <div class="ftr__tagline">конструкторское бюро</div>
-        <div class="ftr__tagline">{f.tagline.toLowerCase()}</div>
         <div class="ftr__rights">{f.rights}</div>
       </div>
       {columns.map((col) => (
@@ -29,25 +26,4 @@ const columns = f.links[Astro.props.page];
   // Реальная высота подвала — для одноэкранных страниц (слайд + подвал = ровно одно окно)
   const ftr = document.querySelector<HTMLElement>('.ftr');
   if (ftr) new ResizeObserver(() => document.documentElement.style.setProperty('--ftr-h', `${ftr.offsetHeight}px`)).observe(ftr);
-</script>
-<script>
-  // Подписи — той же ширины, что строка «логотип + КБ ВЕКТОР»
-  const fitTagline = () => {
-    const logo = document.querySelector<HTMLElement>('.ftr__logo');
-    const word = document.querySelector<HTMLElement>('.ftr__word');
-    if (!logo || !word) return;
-    // сравниваем по видимому краю букв: разрядка добавляет хвост после последнего символа
-    const target = logo.getBoundingClientRect().width - parseFloat(getComputedStyle(word).letterSpacing);
-    document.querySelectorAll<HTMLElement>('.ftr__tagline').forEach((tag) => {
-      tag.style.letterSpacing = '0px';
-      const n = (tag.textContent ?? '').length;
-      for (let k = 0; k < 4; k++) {
-        const d = target - (tag.getBoundingClientRect().width - parseFloat(tag.style.letterSpacing));
-        if (Math.abs(d) < 0.3) break;
-        tag.style.letterSpacing = `${parseFloat(tag.style.letterSpacing) + d / (n - 1)}px`;
-      }
-    });
-  };
-  document.fonts.ready.then(fitTagline);
-  addEventListener('resize', fitTagline);
 </script>

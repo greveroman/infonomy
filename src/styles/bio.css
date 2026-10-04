@@ -861,7 +861,7 @@ a.doc-dl:hover{background:var(--leaf-deep);color:#fff;}
   html[data-page="home"]:not(.touch) main :is(p,li,.lead,.join__text){line-height:1.6 !important;}
 }
 /* Главная, компьютер: «подзаголовок» — второй размер шрифта.
-   «Ход исследования» и «Основы устойчивого будущего…» — одинаково */
+   «Промежуточные обзоры…» и «Основы устойчивого будущего…» — одинаково */
 @media (min-width:1001px){
-  html[data-page="home"]:not(.touch) :is(#docs .docs-head .h2,.slab h2){font-size:26px !important;line-height:1.25 !important;font-weight:300 !important;letter-spacing:-0.015em !important;}
+  html[data-page="home"]:not(.touch) :is(#docs .docs-head .lead,.slab h2){font-size:26px !important;line-height:1.25 !important;font-weight:300 !important;letter-spacing:-0.015em !important;}
 }

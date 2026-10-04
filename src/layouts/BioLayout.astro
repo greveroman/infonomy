@@ -53,7 +53,7 @@ const ogImage = new URL(site.ogImage, Astro.site).href;
       const fit = () => {
         document.querySelectorAll<HTMLElement>('.slide > .wrap').forEach((wrap) => {
           wrap.style.transform = '';
-          if (!slides.matches || !document.documentElement.classList.contains('touch')) return;
+          if (!slides.matches || !document.documentElement.classList.contains('touch') || document.documentElement.dataset.page === 'home') return; // главная на планшете — как на компьютере
           const kids = [...wrap.children] as HTMLElement[];
           if (!kids.length) return;
           const prev = wrap.style.justifyContent;

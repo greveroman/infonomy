@@ -44,5 +44,30 @@ const ogImage = new URL(site.ogImage, Astro.site).href;
       <slot />
     </main>
     <Footer page={page} />
+    <script>
+      // Компьютер и планшет в горизонтали: каждый слайд — ровно экран. Если на невысоком экране содержимое
+      // слайда не помещается, оно пропорционально уменьшается (zoom), чтобы ничего не обрезалось и не уходило под шапку.
+      const slides = matchMedia('(min-width: 1001px)');
+      const fit = () => {
+        document.querySelectorAll<HTMLElement>('.slide > .wrap').forEach((wrap) => {
+          wrap.style.zoom = '';
+          if (!slides.matches) return;
+          const kids = [...wrap.children] as HTMLElement[];
+          if (!kids.length) return;
+          const prev = wrap.style.justifyContent;
+          wrap.style.justifyContent = 'flex-start';
+          const top = wrap.getBoundingClientRect().top + parseFloat(getComputedStyle(wrap).paddingTop);
+          const need = Math.max(...kids.map((k) => k.getBoundingClientRect().bottom + parseFloat(getComputedStyle(k).marginBottom))) - top;
+          wrap.style.justifyContent = prev;
+          const cs = getComputedStyle(wrap);
+          const avail = wrap.clientHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom) - 12;
+          if (need > avail) wrap.style.zoom = String(Math.max(0.45, avail / need));
+        });
+      };
+      document.fonts.ready.then(fit);
+      addEventListener('load', fit);
+      addEventListener('resize', fit);
+      slides.addEventListener('change', fit);
+    </script>
   </body>
 </html>

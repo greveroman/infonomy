@@ -852,3 +852,11 @@ a.doc-dl:hover{background:var(--leaf-deep);color:#fff;}
   html[data-page="home"] #join .join__text + .btn{margin-top:16px;}
   html[data-page="home"] #join .join__foot{margin-top:-40px;}
 }
+/* Главная, компьютер: весь текст на слайдах (кроме заголовков слайдов) — одним шрифтом, как пункты меню:
+   Onest, обычное начертание, 15 px, строчные, без разрядки */
+@media (min-width:1001px){
+  html[data-page="home"]:not(.touch) main :is(p,li,.lead,.join__text,.eyebrow,.card__num,.card__series,.card__title,.card__more,.doc-desc .label,.btn){
+    font-family:var(--sans) !important;font-size:15px !important;font-weight:400 !important;font-style:normal !important;
+    letter-spacing:normal !important;text-transform:none !important;}
+  html[data-page="home"]:not(.touch) main :is(p,li,.lead,.join__text){line-height:1.6 !important;}
+}

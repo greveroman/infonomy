@@ -698,4 +698,7 @@ a.doc-dl:hover{background:var(--leaf-deep);color:#fff;}
 @media (max-width:1200px){.ftr__grid{column-gap:40px;}}
 /* шапка: знак Института и адрес сайта */
 .hdr__icon{display:block;height:80px;width:auto;}
-@media (max-width:640px){.hdr__icon{height:42px;margin:0;}}
+/* как в логотипе подвала: знак — вертикальная черта — надпись, отступы по 20 % высоты знака */
+.hdr__logo:has(.hdr__icon){gap:16px;}
+.hdr__sep{display:block;width:1px;height:74px;background:rgba(52,93,74,0.35);}
+@media (max-width:640px){.hdr__icon{height:42px;margin:0;}.hdr__logo:has(.hdr__icon){gap:9px;}.hdr__sep{height:39px;}}

@@ -11,7 +11,7 @@ const v = Date.now().toString(36);
     <div class="strata" aria-hidden="true"></div>
     <div class="wrap">
       <h1>{team.title} <em class="acc">{team.titleAccent}</em></h1>
-      <ul class="tm-grid">
+      <ul class="tm-grid" style={`--tm-n:${Math.min(team.members.length, 4)}`}>
         {team.members.map((m) => (
           <li class="tm-person">
             <div class="tm-photo">

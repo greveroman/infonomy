@@ -865,3 +865,7 @@ a.doc-dl:hover{background:var(--leaf-deep);color:#fff;}
 @media (min-width:1001px){
   html[data-page="home"]:not(.touch) :is(#docs .docs-head .lead,.slab h2){font-size:26px !important;line-height:1.25 !important;font-weight:300 !important;letter-spacing:-0.015em !important;}
 }
+/* Главная, компьютер: «заголовок» — 48 px для всех заголовков слайдов, кроме большого заголовка на 1-м слайде */
+@media (min-width:1001px){
+  html[data-page="home"]:not(.touch) :is(main .h2,#join .join__count){font-size:48px !important;line-height:1.08 !important;}
+}

@@ -7,6 +7,16 @@ const current = Astro.props.current.replace(/(\.html|\/)$/, '') || '/';
 <header class="hdr">
   <div class="wrap hdr__wrap">
     <div class="hdr__pill">
+      <!-- фон капсулы: высокая «голова» под логотипом плавно переходит в полосу прежней высоты -->
+      <span class="hdr__bg" aria-hidden="true">
+        <svg class="hdr__head" viewBox="0 0 360 96" width="360" height="96">
+          <defs><linearGradient id="hdr-g" x1="0" y1="0" x2="0" y2="96" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#ffffff" /><stop offset=".55" stop-color="#fafcf8" /><stop offset="1" stop-color="#eaf0e7" /></linearGradient></defs>
+          <path d="M360,11 L340,11 C300,11 292,0 252,0 L48,0 A48,48 0 0 0 48,96 L252,96 C292,96 300,85 340,85 L360,85 Z" fill="url(#hdr-g)" />
+          <path d="M360,11.5 L340,11.5 C300,11.5 292,.5 252,.5 L48,.5 A47.5,47.5 0 0 0 48,95.5 L252,95.5 C292,95.5 300,84.5 340,84.5 L360,84.5" fill="none" stroke="rgba(210,219,206,0.9)" />
+        </svg>
+        <span class="hdr__bar"></span>
+      </span>
       <a href="/" class="hdr__logo" aria-label="Институт развития сельских территорий — на главную">
         <img class="hdr__full" src="/images/logo-irst-green.png" alt="Институт развития сельских территорий" width="590" height="240" />
       </a>

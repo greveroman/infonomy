@@ -797,3 +797,11 @@ a.doc-dl:hover{background:var(--leaf-deep);color:#fff;}
   /* слайд с документами: описание короче — не больше 4 строк */
   html.touch #docs .doc-desc p{display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;}
 }
+/* Главная на планшете, 4-й слайд: блок участников компактнее — вместе с подвалом ровно один экран */
+@media (min-width:1001px){
+  html.touch #join .join__in{padding:1.5vh 0;}
+  html.touch #join .join__cap{padding:clamp(20px,3.2vh,36px) clamp(28px,4vw,56px);}
+  html.touch #join .join__count{font-size:clamp(38px,6.4vh,64px);margin-top:12px;}
+  html.touch #join .join__text + .btn{margin-top:16px;}
+  html.touch #join .join__foot{margin-top:-40px;}
+}

@@ -78,8 +78,10 @@ const ogImage = new URL(site.ogImage, Astro.site).href;
         const pad = parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0;
         const max = document.documentElement.scrollHeight - innerHeight;
         const ys = [...document.querySelectorAll<HTMLElement>('.snap')].map((s) => Math.round(s.getBoundingClientRect().top + scrollY - pad));
-        ys.push(max);
-        return [...new Set(ys.map((y) => Math.min(Math.max(y, 0), max)))].sort((a, b) => a - b);
+        const list = [...new Set(ys.map((y) => Math.min(Math.max(y, 0), max)))].sort((a, b) => a - b);
+        // последний слайд вместе с подвалом: если до конца страницы осталось немного — это один и тот же экран
+        if (max - list[list.length - 1] > 80) list.push(max); else list[list.length - 1] = max;
+        return list;
       };
       let x0 = 0, y0 = 0, busy = false;
       if (document.documentElement.classList.contains('touch')) {

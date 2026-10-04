@@ -60,7 +60,16 @@ const [resA, resB] = research.title.split(/ (?=\S+$)/);
         {docs.items.filter((d) => !d.placeholder).map((d, i) => <DocCard doc={d} index={i} href={`/reviews#${d.id}`} />)}
       </div>
     </div>
-    <div class="slide__terrace"><Terrace fill="#0d1812" /></div>
   </section>
 
+  <section class="join slide" id="join" data-snap>
+    <div class="join__wave"><span class="snap" aria-hidden="true"></span><Terrace fill="#f5f7f2" above /></div>
+    <div class="join__body">
+      <div class="join__bg" aria-hidden="true"></div>
+      <div class="join__glow" aria-hidden="true"></div>
+      <div class="strata" aria-hidden="true"></div>
+      <div class="wrap"></div>
+      <div class="join__foot"><Terrace fill="#0d1812" /></div>
+    </div>
+  </section>
 </BioLayout>

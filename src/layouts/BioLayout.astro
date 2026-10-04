@@ -48,11 +48,11 @@ const ogImage = new URL(site.ogImage, Astro.site).href;
     <Footer page={page} />
     <script>
       // Планшет в горизонтали: каждый слайд — ровно экран. Если на невысоком экране содержимое
-      // слайда не помещается, оно пропорционально уменьшается (zoom), чтобы ничего не обрезалось и не уходило под шапку.
+      // слайда не помещается, оно пропорционально уменьшается (transform: scale), чтобы ничего не обрезалось и не уходило под шапку.
       const slides = matchMedia('(min-width: 1001px)');
       const fit = () => {
         document.querySelectorAll<HTMLElement>('.slide > .wrap').forEach((wrap) => {
-          wrap.style.zoom = '';
+          wrap.style.transform = '';
           if (!slides.matches || !document.documentElement.classList.contains('touch')) return;
           const kids = [...wrap.children] as HTMLElement[];
           if (!kids.length) return;
@@ -63,11 +63,12 @@ const ogImage = new URL(site.ogImage, Astro.site).href;
           wrap.style.justifyContent = prev;
           const cs = getComputedStyle(wrap);
           const avail = wrap.clientHeight - parseFloat(cs.paddingTop) - 6; // нижний отступ слайда можно занять
-          if (need > avail) wrap.style.zoom = String(Math.max(0.45, avail / need));
+          if (need > avail) wrap.style.transform = `scale(${Math.max(0.45, avail / need)})`; // scale по центру — работает во всех браузерах, в т. ч. Safari на iPad
         });
       };
       document.fonts.ready.then(fit);
       addEventListener('load', fit);
+      setTimeout(fit, 400); setTimeout(fit, 1500);
       addEventListener('resize', fit);
       slides.addEventListener('change', fit);
 

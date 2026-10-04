@@ -782,3 +782,18 @@ a.doc-dl:hover{background:var(--leaf-deep);color:#fff;}
   html.touch #docs .doc-desc p{font-size:13px !important;line-height:1.5;}
   html.touch #docs .card__body{padding-top:8px;}
 }
+/* Главная на планшете */
+@media (min-width:1001px){
+  /* над капсулой не видно текста предыдущего слайда */
+  html.touch .hdr::before{content:"";position:absolute;left:0;right:0;top:-14px;height:calc(14px + 14px + 40px);background:var(--bg);z-index:-1;pointer-events:none;}
+  /* 1-й слайд: заголовок, карточка с фото и текст в ней меньше, заголовок не под капсулой */
+  html.touch .hero.slide{padding-top:calc(28px + 3vh);}
+  html.touch .hero h1{font-size:clamp(40px,min(6.4vw,8vh),96px);}
+  html.touch .hero__stage{margin:2vh 0 1.5vh;}
+  html.touch .slab{padding:clamp(14px,2.4vh,30px) clamp(26px,3vw,48px);max-width:min(620px,52%);}
+  html.touch .slab h2{font-size:clamp(17px,2.3vh,24px);}
+  html.touch .slab__paras{margin-top:1.4vh;gap:1vh;}
+  html.touch main .slab p.lead,html.touch main .slab p:not(.lead){font-size:13px !important;line-height:1.5;}
+  /* слайд с документами: описание короче — не больше 4 строк */
+  html.touch #docs .doc-desc p{display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;}
+}

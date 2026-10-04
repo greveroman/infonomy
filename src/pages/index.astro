@@ -8,6 +8,8 @@ const { hero, initiative, research, participants } = home;
 const last = hero.titleLines.length - 1;
 // «… — это …»: вторую часть заголовка выделяем курсивом
 const [initA, initB] = initiative.title.split(' — ');
+// «Ход исследования»: последнее слово — акцентным курсивом, как в заголовке первого слайда
+const [resA, resB] = research.title.split(/ (?=\S+$)/);
 // «Более 100 участников»: число выделяем тёплым цветом
 const [countA, countNum, countB] = participants.count.split(/(\d+)/);
 ---
@@ -50,7 +52,7 @@ const [countA, countNum, countB] = participants.count.split(/(\d+)/);
     <div class="wrap">
       <div class="docs-head">
         <div>
-          <h2 class="h2">{research.title}</h2>
+          <h2 class="h2">{resB ? <>{resA + " "}<em class="acc">{resB}</em></> : research.title}</h2>
           <p class="lead">{research.lead}</p>
         </div>
         <a href={research.allLink.href} class="btn btn--ghost">{research.allLink.label.replace(/\s*>\s*$/, '')} <span class="arr">→</span></a>

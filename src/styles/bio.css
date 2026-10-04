@@ -882,3 +882,8 @@ a.doc-dl:hover{background:var(--leaf-deep);color:#fff;}
   html[data-page="home"]:not(.touch) #docs .docs-head .btn{flex-shrink:0;}
   html[data-page="home"]:not(.touch) #docs .docs{margin-top:clamp(16px,2.6vh,32px);}
 }
+/* Главная, компьютер: шкала — большой заголовок / заголовок 36 px / подзаголовок 26 px / текст 15 px / мелкий текст 13 px */
+@media (min-width:1001px){
+  html[data-page="home"]:not(.touch) :is(.slab h2,#docs .docs-head .h2){font-size:36px !important;line-height:1.15 !important;letter-spacing:-0.02em !important;}
+  html[data-page="home"]:not(.touch) :is(#docs .doc-desc .label,#docs .doc-desc p){font-size:13px !important;line-height:1.55 !important;}
+}

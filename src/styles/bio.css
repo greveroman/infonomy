@@ -865,9 +865,9 @@ a.doc-dl:hover{background:var(--leaf-deep);color:#fff;}
 @media (min-width:1001px){
   html[data-page="home"]:not(.touch) :is(#docs .docs-head .lead,.slab h2){font-size:26px !important;line-height:1.25 !important;font-weight:300 !important;letter-spacing:-0.015em !important;}
 }
-/* Главная, компьютер: «заголовок» — 48 px для всех заголовков слайдов, кроме большого заголовка на 1-м слайде */
+/* Главная, компьютер: «подзаголовок» — 26 px для всех заголовков слайдов, кроме большого заголовка на 1-м слайде */
 @media (min-width:1001px){
-  html[data-page="home"]:not(.touch) :is(main .h2,#join .join__count){font-size:48px !important;line-height:1.08 !important;}
+  html[data-page="home"]:not(.touch) :is(main .h2,#join .join__count){font-size:26px !important;line-height:1.25 !important;letter-spacing:-0.015em !important;}
 }
 /* Главная, компьютер: карточки документов одной высоты, «читать» внизу карточки, описания начинаются на одном уровне */
 @media (min-width:1001px){
@@ -877,6 +877,8 @@ a.doc-dl:hover{background:var(--leaf-deep);color:#fff;}
   html[data-page="home"]:not(.touch) #docs .card__body{flex:1;display:flex;flex-direction:column;}
   html[data-page="home"]:not(.touch) #docs .card__more{margin-top:auto;padding-top:12px;}
   html[data-page="home"]:not(.touch) #docs .card__win{height:clamp(64px,8.5vh,120px);}
+  html[data-page="home"]:not(.touch) #docs .docs-head{flex-wrap:nowrap;align-items:flex-end;}
   html[data-page="home"]:not(.touch) #docs .docs-head p{max-width:none;}
+  html[data-page="home"]:not(.touch) #docs .docs-head .btn{flex-shrink:0;}
   html[data-page="home"]:not(.touch) #docs .docs{margin-top:clamp(16px,2.6vh,32px);}
 }

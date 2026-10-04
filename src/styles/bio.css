@@ -758,3 +758,18 @@ a.doc-dl:hover{background:var(--leaf-deep);color:#fff;}
   main p:not(.ab-quote),main li,main .lead,main .ab-hero__lead,main .join__text,main .ab-circle__name,main .ab-stage__title,
   main .ab-sheet__title,main .ab-tab b,main .tm-name,main .btn,main .jf__success,main .ab-text{font-size:15px !important;}
 }
+/* Планшет в горизонтали: манифест мельче и в 4 колонки, отступы на этапах меньше — слайды помещаются без сильного уменьшения */
+@media (min-width:1001px) and (hover:none){
+  #manifest .ab-quote{margin-top:1.2vh;font-size:clamp(22px,2.6vw,34px);}
+  #manifest .ab-cols{margin-top:2vh;columns:4;column-gap:28px;font-size:12.5px !important;line-height:1.5;}
+  #manifest .ab-cols p{font-size:12.5px !important;margin-bottom:.7em;break-inside:auto;}
+  /* этапы: отступы меньше */
+  #stages .ab-stagehead,#stage-2 .ab-stagehead{margin-top:.6vh;}
+  #stages .ab-tabs,#stage-2 .ab-tabs{margin-top:1.4vh;gap:18px;}
+  .ab-tabs__btns,.ab-tabs__list{gap:6px;}
+  .ab-tabs__list{--tab-pad:9px;}
+  .ab-tab{padding:9px 14px 9px 18px;gap:2px;}
+  .ab-tabs__panel{padding:16px 22px !important;}
+  .ab-panel{gap:7px;line-height:1.5;}
+  .ab-tabs__list .ab-note{padding:10px 14px;line-height:1.45;}
+}

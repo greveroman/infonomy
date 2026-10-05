@@ -8,6 +8,11 @@ const quote = manifesto.blocks.find((b) => b.type === 'quote');
 const paras = manifesto.blocks.filter((b) => b.type !== 'quote');
 // «Системные вызовы требуют системных решений.» — вторую половину выделяем курсивом
 const [heroA, heroB] = hero.title.split(/ (?=требуют)/);
+// заголовки слайдов: первая часть обычным шрифтом, вторая — акцентным курсивом
+const [quoteA, quoteB] = (quote?.text ?? '').split(/(?<=,) /);
+const [collA, collB] = collaboration.title.split(/ (?=над документом)/);
+const [st1A, st1B] = stage1.title.split(/(?<=:) /);
+const [st2A, st2B] = stage2.titleLines.join(' ').split(/(?<=:) /);
 const check = '<svg viewBox="0 0 20 20" width="12" height="12"><path d="M4 10.5 L8 14.5 L16 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" /></svg>';
 ---
 <BioLayout page="about">
@@ -29,7 +34,7 @@ const check = '<svg viewBox="0 0 20 20" width="12" height="12"><path d="M4 10.5 
   <section class="sec sec--white slide" id="manifest">
     <div class="wrap">
       <div class="eyebrow">{manifesto.label}</div>
-      {quote && <p class="ab-quote">{quote.text}</p>}
+      {quote && <p class="ab-quote">{quoteB ? <>{quoteA + " "}<em class="acc">{quoteB}</em></> : quote.text}</p>}
       <div class="ab-cols">
         {paras.map((b) => <p>{b.text}</p>)}
       </div>
@@ -79,7 +84,7 @@ const check = '<svg viewBox="0 0 20 20" width="12" height="12"><path d="M4 10.5 
       <div class="ab-collab">
         <div>
           <div class="eyebrow">{collaboration.label}</div>
-          <h2 class="h2" style="margin-top:2vh;">{collaboration.title}</h2>
+          <h2 class="h2" style="margin-top:2vh;">{collB ? <>{collA + " "}<em class="acc">{collB}</em></> : collaboration.title}</h2>
           <div class="ab-collab__text">
             <p>{collaboration.text}</p>
             <p class="ab-strong">{tasks.title}</p>
@@ -102,7 +107,7 @@ const check = '<svg viewBox="0 0 20 20" width="12" height="12"><path d="M4 10.5 
   <section class="sec sec--white slide" id="stages">
     <div class="wrap">
       <div class="eyebrow">{about.stagesTitle}</div>
-      <h2 class="h2 ab-stagehead">{stage1.title}</h2>
+      <h2 class="h2 ab-stagehead">{st1B ? <>{st1A + " "}<em class="acc">{st1B}</em></> : stage1.title}</h2>
       <div class="ab-tabs" data-tabs>
         <div class="ab-tabs__list" role="tablist" aria-label={stage1.title}>
           <div class="ab-tabs__btns">
@@ -136,7 +141,7 @@ const check = '<svg viewBox="0 0 20 20" width="12" height="12"><path d="M4 10.5 
   <section class="sec slide slide--pre-dark" id="stage-2">
     <div class="wrap">
       <div class="eyebrow">{about.stagesTitle}</div>
-      <h2 class="h2 ab-stagehead">{stage2.titleLines[0]} {stage2.titleLines[1]}</h2>
+      <h2 class="h2 ab-stagehead">{st2B ? <>{st2A + " "}<em class="acc">{st2B}</em></> : stage2.titleLines.join(" ")}</h2>
       <div class="ab-tabs" data-tabs>
         <div class="ab-tabs__list" role="tablist" aria-label={stage2.titleLines.join(' ')}>
           <div class="ab-tabs__btns">

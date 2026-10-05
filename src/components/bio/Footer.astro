@@ -3,7 +3,6 @@ import site from '../../content/site.json';
 
 interface Props { page: keyof typeof site.footer.links }
 const f = site.footer;
-const columns = f.links[Astro.props.page];
 ---
 <footer class="ftr">
   <div class="wrap hdr__wrap">
@@ -14,11 +13,6 @@ const columns = f.links[Astro.props.page];
         </a>
         <div class="ftr__rights">{f.rights}</div>
       </div>
-      {columns.map((col) => (
-        <nav aria-label="Навигация в подвале">
-          {col.map((l) => <a href={l.href}>{l.label}</a>)}
-        </nav>
-      ))}
     </div>
   </div>
 </footer>

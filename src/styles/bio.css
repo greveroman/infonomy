@@ -987,7 +987,7 @@ a.doc-dl:hover{background:var(--leaf-deep);color:#fff;}
   html:is([data-page="team"],[data-page="experts"],[data-page="services"],[data-page="partners"],[data-page="research"]):not(.touch) .tm-hero.slide{padding-top:calc(var(--hdr-band) - var(--hdr-h) + 12px) !important;}
   html:is([data-page="team"],[data-page="experts"],[data-page="services"],[data-page="partners"],[data-page="research"]):not(.touch) .tm-hero h1{font-size:72px !important;line-height:1 !important;}
   html:is([data-page="team"],[data-page="experts"],[data-page="services"],[data-page="partners"],[data-page="research"]):not(.touch) .tm-name{font-size:15px !important;margin-top:14px;}
-  html:is([data-page="team"],[data-page="experts"],[data-page="services"],[data-page="partners"],[data-page="research"]):not(.touch) .tm-hero .tm-grid{margin-top:3vh;--tm-d:min(100%,300px,max(140px,calc(100svh - var(--hdr-band) - var(--ftr-h) - 110px - 72px - 3vh - 34px - 70px)));}
+  html:is([data-page="team"],[data-page="experts"],[data-page="services"],[data-page="partners"],[data-page="research"]):not(.touch) .tm-hero .tm-grid{margin-top:3vh;--tm-d:min(100%,220px,max(120px,calc(100svh - var(--hdr-band) - var(--ftr-h) - 110px - 72px - 3vh - 34px - 70px)));}
   html:is([data-page="team"],[data-page="experts"],[data-page="services"],[data-page="partners"],[data-page="research"]):not(.touch) .tm-hero .ex-track{margin-top:calc(3vh - 20px);margin-bottom:-30px;}
 }
 /* «Обзоры», компьютер: шкала как на остальных страницах — большой заголовок 72 px, текст 15 px;

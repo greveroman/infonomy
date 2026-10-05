@@ -1,7 +1,7 @@
 {
   "_comment": "Эксперты. photo — путь к фото в public/images/experts, квадратное от 400×400; пока null — пустой белый круг.",
   "title": "Эксперты",
-  "titleAccent": "проекта",
+  "titleAccent": "Института",
   "members": [
     {
       "name": "Имя Фамилия",

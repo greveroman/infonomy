@@ -39,443 +39,60 @@
     "label": "Проект",
     "name": "Конструкторское бюро ВЕКТОР",
     "tagline": "Архитектура живых систем",
-    "_comment": "Ссылки подвала (три столбца), одинаковые на всех страницах; разделы «О проекте» — якоря на слайды.",
-    "links": {
-      "home": [
-        [
-          {
-            "label": "Главная",
-            "href": "/"
-          },
-          {
-            "label": "О проекте",
-            "href": "/about"
-          },
-          {
-            "label": "Манифест",
-            "href": "/about#manifest"
-          }
-        ],
-        [
-          {
-            "label": "Методология #1",
-            "href": "/about#methodology"
-          },
-          {
-            "label": "Методология #2",
-            "href": "/about#methodology-stages"
-          },
-          {
-            "label": "Принцип работы",
-            "href": "/about#romashka"
-          }
-        ],
-        [
-          {
-            "label": "Этап #1",
-            "href": "/about#stages"
-          },
-          {
-            "label": "Этап #2",
-            "href": "/about#stage-2"
-          }
-        ],
-        [
-          {
-            "label": "Команда",
-            "href": "/team"
-          },
-          {
-            "label": "Эксперты",
-            "href": "/experts"
-          },
-          {
-            "label": "Обзоры",
-            "href": "/reviews"
-          }
-        ]
-      ],
-      "about": [
-        [
-          {
-            "label": "Главная",
-            "href": "/"
-          },
-          {
-            "label": "О проекте",
-            "href": "/about"
-          },
-          {
-            "label": "Манифест",
-            "href": "/about#manifest"
-          }
-        ],
-        [
-          {
-            "label": "Методология #1",
-            "href": "/about#methodology"
-          },
-          {
-            "label": "Методология #2",
-            "href": "/about#methodology-stages"
-          },
-          {
-            "label": "Принцип работы",
-            "href": "/about#romashka"
-          }
-        ],
-        [
-          {
-            "label": "Этап #1",
-            "href": "/about#stages"
-          },
-          {
-            "label": "Этап #2",
-            "href": "/about#stage-2"
-          }
-        ],
-        [
-          {
-            "label": "Команда",
-            "href": "/team"
-          },
-          {
-            "label": "Эксперты",
-            "href": "/experts"
-          },
-          {
-            "label": "Обзоры",
-            "href": "/reviews"
-          }
-        ]
-      ],
-      "reviews": [
-        [
-          {
-            "label": "Главная",
-            "href": "/"
-          },
-          {
-            "label": "О проекте",
-            "href": "/about"
-          },
-          {
-            "label": "Манифест",
-            "href": "/about#manifest"
-          }
-        ],
-        [
-          {
-            "label": "Методология #1",
-            "href": "/about#methodology"
-          },
-          {
-            "label": "Методология #2",
-            "href": "/about#methodology-stages"
-          },
-          {
-            "label": "Принцип работы",
-            "href": "/about#romashka"
-          }
-        ],
-        [
-          {
-            "label": "Этап #1",
-            "href": "/about#stages"
-          },
-          {
-            "label": "Этап #2",
-            "href": "/about#stage-2"
-          }
-        ],
-        [
-          {
-            "label": "Команда",
-            "href": "/team"
-          },
-          {
-            "label": "Эксперты",
-            "href": "/experts"
-          },
-          {
-            "label": "Обзоры",
-            "href": "/reviews"
-          }
-        ]
-      ],
-      "join": [
-        [
-          {
-            "label": "Главная",
-            "href": "/"
-          },
-          {
-            "label": "О проекте",
-            "href": "/about"
-          },
-          {
-            "label": "Манифест",
-            "href": "/about#manifest"
-          }
-        ],
-        [
-          {
-            "label": "Методология #1",
-            "href": "/about#methodology"
-          },
-          {
-            "label": "Методология #2",
-            "href": "/about#methodology-stages"
-          },
-          {
-            "label": "Принцип работы",
-            "href": "/about#romashka"
-          }
-        ],
-        [
-          {
-            "label": "Этап #1",
-            "href": "/about#stages"
-          },
-          {
-            "label": "Этап #2",
-            "href": "/about#stage-2"
-          }
-        ],
-        [
-          {
-            "label": "Команда",
-            "href": "/team"
-          },
-          {
-            "label": "Эксперты",
-            "href": "/experts"
-          },
-          {
-            "label": "Обзоры",
-            "href": "/reviews"
-          }
-        ]
-      ],
-      "team": [
-        [
-          {
-            "label": "Главная",
-            "href": "/"
-          },
-          {
-            "label": "О проекте",
-            "href": "/about"
-          },
-          {
-            "label": "Манифест",
-            "href": "/about#manifest"
-          }
-        ],
-        [
-          {
-            "label": "Методология #1",
-            "href": "/about#methodology"
-          },
-          {
-            "label": "Методология #2",
-            "href": "/about#methodology-stages"
-          },
-          {
-            "label": "Принцип работы",
-            "href": "/about#romashka"
-          }
-        ],
-        [
-          {
-            "label": "Этап #1",
-            "href": "/about#stages"
-          },
-          {
-            "label": "Этап #2",
-            "href": "/about#stage-2"
-          }
-        ],
-        [
-          {
-            "label": "Команда",
-            "href": "/team"
-          },
-          {
-            "label": "Эксперты",
-            "href": "/experts"
-          },
-          {
-            "label": "Обзоры",
-            "href": "/reviews"
-          }
-        ]
-      ],
-      "experts": [
-        [
-          {
-            "label": "Главная",
-            "href": "/"
-          },
-          {
-            "label": "О проекте",
-            "href": "/about"
-          },
-          {
-            "label": "Манифест",
-            "href": "/about#manifest"
-          }
-        ],
-        [
-          {
-            "label": "Методология #1",
-            "href": "/about#methodology"
-          },
-          {
-            "label": "Методология #2",
-            "href": "/about#methodology-stages"
-          },
-          {
-            "label": "Принцип работы",
-            "href": "/about#romashka"
-          }
-        ],
-        [
-          {
-            "label": "Этап #1",
-            "href": "/about#stages"
-          },
-          {
-            "label": "Этап #2",
-            "href": "/about#stage-2"
-          }
-        ],
-        [
-          {
-            "label": "Команда",
-            "href": "/team"
-          },
-          {
-            "label": "Эксперты",
-            "href": "/experts"
-          },
-          {
-            "label": "Обзоры",
-            "href": "/reviews"
-          }
-        ]
-      ],
-      "services": [
-        [
-          {
-            "label": "Главная",
-            "href": "/"
-          },
-          {
-            "label": "О проекте",
-            "href": "/about"
-          },
-          {
-            "label": "Манифест",
-            "href": "/about#manifest"
-          }
-        ],
-        [
-          {
-            "label": "Методология #1",
-            "href": "/about#methodology"
-          },
-          {
-            "label": "Методология #2",
-            "href": "/about#methodology-stages"
-          },
-          {
-            "label": "Принцип работы",
-            "href": "/about#romashka"
-          }
-        ],
-        [
-          {
-            "label": "Этап #1",
-            "href": "/about#stages"
-          },
-          {
-            "label": "Этап #2",
-            "href": "/about#stage-2"
-          }
-        ],
-        [
-          {
-            "label": "Команда",
-            "href": "/team"
-          },
-          {
-            "label": "Эксперты",
-            "href": "/experts"
-          },
-          {
-            "label": "Обзоры",
-            "href": "/reviews"
-          }
-        ]
-      ],
-      "partners": [
-        [
-          {
-            "label": "Главная",
-            "href": "/"
-          },
-          {
-            "label": "О проекте",
-            "href": "/about"
-          },
-          {
-            "label": "Манифест",
-            "href": "/about#manifest"
-          }
-        ],
-        [
-          {
-            "label": "Методология #1",
-            "href": "/about#methodology"
-          },
-          {
-            "label": "Методология #2",
-            "href": "/about#methodology-stages"
-          },
-          {
-            "label": "Принцип работы",
-            "href": "/about#romashka"
-          }
-        ],
-        [
-          {
-            "label": "Этап #1",
-            "href": "/about#stages"
-          },
-          {
-            "label": "Этап #2",
-            "href": "/about#stage-2"
-          }
-        ],
-        [
-          {
-            "label": "Команда",
-            "href": "/team"
-          },
-          {
-            "label": "Эксперты",
-            "href": "/experts"
-          },
-          {
-            "label": "Обзоры",
-            "href": "/reviews"
-          }
-        ]
-      ]
-    },
+    "_comment": "Подвал справа: контакты, документы, реквизиты. Значения в квадратных скобках — заменить на реальные данные.",
     "copyright": "Архитектура живых систем — 2026",
-    "rights": "Copyright © 2026 IRST Inc. All rights reserved."
+    "rights": "Copyright © 2026 IRST Inc. All rights reserved.",
+    "columns": [
+      {
+        "title": "Контакты",
+        "items": [
+          {
+            "label": "Почта: [указать]"
+          },
+          {
+            "label": "Телефон: [указать]"
+          },
+          {
+            "label": "Telegram: [указать]"
+          },
+          {
+            "label": "ВКонтакте: [указать]"
+          }
+        ]
+      },
+      {
+        "title": "Документы",
+        "items": [
+          {
+            "label": "Политика конфиденциальности",
+            "href": "/privacy"
+          },
+          {
+            "label": "Пользовательское соглашение",
+            "href": "/terms"
+          }
+        ]
+      },
+      {
+        "title": "Реквизиты",
+        "items": [
+          {
+            "label": "[Полное наименование]"
+          },
+          {
+            "label": "ИНН [указать]"
+          },
+          {
+            "label": "ОГРН [указать]"
+          },
+          {
+            "label": "Адрес: [указать]"
+          }
+        ]
+      }
+    ],
+    "consent": "Персональные данные, опубликованные на сайте, размещены с согласия субъектов персональных данных.",
+    "source": "При любом использовании материалов сайта пользователь обязан указывать источник в виде ссылки на сайт ИРСТ.РФ или Институт."
   },
   "seo": {
     "home": {
@@ -509,6 +126,14 @@
     "partners": {
       "title": "ИРСТ.РФ > Партнеры",
       "description": "Партнёры инициативы «Архитектура живых систем»."
+    },
+    "privacy": {
+      "title": "ИРСТ.РФ > Политика конфиденциальности",
+      "description": "Политика обработки персональных данных."
+    },
+    "terms": {
+      "title": "ИРСТ.РФ > Пользовательское соглашение",
+      "description": "Условия использования сайта."
     }
   },
   "joinButton": {

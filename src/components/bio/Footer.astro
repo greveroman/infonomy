@@ -1,7 +1,7 @@
 ---
 import site from '../../content/site.json';
 
-interface Props { page: keyof typeof site.footer.links }
+interface Props { page?: string }
 const f = site.footer;
 ---
 <footer class="ftr">
@@ -13,6 +13,13 @@ const f = site.footer;
         </a>
         <div class="ftr__rights">{f.rights}</div>
       </div>
+      {f.columns.map((col) => (
+        <nav aria-label={col.title}>
+          <div class="ftr__h">{col.title}</div>
+          {col.items.map((l) => ('href' in l && l.href) ? <a href={l.href}>{l.label}</a> : <span>{l.label}</span>)}
+        </nav>
+      ))}
+      <div class="ftr__legal"><div>{f.consent}</div><div>{f.source}</div></div>
     </div>
   </div>
 </footer>

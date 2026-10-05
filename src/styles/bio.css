@@ -559,7 +559,7 @@ a.doc-dl:hover{background:var(--leaf-deep);color:#fff;}
 }
 @media (min-width:1001px){
   /* «Команда» — один экран без прокрутки: меню + заголовок + круги + подвал */
-  html:is([data-page="team"],[data-page="experts"],[data-page="services"],[data-page="partners"],[data-page="research"],[data-page="privacy"],[data-page="terms"]){scroll-snap-type:none;}
+  html:is([data-page="team"],[data-page="experts"],[data-page="services"],[data-page="partners"],[data-page="research"],[data-page="privacy"],[data-page="terms"],[data-page="personal-data"]){scroll-snap-type:none;}
   .tm-hero.slide{height:calc(100svh - var(--hdr-h) - var(--ftr-h));padding-top:calc(2vh + 24px);}
   .tm-hero.slide > .wrap{justify-content:center;}
   .tm-hero h1{font-size:clamp(32px,min(4.4vw,6vh),80px);line-height:1;letter-spacing:-0.04em;}
@@ -984,11 +984,11 @@ a.doc-dl:hover{background:var(--leaf-deep);color:#fff;}
 /* «Команда» и «Эксперты», компьютер: большой заголовок как на «О проекте», имена — текст 15 px,
    содержимое по центру между капсулой и волной, круги по размеру свободного места */
 @media (min-width:1001px){
-  html:is([data-page="team"],[data-page="experts"],[data-page="services"],[data-page="partners"],[data-page="research"],[data-page="privacy"],[data-page="terms"]):not(.touch) .tm-hero.slide{padding-top:calc(var(--hdr-band) - var(--hdr-h) + 12px) !important;}
-  html:is([data-page="team"],[data-page="experts"],[data-page="services"],[data-page="partners"],[data-page="research"],[data-page="privacy"],[data-page="terms"]):not(.touch) .tm-hero h1{font-size:72px !important;line-height:1 !important;}
-  html:is([data-page="team"],[data-page="experts"],[data-page="services"],[data-page="partners"],[data-page="research"],[data-page="privacy"],[data-page="terms"]):not(.touch) .tm-name{font-size:15px !important;margin-top:14px;}
-  html:is([data-page="team"],[data-page="experts"],[data-page="services"],[data-page="partners"],[data-page="research"],[data-page="privacy"],[data-page="terms"]):not(.touch) .tm-hero .tm-grid{margin-top:3vh;--tm-d:min(100%,220px,max(120px,calc(100svh - var(--hdr-band) - var(--ftr-h) - 110px - 72px - 3vh - 34px - 70px)));}
-  html:is([data-page="team"],[data-page="experts"],[data-page="services"],[data-page="partners"],[data-page="research"],[data-page="privacy"],[data-page="terms"]):not(.touch) .tm-hero .ex-track{margin-top:calc(3vh - 20px);margin-bottom:-30px;}
+  html:is([data-page="team"],[data-page="experts"],[data-page="services"],[data-page="partners"],[data-page="research"],[data-page="privacy"],[data-page="terms"],[data-page="personal-data"]):not(.touch) .tm-hero.slide{padding-top:calc(var(--hdr-band) - var(--hdr-h) + 12px) !important;}
+  html:is([data-page="team"],[data-page="experts"],[data-page="services"],[data-page="partners"],[data-page="research"],[data-page="privacy"],[data-page="terms"],[data-page="personal-data"]):not(.touch) .tm-hero h1{font-size:72px !important;line-height:1 !important;}
+  html:is([data-page="team"],[data-page="experts"],[data-page="services"],[data-page="partners"],[data-page="research"],[data-page="privacy"],[data-page="terms"],[data-page="personal-data"]):not(.touch) .tm-name{font-size:15px !important;margin-top:14px;}
+  html:is([data-page="team"],[data-page="experts"],[data-page="services"],[data-page="partners"],[data-page="research"],[data-page="privacy"],[data-page="terms"],[data-page="personal-data"]):not(.touch) .tm-hero .tm-grid{margin-top:3vh;--tm-d:min(100%,220px,max(120px,calc(100svh - var(--hdr-band) - var(--ftr-h) - 110px - 72px - 3vh - 34px - 70px)));}
+  html:is([data-page="team"],[data-page="experts"],[data-page="services"],[data-page="partners"],[data-page="research"],[data-page="privacy"],[data-page="terms"],[data-page="personal-data"]):not(.touch) .tm-hero .ex-track{margin-top:calc(3vh - 20px);margin-bottom:-30px;}
 }
 /* «Обзоры», компьютер: шкала как на остальных страницах — большой заголовок 72 px, текст 15 px;
    содержимое не видно над капсулой, документы с подвалом в один экран */
@@ -1025,7 +1025,7 @@ a.doc-dl:hover{background:var(--leaf-deep);color:#fff;}
   html:not(.touch) .hdr__nav{justify-content:space-between;}
 }
 /* Подвал: контакты, документы, реквизиты; строка о согласии на персональные данные */
-.ftr__h{font-size:15px;color:#fff;margin-bottom:4px;}
+.ftr__h{font-size:15px;color:#fff;margin-bottom:2px;}
 .ftr nav span{color:rgba(230,239,232,0.82);white-space:nowrap;}
 @media (min-width:1001px){
   .ftr__grid{grid-template-columns:1fr repeat(3,auto);}

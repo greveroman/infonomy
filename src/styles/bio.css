@@ -1002,7 +1002,7 @@ a.doc-dl:hover{background:var(--leaf-deep);color:#fff;}
 /* Компьютер 1001–1480px: 8 пунктов меню помещаются в капсулу — только отступы пунктов меньше, шрифт 15px не меняется */
 @media (min-width:1001px) and (max-width:1480px){
   html:not(.touch) .hdr__nav{gap:0;}
-  html:not(.touch) .hdr__nav a{padding:10px 9px;}
+  html:not(.touch) .hdr__nav a{padding:10px 15px;}
   html:not(.touch) .hdr .btn--amber{padding:12px 18px;}
 }
 @media (min-width:1001px) and (max-width:1200px){
@@ -1011,4 +1011,7 @@ a.doc-dl:hover{background:var(--leaf-deep);color:#fff;}
 }
 @media (min-width:1001px){
   html:not(.touch) .hdr .btn--amber{flex-shrink:0;}
+}
+@media (min-width:1101px) and (max-width:1200px){
+  html:not(.touch) .hdr__nav a{padding:10px 9px;}
 }

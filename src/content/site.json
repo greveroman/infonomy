@@ -11,10 +11,6 @@
       "href": "/"
     },
     {
-      "label": "О проекте",
-      "href": "/about"
-    },
-    {
       "label": "Команда",
       "href": "/team"
     },
@@ -23,20 +19,20 @@
       "href": "/experts"
     },
     {
-      "label": "Обзоры",
-      "href": "/reviews"
+      "label": "Партнеры",
+      "href": "/partners"
     },
     {
       "label": "Услуги",
       "href": "/services"
     },
     {
-      "label": "Партнеры",
-      "href": "/partners"
+      "label": "Исследования",
+      "href": "/reviews"
     },
     {
-      "label": "Исследования",
-      "href": "/research"
+      "label": "Проекты",
+      "href": "/about"
     }
   ],
   "footer": {

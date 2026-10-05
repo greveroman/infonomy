@@ -998,3 +998,14 @@ a.doc-dl:hover{background:var(--leaf-deep);color:#fff;}
   html[data-page="reviews"]:not(.touch) main .ab-hero__lead{line-height:1.6 !important;}
   html[data-page="reviews"]:not(.touch) .rv-hero.slide > .wrap{padding-bottom:var(--hdr-band) !important;}
 }
+
+/* Компьютер 1001–1400px: 8 пунктов меню помещаются в капсулу — только отступы пунктов меньше, шрифт 15px не меняется */
+@media (min-width:1001px) and (max-width:1400px){
+  html:not(.touch) .hdr__nav{gap:0;}
+  html:not(.touch) .hdr__nav a{padding:10px 11px;}
+  html:not(.touch) .hdr .btn--amber{padding:12px 18px;}
+}
+@media (min-width:1001px) and (max-width:1200px){
+  html:not(.touch) .hdr__nav a{padding:10px 6px;}
+  html:not(.touch) .hdr .btn--amber{padding:12px 14px;}
+}

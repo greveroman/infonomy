@@ -25,6 +25,18 @@
     {
       "label": "обзоры",
       "href": "/reviews"
+    },
+    {
+      "label": "услуги",
+      "href": "/services"
+    },
+    {
+      "label": "партнеры",
+      "href": "/partners"
+    },
+    {
+      "label": "исследования",
+      "href": "/research"
     }
   ],
   "footer": {

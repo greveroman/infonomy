@@ -356,6 +356,168 @@
             "href": "/reviews"
           }
         ]
+      ],
+      "services": [
+        [
+          {
+            "label": "главная",
+            "href": "/"
+          },
+          {
+            "label": "о проекте",
+            "href": "/about"
+          },
+          {
+            "label": "манифест",
+            "href": "/about#manifest"
+          }
+        ],
+        [
+          {
+            "label": "методология #1",
+            "href": "/about#methodology"
+          },
+          {
+            "label": "методология #2",
+            "href": "/about#methodology-stages"
+          },
+          {
+            "label": "принцип работы",
+            "href": "/about#romashka"
+          }
+        ],
+        [
+          {
+            "label": "этап #1",
+            "href": "/about#stages"
+          },
+          {
+            "label": "этап #2",
+            "href": "/about#stage-2"
+          }
+        ],
+        [
+          {
+            "label": "команда",
+            "href": "/team"
+          },
+          {
+            "label": "эксперты",
+            "href": "/experts"
+          },
+          {
+            "label": "обзоры",
+            "href": "/reviews"
+          }
+        ]
+      ],
+      "partners": [
+        [
+          {
+            "label": "главная",
+            "href": "/"
+          },
+          {
+            "label": "о проекте",
+            "href": "/about"
+          },
+          {
+            "label": "манифест",
+            "href": "/about#manifest"
+          }
+        ],
+        [
+          {
+            "label": "методология #1",
+            "href": "/about#methodology"
+          },
+          {
+            "label": "методология #2",
+            "href": "/about#methodology-stages"
+          },
+          {
+            "label": "принцип работы",
+            "href": "/about#romashka"
+          }
+        ],
+        [
+          {
+            "label": "этап #1",
+            "href": "/about#stages"
+          },
+          {
+            "label": "этап #2",
+            "href": "/about#stage-2"
+          }
+        ],
+        [
+          {
+            "label": "команда",
+            "href": "/team"
+          },
+          {
+            "label": "эксперты",
+            "href": "/experts"
+          },
+          {
+            "label": "обзоры",
+            "href": "/reviews"
+          }
+        ]
+      ],
+      "research": [
+        [
+          {
+            "label": "главная",
+            "href": "/"
+          },
+          {
+            "label": "о проекте",
+            "href": "/about"
+          },
+          {
+            "label": "манифест",
+            "href": "/about#manifest"
+          }
+        ],
+        [
+          {
+            "label": "методология #1",
+            "href": "/about#methodology"
+          },
+          {
+            "label": "методология #2",
+            "href": "/about#methodology-stages"
+          },
+          {
+            "label": "принцип работы",
+            "href": "/about#romashka"
+          }
+        ],
+        [
+          {
+            "label": "этап #1",
+            "href": "/about#stages"
+          },
+          {
+            "label": "этап #2",
+            "href": "/about#stage-2"
+          }
+        ],
+        [
+          {
+            "label": "команда",
+            "href": "/team"
+          },
+          {
+            "label": "эксперты",
+            "href": "/experts"
+          },
+          {
+            "label": "обзоры",
+            "href": "/reviews"
+          }
+        ]
       ]
     },
     "copyright": "Архитектура живых систем — 2026",
@@ -385,6 +547,18 @@
     "experts": {
       "title": "ИРСТ.РФ > эксперты",
       "description": "Эксперты, участвующие в разработке Концепции «Архитектура живых систем»."
+    },
+    "services": {
+      "title": "ИРСТ.РФ > услуги",
+      "description": "Услуги инициативы «Архитектура живых систем»."
+    },
+    "partners": {
+      "title": "ИРСТ.РФ > партнеры",
+      "description": "Партнёры инициативы «Архитектура живых систем»."
+    },
+    "research": {
+      "title": "ИРСТ.РФ > исследования",
+      "description": "Исследования инициативы «Архитектура живых систем»."
     }
   },
   "joinButton": {

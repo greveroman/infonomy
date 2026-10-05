@@ -1006,6 +1006,6 @@ a.doc-dl:hover{background:var(--leaf-deep);color:#fff;}
   html:not(.touch) .hdr .btn--amber{padding:12px 18px;}
 }
 @media (min-width:1001px) and (max-width:1200px){
-  html:not(.touch) .hdr__nav a{padding:10px 6px;}
+  html:not(.touch) .hdr__nav a{padding:10px 5px;}
   html:not(.touch) .hdr .btn--amber{padding:12px 14px;}
 }

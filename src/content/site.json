@@ -7,35 +7,35 @@
   "locale": "ru_RU",
   "nav": [
     {
-      "label": "главная",
+      "label": "Главная",
       "href": "/"
     },
     {
-      "label": "о проекте",
+      "label": "О проекте",
       "href": "/about"
     },
     {
-      "label": "команда",
+      "label": "Команда",
       "href": "/team"
     },
     {
-      "label": "эксперты",
+      "label": "Эксперты",
       "href": "/experts"
     },
     {
-      "label": "обзоры",
+      "label": "Обзоры",
       "href": "/reviews"
     },
     {
-      "label": "услуги",
+      "label": "Услуги",
       "href": "/services"
     },
     {
-      "label": "партнеры",
+      "label": "Партнеры",
       "href": "/partners"
     },
     {
-      "label": "исследования",
+      "label": "Исследования",
       "href": "/research"
     }
   ],
@@ -48,53 +48,53 @@
       "home": [
         [
           {
-            "label": "главная",
+            "label": "Главная",
             "href": "/"
           },
           {
-            "label": "о проекте",
+            "label": "О проекте",
             "href": "/about"
           },
           {
-            "label": "манифест",
+            "label": "Манифест",
             "href": "/about#manifest"
           }
         ],
         [
           {
-            "label": "методология #1",
+            "label": "Методология #1",
             "href": "/about#methodology"
           },
           {
-            "label": "методология #2",
+            "label": "Методология #2",
             "href": "/about#methodology-stages"
           },
           {
-            "label": "принцип работы",
+            "label": "Принцип работы",
             "href": "/about#romashka"
           }
         ],
         [
           {
-            "label": "этап #1",
+            "label": "Этап #1",
             "href": "/about#stages"
           },
           {
-            "label": "этап #2",
+            "label": "Этап #2",
             "href": "/about#stage-2"
           }
         ],
         [
           {
-            "label": "команда",
+            "label": "Команда",
             "href": "/team"
           },
           {
-            "label": "эксперты",
+            "label": "Эксперты",
             "href": "/experts"
           },
           {
-            "label": "обзоры",
+            "label": "Обзоры",
             "href": "/reviews"
           }
         ]
@@ -102,53 +102,53 @@
       "about": [
         [
           {
-            "label": "главная",
+            "label": "Главная",
             "href": "/"
           },
           {
-            "label": "о проекте",
+            "label": "О проекте",
             "href": "/about"
           },
           {
-            "label": "манифест",
+            "label": "Манифест",
             "href": "/about#manifest"
           }
         ],
         [
           {
-            "label": "методология #1",
+            "label": "Методология #1",
             "href": "/about#methodology"
           },
           {
-            "label": "методология #2",
+            "label": "Методология #2",
             "href": "/about#methodology-stages"
           },
           {
-            "label": "принцип работы",
+            "label": "Принцип работы",
             "href": "/about#romashka"
           }
         ],
         [
           {
-            "label": "этап #1",
+            "label": "Этап #1",
             "href": "/about#stages"
           },
           {
-            "label": "этап #2",
+            "label": "Этап #2",
             "href": "/about#stage-2"
           }
         ],
         [
           {
-            "label": "команда",
+            "label": "Команда",
             "href": "/team"
           },
           {
-            "label": "эксперты",
+            "label": "Эксперты",
             "href": "/experts"
           },
           {
-            "label": "обзоры",
+            "label": "Обзоры",
             "href": "/reviews"
           }
         ]
@@ -156,53 +156,53 @@
       "reviews": [
         [
           {
-            "label": "главная",
+            "label": "Главная",
             "href": "/"
           },
           {
-            "label": "о проекте",
+            "label": "О проекте",
             "href": "/about"
           },
           {
-            "label": "манифест",
+            "label": "Манифест",
             "href": "/about#manifest"
           }
         ],
         [
           {
-            "label": "методология #1",
+            "label": "Методология #1",
             "href": "/about#methodology"
           },
           {
-            "label": "методология #2",
+            "label": "Методология #2",
             "href": "/about#methodology-stages"
           },
           {
-            "label": "принцип работы",
+            "label": "Принцип работы",
             "href": "/about#romashka"
           }
         ],
         [
           {
-            "label": "этап #1",
+            "label": "Этап #1",
             "href": "/about#stages"
           },
           {
-            "label": "этап #2",
+            "label": "Этап #2",
             "href": "/about#stage-2"
           }
         ],
         [
           {
-            "label": "команда",
+            "label": "Команда",
             "href": "/team"
           },
           {
-            "label": "эксперты",
+            "label": "Эксперты",
             "href": "/experts"
           },
           {
-            "label": "обзоры",
+            "label": "Обзоры",
             "href": "/reviews"
           }
         ]
@@ -210,53 +210,53 @@
       "join": [
         [
           {
-            "label": "главная",
+            "label": "Главная",
             "href": "/"
           },
           {
-            "label": "о проекте",
+            "label": "О проекте",
             "href": "/about"
           },
           {
-            "label": "манифест",
+            "label": "Манифест",
             "href": "/about#manifest"
           }
         ],
         [
           {
-            "label": "методология #1",
+            "label": "Методология #1",
             "href": "/about#methodology"
           },
           {
-            "label": "методология #2",
+            "label": "Методология #2",
             "href": "/about#methodology-stages"
           },
           {
-            "label": "принцип работы",
+            "label": "Принцип работы",
             "href": "/about#romashka"
           }
         ],
         [
           {
-            "label": "этап #1",
+            "label": "Этап #1",
             "href": "/about#stages"
           },
           {
-            "label": "этап #2",
+            "label": "Этап #2",
             "href": "/about#stage-2"
           }
         ],
         [
           {
-            "label": "команда",
+            "label": "Команда",
             "href": "/team"
           },
           {
-            "label": "эксперты",
+            "label": "Эксперты",
             "href": "/experts"
           },
           {
-            "label": "обзоры",
+            "label": "Обзоры",
             "href": "/reviews"
           }
         ]
@@ -264,53 +264,53 @@
       "team": [
         [
           {
-            "label": "главная",
+            "label": "Главная",
             "href": "/"
           },
           {
-            "label": "о проекте",
+            "label": "О проекте",
             "href": "/about"
           },
           {
-            "label": "манифест",
+            "label": "Манифест",
             "href": "/about#manifest"
           }
         ],
         [
           {
-            "label": "методология #1",
+            "label": "Методология #1",
             "href": "/about#methodology"
           },
           {
-            "label": "методология #2",
+            "label": "Методология #2",
             "href": "/about#methodology-stages"
           },
           {
-            "label": "принцип работы",
+            "label": "Принцип работы",
             "href": "/about#romashka"
           }
         ],
         [
           {
-            "label": "этап #1",
+            "label": "Этап #1",
             "href": "/about#stages"
           },
           {
-            "label": "этап #2",
+            "label": "Этап #2",
             "href": "/about#stage-2"
           }
         ],
         [
           {
-            "label": "команда",
+            "label": "Команда",
             "href": "/team"
           },
           {
-            "label": "эксперты",
+            "label": "Эксперты",
             "href": "/experts"
           },
           {
-            "label": "обзоры",
+            "label": "Обзоры",
             "href": "/reviews"
           }
         ]
@@ -318,53 +318,53 @@
       "experts": [
         [
           {
-            "label": "главная",
+            "label": "Главная",
             "href": "/"
           },
           {
-            "label": "о проекте",
+            "label": "О проекте",
             "href": "/about"
           },
           {
-            "label": "манифест",
+            "label": "Манифест",
             "href": "/about#manifest"
           }
         ],
         [
           {
-            "label": "методология #1",
+            "label": "Методология #1",
             "href": "/about#methodology"
           },
           {
-            "label": "методология #2",
+            "label": "Методология #2",
             "href": "/about#methodology-stages"
           },
           {
-            "label": "принцип работы",
+            "label": "Принцип работы",
             "href": "/about#romashka"
           }
         ],
         [
           {
-            "label": "этап #1",
+            "label": "Этап #1",
             "href": "/about#stages"
           },
           {
-            "label": "этап #2",
+            "label": "Этап #2",
             "href": "/about#stage-2"
           }
         ],
         [
           {
-            "label": "команда",
+            "label": "Команда",
             "href": "/team"
           },
           {
-            "label": "эксперты",
+            "label": "Эксперты",
             "href": "/experts"
           },
           {
-            "label": "обзоры",
+            "label": "Обзоры",
             "href": "/reviews"
           }
         ]
@@ -372,53 +372,53 @@
       "services": [
         [
           {
-            "label": "главная",
+            "label": "Главная",
             "href": "/"
           },
           {
-            "label": "о проекте",
+            "label": "О проекте",
             "href": "/about"
           },
           {
-            "label": "манифест",
+            "label": "Манифест",
             "href": "/about#manifest"
           }
         ],
         [
           {
-            "label": "методология #1",
+            "label": "Методология #1",
             "href": "/about#methodology"
           },
           {
-            "label": "методология #2",
+            "label": "Методология #2",
             "href": "/about#methodology-stages"
           },
           {
-            "label": "принцип работы",
+            "label": "Принцип работы",
             "href": "/about#romashka"
           }
         ],
         [
           {
-            "label": "этап #1",
+            "label": "Этап #1",
             "href": "/about#stages"
           },
           {
-            "label": "этап #2",
+            "label": "Этап #2",
             "href": "/about#stage-2"
           }
         ],
         [
           {
-            "label": "команда",
+            "label": "Команда",
             "href": "/team"
           },
           {
-            "label": "эксперты",
+            "label": "Эксперты",
             "href": "/experts"
           },
           {
-            "label": "обзоры",
+            "label": "Обзоры",
             "href": "/reviews"
           }
         ]
@@ -426,53 +426,53 @@
       "partners": [
         [
           {
-            "label": "главная",
+            "label": "Главная",
             "href": "/"
           },
           {
-            "label": "о проекте",
+            "label": "О проекте",
             "href": "/about"
           },
           {
-            "label": "манифест",
+            "label": "Манифест",
             "href": "/about#manifest"
           }
         ],
         [
           {
-            "label": "методология #1",
+            "label": "Методология #1",
             "href": "/about#methodology"
           },
           {
-            "label": "методология #2",
+            "label": "Методология #2",
             "href": "/about#methodology-stages"
           },
           {
-            "label": "принцип работы",
+            "label": "Принцип работы",
             "href": "/about#romashka"
           }
         ],
         [
           {
-            "label": "этап #1",
+            "label": "Этап #1",
             "href": "/about#stages"
           },
           {
-            "label": "этап #2",
+            "label": "Этап #2",
             "href": "/about#stage-2"
           }
         ],
         [
           {
-            "label": "команда",
+            "label": "Команда",
             "href": "/team"
           },
           {
-            "label": "эксперты",
+            "label": "Эксперты",
             "href": "/experts"
           },
           {
-            "label": "обзоры",
+            "label": "Обзоры",
             "href": "/reviews"
           }
         ]
@@ -480,53 +480,53 @@
       "research": [
         [
           {
-            "label": "главная",
+            "label": "Главная",
             "href": "/"
           },
           {
-            "label": "о проекте",
+            "label": "О проекте",
             "href": "/about"
           },
           {
-            "label": "манифест",
+            "label": "Манифест",
             "href": "/about#manifest"
           }
         ],
         [
           {
-            "label": "методология #1",
+            "label": "Методология #1",
             "href": "/about#methodology"
           },
           {
-            "label": "методология #2",
+            "label": "Методология #2",
             "href": "/about#methodology-stages"
           },
           {
-            "label": "принцип работы",
+            "label": "Принцип работы",
             "href": "/about#romashka"
           }
         ],
         [
           {
-            "label": "этап #1",
+            "label": "Этап #1",
             "href": "/about#stages"
           },
           {
-            "label": "этап #2",
+            "label": "Этап #2",
             "href": "/about#stage-2"
           }
         ],
         [
           {
-            "label": "команда",
+            "label": "Команда",
             "href": "/team"
           },
           {
-            "label": "эксперты",
+            "label": "Эксперты",
             "href": "/experts"
           },
           {
-            "label": "обзоры",
+            "label": "Обзоры",
             "href": "/reviews"
           }
         ]
@@ -574,7 +574,7 @@
     }
   },
   "joinButton": {
-    "label": "присоединиться",
+    "label": "Присоединиться",
     "href": "/join"
   },
   "ogImage": "/images/hero.jpg"

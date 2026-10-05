@@ -1027,15 +1027,8 @@ a.doc-dl:hover{background:var(--leaf-deep);color:#fff;}
 /* Подвал: контакты, документы, реквизиты; строка о согласии на персональные данные */
 .ftr__h{font-size:15px;color:#fff;margin-bottom:4px;}
 .ftr nav span{color:rgba(230,239,232,0.82);white-space:nowrap;}
-.ftr__legal{grid-column:1/-1;font-size:14px;line-height:1.5;letter-spacing:0.02em;color:rgba(230,239,232,0.4);}
 @media (min-width:1001px){
-  .ftr__grid{grid-template-columns:1fr repeat(3,auto);row-gap:14px;padding-top:28px;padding-bottom:22px;}
-  .ftr__brand{grid-row:span 2;}
-  .ftr__legal{grid-column:2/-1;}
-  .ftr nav{gap:4px;}
+  .ftr__grid{grid-template-columns:1fr repeat(3,auto);}
+  .ftr nav{gap:2px;}
 }
 .lg-text{margin-top:24px;font-size:15px;}
-/* «Проекты»: последний слайд + подвал с контактами и реквизитами — ровно окно (компьютер) */
-@media (min-width:1001px){
-  html[data-page="about"]:not(.touch) .join.slide .join__in{padding:0;}
-}

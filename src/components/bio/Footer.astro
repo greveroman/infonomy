@@ -19,7 +19,6 @@ const f = site.footer;
           {col.items.map((l) => ('href' in l && l.href) ? <a href={l.href}>{l.label}</a> : <span>{l.label}</span>)}
         </nav>
       ))}
-      <div class="ftr__legal"><div>{f.consent}</div><div>{f.source}</div></div>
     </div>
   </div>
 </footer>

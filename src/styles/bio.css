@@ -981,3 +981,12 @@ a.doc-dl:hover{background:var(--leaf-deep);color:#fff;}
   html[data-page="about"]:not(.touch) #manifest .mf-track{margin-top:1vh !important;}
   html[data-page="about"]:not(.touch) #manifest .mf-track p{line-height:1.42 !important;}
 }
+/* «Команда» и «Эксперты», компьютер: большой заголовок как на «О проекте», имена — текст 15 px,
+   содержимое по центру между капсулой и волной, круги по размеру свободного места */
+@media (min-width:1001px){
+  html:is([data-page="team"],[data-page="experts"]):not(.touch) .tm-hero.slide{padding-top:calc(var(--hdr-band) - var(--hdr-h) + 12px) !important;}
+  html:is([data-page="team"],[data-page="experts"]):not(.touch) .tm-hero h1{font-size:72px !important;line-height:1 !important;}
+  html:is([data-page="team"],[data-page="experts"]):not(.touch) .tm-name{font-size:15px !important;margin-top:14px;}
+  html:is([data-page="team"],[data-page="experts"]):not(.touch) .tm-hero .tm-grid{margin-top:3vh;--tm-d:min(100%,300px,max(140px,calc(100svh - var(--hdr-band) - var(--ftr-h) - 110px - 72px - 3vh - 34px - 70px)));}
+  html:is([data-page="team"],[data-page="experts"]):not(.touch) .tm-hero .ex-track{margin-top:calc(3vh - 20px);margin-bottom:-30px;}
+}

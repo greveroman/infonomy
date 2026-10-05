@@ -1035,5 +1035,5 @@ a.doc-dl:hover{background:var(--leaf-deep);color:#fff;}
 /* Подвал (компьютер): пункты контактов, документов, реквизитов — как строка копирайта */
 @media (min-width:1001px){
   .ftr nav :is(a,span){font-size:14px;letter-spacing:0.02em;color:rgba(230,239,232,0.4);}
-  .ftr nav a:hover{color:#fff;}
+  .ftr nav a:hover{color:var(--amber);border-bottom-color:transparent;}
 }

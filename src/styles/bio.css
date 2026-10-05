@@ -899,3 +899,11 @@ a.doc-dl:hover{background:var(--leaf-deep);color:#fff;}
 @media (min-width:1001px){
   html[data-page="home"]:not(.touch) .hero__stage{border-radius:40px !important;}
 }
+/* Главная, компьютер: нижняя полоса высотой --hdr-band каждого слайда видна над капсулой на следующем слайде —
+   содержимое слайдов 1–3 туда не опускается */
+@media (min-width:1001px){
+  html[data-page="home"]:not(.touch) :is(.hero.slide,.sec--white.slide,#docs.slide) > .wrap{padding-bottom:var(--hdr-band) !important;}
+  html[data-page="home"]:not(.touch) .hero h1{font-size:clamp(48px,min(7vw,8.4vh),120px) !important;}
+  html[data-page="home"]:not(.touch) .hero__stage{margin:2vh 0 0 !important;}
+  html[data-page="home"]:not(.touch) #docs .card__win{height:clamp(44px,5.6vh,90px) !important;}
+}

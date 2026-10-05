@@ -907,3 +907,8 @@ a.doc-dl:hover{background:var(--leaf-deep);color:#fff;}
   html[data-page="home"]:not(.touch) .hero__stage{margin:2vh 0 0 !important;}
   html[data-page="home"]:not(.touch) #docs .card__win{height:clamp(44px,5.6vh,90px) !important;}
 }
+/* Главная и «О проекте», компьютер: в Safari линии рельефа (маска) у самой нижней волны рисуются «шумом» —
+   на тёмном слайде перед подвалом линии заканчиваются чуть выше волны */
+@media (min-width:1001px){
+  html:not(.touch) :is(#join,#participation) .strata{bottom:90px;}
+}

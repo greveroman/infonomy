@@ -928,3 +928,12 @@ a.doc-dl:hover{background:var(--leaf-deep);color:#fff;}
     font-size:15px !important;line-height:1.55 !important;letter-spacing:normal !important;text-transform:none !important;}
   html[data-page="about"]:not(.touch) main :is(.ab-tab b,.ab-tab span){white-space:normal !important;overflow:visible !important;}
 }
+/* «О проекте», компьютер: манифест — абзацы карточками, листаются вправо стрелками, как эксперты (по 2 на экране) */
+.mf-nav{display:none;}
+@media (min-width:1001px){
+  html[data-page="about"]:not(.touch) .mf-head{display:flex;align-items:center;justify-content:space-between;gap:32px;margin-top:1vh;}
+  html[data-page="about"]:not(.touch) .mf-head .ab-quote{margin:0 !important;}
+  html[data-page="about"]:not(.touch) .mf-nav{display:flex;position:static;transform:none;}
+  html[data-page="about"]:not(.touch) .mf-track{columns:auto !important;display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 24px) / 2);gap:24px;overflow:hidden;margin-top:2vh !important;}
+  html[data-page="about"]:not(.touch) .mf-track p{margin:0 !important;padding:18px 26px;border-radius:28px;border-top-right-radius:80px 60px;background:var(--bg);box-shadow:inset 0 0 0 1px var(--line);}
+}

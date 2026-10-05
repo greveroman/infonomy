@@ -13,6 +13,7 @@ const [quoteA, quoteB] = (quote?.text ?? '').split(/(?<=,) /);
 const [collA, collB] = collaboration.title.split(/ (?=над документом)/);
 const [st1A, st1B] = stage1.title.split(/(?<=:) /);
 const [st2A, st2B] = stage2.titleLines.join(' ').split(/(?<=:) /);
+const arrow = (d: string) => `<svg viewBox="0 0 20 20" width="18" height="18"><path d="${d}" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
 const check = '<svg viewBox="0 0 20 20" width="12" height="12"><path d="M4 10.5 L8 14.5 L16 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" /></svg>';
 ---
 <BioLayout page="about">
@@ -34,8 +35,14 @@ const check = '<svg viewBox="0 0 20 20" width="12" height="12"><path d="M4 10.5 
   <section class="sec sec--white slide" id="manifest">
     <div class="wrap">
       <div class="eyebrow">{manifesto.label}</div>
-      {quote && <p class="ab-quote">{quoteB ? <>{quoteA + " "}<em class="acc">{quoteB}</em></> : quote.text}</p>}
-      <div class="ab-cols">
+      <div class="ex-head mf-head">
+        {quote && <p class="ab-quote">{quoteB ? <>{quoteA + " "}<em class="acc">{quoteB}</em></> : quote.text}</p>}
+        <div class="ex-nav mf-nav">
+          <button class="ex-btn" data-dir="-1" aria-label="Назад" set:html={arrow('M12.5 4 L6.5 10 L12.5 16')} />
+          <button class="ex-btn" data-dir="1" aria-label="Вперёд" set:html={arrow('M7.5 4 L13.5 10 L7.5 16')} />
+        </div>
+      </div>
+      <div class="ab-cols mf-track" tabindex="0" aria-label={manifesto.label}>
         {paras.map((b) => <p>{b.text}</p>)}
       </div>
     </div>
@@ -225,4 +232,36 @@ const check = '<svg viewBox="0 0 20 20" width="12" height="12"><path d="M4 10.5 
       <div class="join__foot"><Terrace fill="#0d1812" /></div>
     </div>
   </section>
+  <script>
+    // Манифест на компьютере: абзацы листаются вправо, как эксперты — стрелки, колесо/тачпад (один жест = один шаг), ←/→
+    const mfTrack = document.querySelector<HTMLElement>('.mf-track');
+    const mfBtns = document.querySelectorAll<HTMLButtonElement>('.mf-nav .ex-btn');
+    const mfDesk = matchMedia('(min-width: 1001px)');
+    if (mfTrack) {
+      const items = () => [...mfTrack.children] as HTMLElement[];
+      let index = 0, lock = 0, lastWheel = 0;
+      const perView = () => Math.max(1, Math.round(mfTrack.clientWidth / (items()[0].offsetWidth || 1)));
+      const maxIndex = () => Math.max(0, items().length - perView());
+      const go = (i: number) => {
+        if (!mfDesk.matches || document.documentElement.classList.contains('touch')) return;
+        index = Math.min(Math.max(i, 0), maxIndex());
+        mfTrack.scrollTo({ left: items()[index].offsetLeft - items()[0].offsetLeft, behavior: 'smooth' });
+        mfBtns[0].disabled = index === 0; mfBtns[1].disabled = index === maxIndex();
+      };
+      mfBtns.forEach((b) => b.addEventListener('click', () => go(index + Number(b.dataset.dir))));
+      mfTrack.addEventListener('wheel', (e) => {
+        if (!mfDesk.matches) return;
+        if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return; // вертикальная прокрутка листает слайды
+        const dir = Math.sign(e.deltaX);
+        if (!dir || (dir < 0 && index === 0) || (dir > 0 && index === maxIndex())) return;
+        e.preventDefault();
+        const now = performance.now(), gap = now - lastWheel; lastWheel = now;
+        if (gap < 250 || now < lock) return;
+        lock = now + 450; go(index + dir);
+      }, { passive: false });
+      mfTrack.addEventListener('keydown', (e) => { if (e.key === 'ArrowRight') go(index + 1); if (e.key === 'ArrowLeft') go(index - 1); });
+      addEventListener('resize', () => go(index));
+      go(0);
+    }
+  </script>
 </BioLayout>
